@@ -8,7 +8,7 @@ declare interface RouteInfo {
     class: string;
 }
 export const ROUTES: RouteInfo[] = [
-    { path: '/dashboard', title: 'Dashboard',  icon: 'ni-tv-2 text-primary', class: '' },
+    { path: '/client', title: 'Dashboard',  icon: 'ni-tv-2 text-primary', class: '' },
     { path: '/icons', title: 'Icons',  icon:'ni-planet text-blue', class: '' },
     { path: '/maps', title: 'Maps',  icon:'ni-pin-3 text-orange', class: '' },
     { path: '/user-profile', title: 'User profile',  icon:'ni-single-02 text-yellow', class: '' },
@@ -16,11 +16,11 @@ export const ROUTES: RouteInfo[] = [
 ];
 
 @Component({
-  selector: 'app-sidebar',
-  templateUrl: './sidebarAdmin.component.html',
-  styleUrls: ['./sidebarAdmin.component.scss']
+  selector: 'app-sidebar-client',
+  templateUrl: './sidebarClient.component.html',
+  styleUrls: ['./sidebarClient.component.scss']
 })
-export class SidebarAdminComponent implements OnInit {
+export class SidebarClientComponent implements OnInit {
 
   public menuItems: any[];
   public isCollapsed = true;

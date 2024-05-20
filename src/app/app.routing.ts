@@ -5,6 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AuthLayoutComponent } from './auth-layout/auth-layout.component';
 import {AdminDashComponent} from "./Back-office/admin-dash/admin-dash.component";
+import {ClientDashComponent} from "./client/client-dash/client-dash.component";
 
 
 const routes: Routes =[
@@ -13,8 +14,8 @@ const routes: Routes =[
     component: AuthLayoutComponent,
   },
   {
-    path: 'dashboardAdmin',
-    redirectTo: 'dashboardAdmin',
+    path: 'admin',
+    redirectTo: 'admin',
     pathMatch: 'full',
   }, {
     path: '',
@@ -23,6 +24,21 @@ const routes: Routes =[
       {
         path: '',
         loadChildren: () => import('src/app/Back-office/admin-dash/admin-dash.module').then(m => m.AdminDashModule)
+      }
+    ]
+  },
+  {
+  path: 'client',
+  redirectTo: 'dashboardClient',
+  pathMatch: 'full',
+}
+  ,{
+    path: '',
+    component: ClientDashComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('src/app/client/client-dash/client-dash.module').then(m => m.ClientDashModule)
       }
     ]
   },

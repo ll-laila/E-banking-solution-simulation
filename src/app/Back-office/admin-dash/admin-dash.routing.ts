@@ -8,9 +8,10 @@ import {MapsAdminComponent} from "../pages/mapsAdmin/mapsAdmin.component";
 
 
 export const AdminDashRoutes: Routes = [
-    { path: 'dashboardAdmin',      component: DashboardAdminComponent },
+    { path: 'admin',      component: DashboardAdminComponent },
     { path: 'user-profile',   component: ProfileAdminComponent },
     { path: 'tables',         component: TablesAdminComponent },
     { path: 'icons',          component: IconsAdminComponent },
-    { path: 'maps',           component: MapsAdminComponent }
+    { path: 'maps',           component: MapsAdminComponent },
+    { path: '', redirectTo:'admin', pathMatch:'full' }
 ];
