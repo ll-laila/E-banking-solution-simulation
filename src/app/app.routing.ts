@@ -5,7 +5,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AuthLayoutComponent } from './auth-layout/auth-layout.component';
 import {AdminDashComponent} from "./Back-office/admin-dash/admin-dash.component";
+
 import {AgentDashComponent} from "./Agent/agent-dash/agent-dash.component";
+import { ClientDashComponent } from './client/client-dash/client-dash.component';
+
+
+
 
 
 const routes: Routes =[
@@ -28,6 +33,7 @@ const routes: Routes =[
     ]
   },
   {
+
     path: 'agent',
     redirectTo: 'agent',
     pathMatch: 'full',
@@ -35,9 +41,23 @@ const routes: Routes =[
     path: '',
     component: AgentDashComponent,
     children: [
+    {
+      path: '',
+      loadChildren: () => import('src/app/Agent/agent-dash/agent-dash.module').then(m => m.AgentDashModule)
+    }]}
+  ,{
+  path: 'client',
+  redirectTo: 'dashboardClient',
+  pathMatch: 'full',
+}
+  ,{
+    path: '',
+    component: ClientDashComponent,
+    children: [
       {
         path: '',
-        loadChildren: () => import('src/app/Agent/agent-dash/agent-dash.module').then(m => m.AgentDashModule)
+        loadChildren: () => import('src/app/client/client-dash/client-dash.module').then(m => m.ClientDashModule)
+
       }
     ]
   },
@@ -54,4 +74,4 @@ const routes: Routes =[
   exports: [
   ],
 })
-export class AppRoutingModule { }
+  export class AppRoutingModule{}
