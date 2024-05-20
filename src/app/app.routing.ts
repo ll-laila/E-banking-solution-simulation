@@ -3,9 +3,9 @@ import { CommonModule, } from '@angular/common';
 import { BrowserModule  } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
-import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
-import {LoginComponent} from "./auth-layout/login/login.component";
+import { AuthLayoutComponent } from './auth-layout/auth-layout.component';
+import {AdminDashComponent} from "./Back-office/admin-dash/admin-dash.component";
+
 
 const routes: Routes =[
   {
@@ -13,31 +13,19 @@ const routes: Routes =[
     component: AuthLayoutComponent,
   },
   {
-    path: 'dashboard',
-    redirectTo: 'dashboard',
+    path: 'dashboardAdmin',
+    redirectTo: 'dashboardAdmin',
     pathMatch: 'full',
   }, {
     path: '',
-    component: AdminLayoutComponent,
+    component: AdminDashComponent,
     children: [
       {
         path: '',
-        loadChildren: () => import('src/app/layouts/admin-layout/admin-layout.module').then(m => m.AdminLayoutModule)
+        loadChildren: () => import('src/app/Back-office/admin-dash/admin-dash.module').then(m => m.AdminDashModule)
       }
     ]
-  }, {
-    path: '',
-    component: AuthLayoutComponent,
-    children: [
-      {
-        path: '',
-        loadChildren: () => import('src/app/layouts/auth-layout/auth-layout.module').then(m => m.AuthLayoutModule)
-      }
-    ]
-  }, {
-    path: '**',
-    redirectTo: 'dashboard'
-  }
+  },
 ];
 
 @NgModule({

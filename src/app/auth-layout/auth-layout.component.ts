@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import {Router, RouterLinkWithHref, RouterOutlet} from '@angular/router';
 import {NgbCollapseModule} from "@ng-bootstrap/ng-bootstrap";
 import {DatePipe} from "@angular/common";
+import {LoginComponent} from "./login/login.component";
 
 @Component({
   selector: 'app-auth-layout',
@@ -11,7 +12,8 @@ import {DatePipe} from "@angular/common";
     RouterLinkWithHref,
     NgbCollapseModule,
     RouterOutlet,
-    DatePipe
+    DatePipe,
+    LoginComponent
   ],
   styleUrls: ['auth-layout.component.scss']
 })
