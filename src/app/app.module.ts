@@ -12,6 +12,8 @@ import { AppRoutingModule } from './app.routing';
 import {LoginComponent} from "./auth-layout/login/login.component";
 import {AdminDashComponent} from "./Back-office/admin-dash/admin-dash.component";
 import {AdminComponentsModule} from "./Back-office/Admincomponents/AdminComponents.module";
+import {AgentComponentsModule} from "./Agent/Agentcomponents/AgentComponents.module";
+import {AgentDashComponent} from "./Agent/agent-dash/agent-dash.component";
 
 
 @NgModule({
@@ -20,12 +22,14 @@ import {AdminComponentsModule} from "./Back-office/Admincomponents/AdminComponen
     FormsModule,
     HttpClientModule,
     AdminComponentsModule,
+    AgentComponentsModule,
     NgbModule,
     RouterModule,
     AppRoutingModule,
     LoginComponent,
     CommonModule,
-    BrowserModule
+    BrowserModule,
+    AgentDashComponent
   ],
   declarations: [
     AppComponent,
