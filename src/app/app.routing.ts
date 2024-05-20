@@ -2,7 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule, } from '@angular/common';
 import { BrowserModule  } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
-import {AuthLayoutComponent} from "./auth-layout/auth-layout.component";
+
+import { AuthLayoutComponent } from './auth-layout/auth-layout.component';
+import {AdminDashComponent} from "./Back-office/admin-dash/admin-dash.component";
+
 
 const routes: Routes =[
   {
@@ -19,13 +22,10 @@ const routes: Routes =[
     children: [
       {
         path: '',
-        loadChildren: () => import('src/app/back-office/admin-dash/admin-dash.module').then(m => m.AdminDashModule)
+        loadChildren: () => import('src/app/Back-office/admin-dash/admin-dash.module').then(m => m.AdminDashModule)
       }
     ]
-  }, {
-    path: '**',
-    redirectTo: 'dashboard'
-  }
+  },
 ];
 
 @NgModule({

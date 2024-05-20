@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import {Router, RouterLinkActive, RouterLinkWithHref, RouterOutlet} from '@angular/router';
+import {Router, RouterLinkWithHref, RouterOutlet} from '@angular/router';
 import {NgbCollapseModule} from "@ng-bootstrap/ng-bootstrap";
 import {DatePipe} from "@angular/common";
 import {LoginComponent} from "./login/login.component";
@@ -13,7 +13,6 @@ import {LoginComponent} from "./login/login.component";
     NgbCollapseModule,
     RouterOutlet,
     DatePipe,
-    RouterLinkActive,
     LoginComponent
   ],
   styleUrls: ['auth-layout.component.scss']
@@ -31,7 +30,7 @@ export class AuthLayoutComponent implements OnInit, OnDestroy {
     body.classList.add("bg-default");
     this.router.events.subscribe((event) => {
       this.isCollapsed = true;
-   });
+    });
 
   }
   ngOnDestroy() {
