@@ -1,0 +1,90 @@
+<div class="header pb-8 pt-5 pt-md-8" style="background: linear-gradient(to right, #0965c0, #c53a94);" >
+</div>
+<div class="container-fluid mt--7">
+  <!-- Dark table -->
+  <div class="row mt-2">
+    <div class="col">
+      <div class="table-responsive">
+        <div class="container-fluid">
+          <div class="card border-0 shadow px-1">
+            <form (submit)="submitUpdate()">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                  <h2 class="card-title text-right Montserrat" style="color:#e37431; margin-bottom: 0;">Personal information</h2>
+                  <div type="button" [routerLink]="['/admin']">
+                    <i class="fas fa-sign-out-alt"></i>
+                  </div>
+                </div>
+
+                <hr style="color:#6415FF" />
+                <div class="card-text py-2">
+                  <div class="row g-2 mb-4">
+                    <div class="form-floating col-md-4">
+                      <label for="firstName" class="Montserrat" style="color:#2f3a8a">First Name *</label>
+                      <input type="text" class="form-control" id="firstName" placeholder="First Name" style="border-radius:20px; background-color:#F8F8F8" />
+
+                    </div>
+                    <div class="form-floating col-md-4">
+                      <label for="lastName" class="Montserrat" style="color:#2f3a8a">Last Name *</label>
+                      <input type="text" class="form-control" id="lastName" placeholder="Last Name" style="border-radius:20px; background-color:#F8F8F8" />
+
+                    </div>
+                    <div class="form-floating col-md-4">
+                      <label for="dateOfBirth" class="Montserrat" style="color:#2f3a8a">Date of Birth *</label>
+                      <input type="date" class="form-control" id="dateOfBirth" placeholder="Date of Birth" style="border-radius:20px; background-color:#F8F8F8" />
+                    </div>
+                  </div>
+                  <div class="row g-2 mb-4 mt-10">
+                    <div class="form-floating col-md-6">
+                      <label for="identityPiece" class="Montserrat" style="color:#2f3a8a">Piece d'identité *</label>
+                      <select class="form-select  form-control" id="identityPiece" style="border-radius:20px; background-color:#F8F8F8" required>
+                        <option value="Cin">Cin</option>
+                        <option value="Passport">Passport</option>
+                      </select>
+                    </div>
+                    <div class="form-floating col-md-6">
+                      <label for="identityNumber" class="Montserrat" style="color:#2f3a8a">N° pièce d'identité *</label>
+                      <input type="text" class="form-control" id="identityNumber" placeholder="N° pièce d'identité" style="border-radius:20px; background-color:#F8F8F8" required />
+                    </div>
+                  </div>
+                  <div class="row g-2 mb-4">
+                    <div class="form-floating col-md-6">
+                      <label for="address" class="Montserrat" style="color:#2f3a8a">Address *</label>
+                      <input type="text" class="form-control" id="address" placeholder="Address" style="border-radius:20px; background-color:#F8F8F8" required />
+                    </div>
+
+                    <div class="form-floating col-md-6">
+                      <label for="email" class="Montserrat" style="color:#2f3a8a">Email *</label>
+                      <input type="email" class="form-control" id="email" placeholder="Email" style="border-radius:20px; background-color:#F8F8F8" required />
+                    </div>
+                  </div>
+                  <div class="row g-2 mb-4">
+                    <div class="form-floating col-md-4">
+                      <label for="phoneNumber" class="Montserrat" style="color:#2f3a8a">Phone number *</label>
+                      <input type="text" class="form-control" id="phoneNumber" placeholder="Phone number" style="border-radius:20px; background-color:#F8F8F8" required />
+                    </div>
+                    <div class="form-floating col-md-4">
+                      <label for="commercialRn" class="Montserrat" style="color:#2f3a8a">Commercial Register Number *</label>
+                      <input type="text" class="form-control" id="commercialRn" placeholder="Commercial Register Number" style="border-radius:20px; background-color:#F8F8F8" required />
+                    </div>
+                    <div class="form-floating col-md-4">
+                      <label for="patentNumber" class="Montserrat" style="color:#2f3a8a">Patent Number *</label>
+                      <input type="text" class="form-control" id="patentNumber" placeholder="Patent Number" style="border-radius:20px; background-color:#F8F8F8" required />
+                    </div>
+
+                  </div>
+                </div>
+                <button  class="btn btn-block py-2 container-fluid " type="submit"
+                         style="background-color:#e37431; color:#fff; border-radius:20px; cursor:pointer" >
+                  <span class='Montserrat' style="color:white">Update Agent</span></button>
+              </div>
+            </form>
+
+              </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>

@@ -27,7 +27,12 @@
               <div class="card border-0 shadow px-1">
                 <form (submit)="createSubmit()">
                   <div class="card-body">
-                    <h2 class="card-title text-left Montserrat " style="color:#ffdf35">Personal information</h2>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <h2 class="card-title text-right Montserrat" style="color:#e37431; margin-bottom: 0;">Personal information</h2>
+                      <div type="button" [routerLink]="['/admin']">
+                        <i class="fas fa-sign-out-alt"></i>
+                      </div>
+                    </div>
                     <hr style="color:#6415FF" />
                     <div class="card-text py-2">
                       <div class="row g-2 mb-4">
@@ -91,7 +96,7 @@
                       </div>
                     </div>
 
-                    <h2 class="card-title text-left MontserratM" style="color:#ffdf35">Pièces jointes</h2>
+                    <h2 class="card-title text-left MontserratM" style="color:#e37431">Pièces jointes</h2>
                     <hr style="color:#6415FF" />
                     <div class="row g-2 mb-4">
                       <div class="form-floating col-md-4">
@@ -114,7 +119,7 @@
                       </div>
 
 
-                      <button type="submit" class="btn mt-2 justify-content-center btn-block " style="background-color:#2f3a8a; color:#fff; border-radius:20px;">
+                      <button type="submit" class="btn mt-2 justify-content-center btn-block " style="background-color:#e37431; color:#fff; border-radius:20px;">
                         <span class="Montserrat" style="color:white">Create New Agent</span>
                       </button>
 
