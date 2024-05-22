@@ -9,10 +9,6 @@ import {AdminDashComponent} from "./Back-office/admin-dash/admin-dash.component"
 import {AgentDashComponent} from "./Agent/agent-dash/agent-dash.component";
 import { ClientDashComponent } from './client/client-dash/client-dash.component';
 
-
-
-
-
 const routes: Routes =[
   {
     path: '',
