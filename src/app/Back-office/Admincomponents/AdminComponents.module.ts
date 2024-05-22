@@ -5,6 +5,7 @@ import { NavbarAdminComponent } from './navbarAdmin/navbarAdmin.component';
 import { FooterAdminComponent } from './footerAdmin/footerAdmin.component';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AddAgentComponent } from './add-agent/add-agent.component';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   declarations: [
     FooterAdminComponent,
     NavbarAdminComponent,
-    SidebarAdminComponent
+    SidebarAdminComponent,
+    AddAgentComponent
   ],
   exports: [
     FooterAdminComponent,
