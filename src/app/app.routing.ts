@@ -4,16 +4,16 @@ import { BrowserModule  } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AuthLayoutComponent } from './auth-layout/auth-layout.component';
-import {AdminDashComponent} from "./Back-office/admin-dash/admin-dash.component";
+import {AdminDashComponent} from './Back-office/admin-dash/admin-dash.component';
 
-import {AgentDashComponent} from "./Agent/agent-dash/agent-dash.component";
+import {AgentDashComponent} from './Agent/agent-dash/agent-dash.component';
 import { ClientDashComponent } from './client/client-dash/client-dash.component';
 
-const routes: Routes =[
-  {
+const routes: Routes = [
+  /*{
     path: '',
     component: AuthLayoutComponent,
-  },
+  },*/
   {
     path: 'admin',
     redirectTo: 'admin',
@@ -28,6 +28,7 @@ const routes: Routes =[
       }
     ]
   },
+
   {
 
     path: 'agent',
@@ -40,13 +41,14 @@ const routes: Routes =[
     {
       path: '',
       loadChildren: () => import('src/app/Agent/agent-dash/agent-dash.module').then(m => m.AgentDashModule)
-    }]}
-  ,{
+    }]},
+  /*
+  {
   path: 'client',
   redirectTo: 'dashboardClient',
   pathMatch: 'full',
-}
-  ,{
+},
+  {
     path: '',
     component: ClientDashComponent,
     children: [
@@ -57,17 +59,18 @@ const routes: Routes =[
       }
     ]
   },
+   */
 ];
 
 @NgModule({
   imports: [
     CommonModule,
     BrowserModule,
-    RouterModule.forRoot(routes,{
+    RouterModule.forRoot(routes, {
       useHash: true
     })
   ],
   exports: [
-  ],
+  ]
 })
-  export class AppRoutingModule{}
+export class AppRoutingModule {}
