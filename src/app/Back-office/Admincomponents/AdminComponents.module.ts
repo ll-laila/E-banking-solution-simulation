@@ -7,19 +7,26 @@ import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AddAgentComponent } from './add-agent/add-agent.component';
 import {FormsModule} from "@angular/forms";
+import { EditAgentComponent } from './edit-agent/edit-agent.component';
+import { DetailsAgentComponent } from './details-agent/details-agent.component';
+
+
+
 
 @NgModule({
-    imports: [
-        CommonModule,
-        RouterModule,
-        NgbModule,
-        FormsModule
-    ],
+  imports: [
+    CommonModule,
+    RouterModule,
+    NgbModule,
+    FormsModule
+  ],
   declarations: [
     FooterAdminComponent,
     NavbarAdminComponent,
     SidebarAdminComponent,
-    AddAgentComponent
+    AddAgentComponent,
+    EditAgentComponent,
+    DetailsAgentComponent
   ],
   exports: [
     FooterAdminComponent,
