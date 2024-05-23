@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {IAgent} from "../../../models/Agent";
-import {AgentService} from "../../../service/agent.service";
-import {Router} from "@angular/router";
-import {catchError, throwError} from "rxjs";
+import {IAgent} from '../../../models/Agent';
+import {AgentService} from '../../../service/agent.service';
+import {Router} from '@angular/router';
+import {catchError, throwError} from 'rxjs';
 
 @Component({
   selector: 'app-add-agent',
@@ -10,9 +10,9 @@ import {catchError, throwError} from "rxjs";
   styleUrls: ['add-agent.component.scss']
 })
 export class AddAgentComponent implements OnInit {
-  public agent:IAgent = {} as IAgent;
+  public agent: IAgent = {} as IAgent;
 
-  constructor(private agentService : AgentService, private router: Router) {}
+  constructor(private agentService: AgentService, private router: Router) {}
 
   ngOnInit(): void {
   }
@@ -26,6 +26,9 @@ export class AddAgentComponent implements OnInit {
         })
       )
       .subscribe((data: any) => {
+
+        console.log(this.agent);
+        console.log(data);
         console.log('Agent créé avec succès');
         this.router.navigate(['/admin']);
       });

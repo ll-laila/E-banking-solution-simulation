@@ -50,21 +50,21 @@
               <td>{{ agent.email }}</td>
               <td>{{ agent.phoneNumber }}</td>
               <td>{{ agent.immNumber}}</td>
-                <td class="text-right">
-                  <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-sm btn-icon-only text-light" title="modifier" (click)="updateAgent(agent.id)">
-                      <i class="fas fa-edit"></i>
-                    </button>
-                    <button type="button" class="btn btn-sm btn-icon-only text-light" title="supprimer" (click)="deleteAgent(agent.id)">
-                      <i class="fas fa-trash-alt"></i>
-                    </button>
-                    <button type="button" class="btn btn-sm btn-icon-only text-light" title="details" (click)="viewAgentDetails(agent.id)">
-                      <i class="fas fa-eye"></i>
-                    </button>
-                  </div>
-                </td>
+              <td class="text-right">
+                <div class="btn-group" role="group">
+                  <button type="button" class="btn btn-sm btn-icon-only text-light" title="modifier" (click)="updateAgent(agent.id)">
+                    <i class="fas fa-edit"></i>
+                  </button>
+                  <button type="button" class="btn btn-sm btn-icon-only text-light" title="supprimer" (click)="deleteAgent(agent.id)">
+                    <i class="fas fa-trash-alt"></i>
+                  </button>
+                  <button type="button" class="btn btn-sm btn-icon-only text-light" title="details" (click)="viewAgentDetails(agent.id)">
+                    <i class="fas fa-eye"></i>
+                  </button>
+                </div>
+              </td>
 
-              </tr>
+            </tr>
             </tbody>
           </table>
         </div>

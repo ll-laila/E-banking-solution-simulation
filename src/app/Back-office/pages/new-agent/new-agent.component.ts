@@ -16,6 +16,7 @@ export class NewAgentComponent implements OnInit {
     this.getAllAgents();
   }
 
+
   getAllAgents(): void {
     this.agentService.getAllAgents().subscribe(
       (agents: IAgent[]) => {
@@ -26,7 +27,6 @@ export class NewAgentComponent implements OnInit {
       }
     );
   }
-
   addAgent() {
     this.router.navigate(['/add-agent']);
   }
