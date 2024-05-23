@@ -4,16 +4,31 @@ import { BrowserModule  } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AuthLayoutComponent } from './auth-layout/auth-layout.component';
-import {AdminDashComponent} from "./Back-office/admin-dash/admin-dash.component";
+import {AdminDashComponent} from './Back-office/admin-dash/admin-dash.component';
 
-import {AgentDashComponent} from "./Agent/agent-dash/agent-dash.component";
+import {AgentDashComponent} from './Agent/agent-dash/agent-dash.component';
 import { ClientDashComponent } from './client/client-dash/client-dash.component';
+import {DashboardClientComponent} from "./client/clientsPages/dashboardClient/dashboardClient.component";
+import {ProfileClientComponent} from "./client/clientsPages/profileClient/profileClient.component";
+import {TablesClientComponent} from "./client/clientsPages/tablesClient/tablesClient.component";
+import {IconsClientComponent} from "./client/clientsPages/iconsClient/iconsClient.component";
+import {MapsClientComponent} from "./client/clientsPages/mapsClient/mapsClient.component";
 
+<<<<<<< HEAD
+const routes: Routes = [
+  /*{
+    path: '',
+    component: AuthLayoutComponent,
+  },*/
+=======
 const routes: Routes =[
-  {
+  /*  {
     path: '',
     component: AuthLayoutComponent,
   },
+
+
+>>>>>>> 2103fbdc84f67e9e91feee4e6edc646de566ebc5
   {
     path: 'admin',
     redirectTo: 'admin',
@@ -28,6 +43,7 @@ const routes: Routes =[
       }
     ]
   },
+
   {
 
     path: 'agent',
@@ -40,34 +56,44 @@ const routes: Routes =[
     {
       path: '',
       loadChildren: () => import('src/app/Agent/agent-dash/agent-dash.module').then(m => m.AgentDashModule)
-    }]}
-  ,{
+    }]},
+<<<<<<< HEAD
+  /*
+=======
+
+>>>>>>> 2103fbdc84f67e9e91feee4e6edc646de566ebc5
+  {
   path: 'client',
   redirectTo: 'dashboardClient',
   pathMatch: 'full',
-}
-  ,{
+<<<<<<< HEAD
+},
+=======
+  },
+*/
+>>>>>>> 2103fbdc84f67e9e91feee4e6edc646de566ebc5
+  {
     path: '',
     component: ClientDashComponent,
     children: [
       {
         path: '',
         loadChildren: () => import('src/app/client/client-dash/client-dash.module').then(m => m.ClientDashModule)
-
       }
     ]
   },
+   */
 ];
 
 @NgModule({
   imports: [
     CommonModule,
     BrowserModule,
-    RouterModule.forRoot(routes,{
+    RouterModule.forRoot(routes, {
       useHash: true
     })
   ],
   exports: [
-  ],
+  ]
 })
-  export class AppRoutingModule{}
+export class AppRoutingModule {}

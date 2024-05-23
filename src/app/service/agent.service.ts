@@ -12,22 +12,17 @@ export class AgentService {
   private serverUrl : string = `http://localhost:8080/api/agents` ;
   constructor(private httpClient :HttpClient) { }
 
-  //GET All Agents
   public getAllAgents(): Observable<IAgent[]> {
-    let dataUrl: string = `${this.serverUrl}`;
-
-    /*const headers = {
-      'Authorization': `${this.authorization}`
-    };*/
-    return this.httpClient.get<IAgent[]>(dataUrl);
+    return this.httpClient.get<IAgent[]>(this.serverUrl);
 
   }
 
-
-  // Create agent
   public createAgent(agent : IAgent) : Observable<IAgent>{
+    return this.httpClient.post<IAgent>(this.serverUrl, agent);
+  }
 
-    let dataUrl: string = `${this.serverUrl}`;
-    return this.httpClient.post<IAgent>(dataUrl, agent);
+  public deleteAgent(agentId: number) : Observable<{}>{
+    let url=`${this.serverUrl}/${agentId}`
+    return this.httpClient.delete<{}>(url);
   }
 }

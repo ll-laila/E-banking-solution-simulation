@@ -7,13 +7,14 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app.routing';
 
-import {LoginComponent} from "./auth-layout/login/login.component";
-import {AdminDashComponent} from "./Back-office/admin-dash/admin-dash.component";
-import {AdminComponentsModule} from "./Back-office/Admincomponents/AdminComponents.module";
-import {AgentComponentsModule} from "./Agent/Agentcomponents/AgentComponents.module";
-import {AgentDashComponent} from "./Agent/agent-dash/agent-dash.component";
-import {BrowserModule} from "@angular/platform-browser";
-import {CommonModule} from "@angular/common";
+
+import {AdminDashComponent} from './Back-office/admin-dash/admin-dash.component';
+import {AdminComponentsModule} from './Back-office/Admincomponents/AdminComponents.module';
+import {AgentComponentsModule} from './Agent/Agentcomponents/AgentComponents.module';
+import {AgentDashComponent} from './Agent/agent-dash/agent-dash.component';
+import {BrowserModule} from '@angular/platform-browser';
+import {CommonModule} from '@angular/common';
+import {LoginComponent} from './auth-layout/login/login.component';
 
 
 @NgModule({
