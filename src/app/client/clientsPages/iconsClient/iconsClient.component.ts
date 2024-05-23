@@ -42,7 +42,7 @@ export class IconsClientComponent implements OnInit {
   }
 
   redirectToPayment(agent: Agent, service: ServiceAgent) {
-    this.router.navigate(['/paiement'], { queryParams: { agentId: agent.id, agentFirstName: agent.firstName,
+    this.router.navigate(['/client/paiement'], { queryParams: { agentId: agent.id, agentFirstName: agent.firstName,
      agentLastName: agent.lastName, agentImage: agent.image, serviceId: service.id ,serviceName: service.name,serviceType: service.type, } });
   }
 }
