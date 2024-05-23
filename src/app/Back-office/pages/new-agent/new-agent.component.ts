@@ -12,14 +12,10 @@ export class NewAgentComponent implements OnInit {
   agents: IAgent[] = [];
   constructor(private router: Router, private agentService: AgentService) { }
 
-<<<<<<< HEAD
-
-  constructor(private router: Router) { }
-=======
   ngOnInit(): void {
     this.getAllAgents();
   }
->>>>>>> 5ae805c92ec36c743dde1bdb956ce4514b7c3ccf
+
 
   getAllAgents(): void {
     this.agentService.getAllAgents().subscribe(
@@ -32,9 +28,6 @@ export class NewAgentComponent implements OnInit {
     );
   }
 
-  filterTable($event: Event) {
-
-  }
 
   addAgent() {
     this.router.navigate(['/add-agent']);
