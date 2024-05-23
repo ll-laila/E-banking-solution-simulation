@@ -6,13 +6,15 @@ import { FooterAdminComponent } from './footerAdmin/footerAdmin.component';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AddAgentComponent } from './add-agent/add-agent.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule,
-    NgbModule
-  ],
+    imports: [
+        CommonModule,
+        RouterModule,
+        NgbModule,
+        FormsModule
+    ],
   declarations: [
     FooterAdminComponent,
     NavbarAdminComponent,
