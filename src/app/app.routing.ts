@@ -15,7 +15,7 @@ import {IconsClientComponent} from "./client/clientsPages/iconsClient/iconsClien
 import {MapsClientComponent} from "./client/clientsPages/mapsClient/mapsClient.component";
 
 const routes: Routes =[
-  /*  {
+  {
     path: '',
     component: AuthLayoutComponent,
   },
@@ -51,12 +51,12 @@ const routes: Routes =[
 
   {
   path: 'client',
-  redirectTo: 'dashboardClient',
+  redirectTo: 'client',
   pathMatch: 'full',
   },
-*/
+
   {
-    path: '',
+    path: 'client',
     component: ClientDashComponent,
     children: [
       {
