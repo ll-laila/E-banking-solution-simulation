@@ -7,11 +7,8 @@ import { ClipboardModule } from 'ngx-clipboard';
 
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import {DashboardAdminComponent} from "../pages/dashboardAdmin/dashboardAdmin.component";
 import {ProfileAdminComponent} from "../pages/profileAdmin/profileAdmin.component";
-import {TablesAdminComponent} from "../pages/tablesAdmin/tablesAdmin.component";
-import {IconsAdminComponent} from "../pages/iconsAdmin/iconsAdmin.component";
-import {MapsAdminComponent} from "../pages/mapsAdmin/mapsAdmin.component";
+import {NewAgentComponent} from "../pages/new-agent/new-agent.component";
 import {AdminDashRoutes} from "./admin-dash.routing";
 
 
@@ -25,11 +22,8 @@ import {AdminDashRoutes} from "./admin-dash.routing";
     ClipboardModule
   ],
   declarations: [
-    DashboardAdminComponent,
     ProfileAdminComponent,
-    TablesAdminComponent,
-    IconsAdminComponent,
-    MapsAdminComponent
+    NewAgentComponent,
   ]
 })
 

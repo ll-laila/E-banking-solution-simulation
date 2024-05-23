@@ -14,10 +14,6 @@ import {TablesClientComponent} from "./client/clientsPages/tablesClient/tablesCl
 import {IconsClientComponent} from "./client/clientsPages/iconsClient/iconsClient.component";
 import {MapsClientComponent} from "./client/clientsPages/mapsClient/mapsClient.component";
 
-
-
-
-
 const routes: Routes =[
   /*  {
     path: '',

@@ -1,18 +1,18 @@
 import { Routes } from '@angular/router';
-import {DashboardAdminComponent} from "../pages/dashboardAdmin/dashboardAdmin.component";
 import {ProfileAdminComponent} from "../pages/profileAdmin/profileAdmin.component";
-import {TablesAdminComponent} from "../pages/tablesAdmin/tablesAdmin.component";
-import {IconsAdminComponent} from "../pages/iconsAdmin/iconsAdmin.component";
-import {MapsAdminComponent} from "../pages/mapsAdmin/mapsAdmin.component";
+import {NewAgentComponent} from "../pages/new-agent/new-agent.component";
+import {AddAgentComponent} from "../Admincomponents/add-agent/add-agent.component";
+import {EditAgentComponent} from "../Admincomponents/edit-agent/edit-agent.component";
+import {DetailsAgentComponent} from "../Admincomponents/details-agent/details-agent.component";
 
 
 
 export const AdminDashRoutes: Routes = [
 
-    { path: 'admin',      component: DashboardAdminComponent },
     { path: 'user-profile',   component: ProfileAdminComponent },
-    { path: 'tables',         component: TablesAdminComponent },
-    { path: 'icons',          component: IconsAdminComponent },
-    { path: 'maps',           component: MapsAdminComponent },
+    { path: 'admin',         component: NewAgentComponent },
+    { path: 'add-agent', component: AddAgentComponent },
+    { path: 'edit-agent', component: EditAgentComponent },
+    { path: 'details-agent', component: DetailsAgentComponent},
 
 ];
