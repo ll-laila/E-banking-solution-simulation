@@ -44,22 +44,12 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-              <th scope="row">
-                Agent First Name
-              </th>
-              <td>
-                Agent LastName
-              </td>
-              <td>
-                Agent Email
-              </td>
-              <td>
-                Agent Phone
-              </td>
-              <td>
-                Agent Immatriculation
-              </td>
+            <tr *ngFor="let agent of agents">
+              <th scope="row">{{ agent.firstName }}</th>
+              <td>{{ agent.lastName }}</td>
+              <td>{{ agent.email }}</td>
+              <td>{{ agent.phoneNumber }}</td>
+              <td>{{ agent.immNumber}}</td>
 
               <td class="text-right">
                   <div ngbDropdown placement="bottom-right">
