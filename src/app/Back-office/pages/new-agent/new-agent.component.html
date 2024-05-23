@@ -54,17 +54,20 @@
                   Agent Immatriculation
                 </td>
                 <td class="text-right">
-                  <div ngbDropdown placement="bottom-right">
-                    <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
-                      <i class="fas fa-ellipsis-v"></i>
-                    </a>
-                    <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                      <a class="dropdown-item" [routerLink]="['/edit-agent']">Edit</a>
-                      <a class="dropdown-item" href="javascript:void(0)">Delete</a>
-                      <a class="dropdown-item"  [routerLink]="['/details-agent']">view</a>
-                    </div>
+                  <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-sm btn-icon-only text-light" title="Edit" [routerLink]="['/edit-agent']">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button type="button" class="btn btn-sm btn-icon-only text-light" title="Delete" (click)="deleteAgent()">
+                      <i class="fas fa-trash-alt"></i>
+                    </button>
+                    <button type="button" class="btn btn-sm btn-icon-only text-light" title="View" [routerLink]="['/details-agent']">
+                      <i class="fas fa-eye"></i>
+                    </button>
                   </div>
                 </td>
+
+
               </tr>
             </tbody>
           </table>

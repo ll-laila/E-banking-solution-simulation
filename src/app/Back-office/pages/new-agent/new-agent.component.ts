@@ -20,4 +20,8 @@ export class NewAgentComponent implements OnInit {
   addAgent() {
     this.router.navigate(['/add-agent']);
   }
+
+  deleteAgent() {
+
+  }
 }
