@@ -8,10 +8,10 @@ import {MapsClientComponent} from "../clientsPages/mapsClient/mapsClient.compone
 
 
 export const ClientDashRoutes: Routes = [
-    { path: 'client',      component: DashboardClientComponent },
-    { path: 'user-profile',   component: ProfileClientComponent },
-    { path: 'tables',         component: TablesClientComponent },
-    { path: 'icons',          component: IconsClientComponent },
-    { path: 'maps',           component: MapsClientComponent },
+    { path: 'accueil',      component: DashboardClientComponent },
+    { path: 'agents',         component: IconsClientComponent},
+    { path: 'historique',          component: TablesClientComponent  },
+    { path: 'mon-compte',   component: ProfileClientComponent },
+    { path: 'paiement',           component: MapsClientComponent },
   {path:'',component:DashboardClientComponent}
 ];
