@@ -18,6 +18,6 @@ export const AgentDashRoutes: Routes = [
   { path: 'agent',      component: DashboardAgentComponent },
   { path: 'agent-profile',   component: ProfileClientComponent },
   {path: 'add-client',       component: AddClientComponent},
-  { path: 'edit-agent/:id', component: EditClientComponent },
-  { path: 'details-agent/:id', component: DetailsClientComponent }
+  { path: 'edit-client/:id', component: EditClientComponent },
+  { path: 'details-client/:id', component: DetailsClientComponent }
 ];

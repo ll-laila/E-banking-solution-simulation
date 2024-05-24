@@ -37,9 +37,9 @@ export class EditClientComponent implements OnInit {
   public update(){
     if(this.id){
       this.clientService.updateClient(this.client, parseInt(this.id)).subscribe((data)=>{
-        this.router.navigate([`/admin`]).then();
+        this.router.navigate([`/agent`]).then();
       }, (error) => {
-        this.router.navigate(["/edit-client/:id"]).then();
+        this.router.navigate(["/agent"]).then();
       });
     }
 
