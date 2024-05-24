@@ -9,7 +9,7 @@ import {IClient} from '../models/Client';
 })
 export class ClientService {
 
-  private serverUrl = `http://localhost:8080/agents/` ;
+  private serverUrl = `http://localhost:9092/api/client` ;
   constructor(private httpClient: HttpClient) { }
 
   public getAllClients(): Observable<IClient[]> {
@@ -18,7 +18,7 @@ export class ClientService {
   }
 
   public createClient(client: IClient): Observable<IClient> {
-    return this.httpClient.post<IClient>(this.serverUrl + 'register', client);
+    return this.httpClient.post<IClient>(this.serverUrl , client);
   }
 
 

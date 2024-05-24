@@ -8,27 +8,22 @@ import {AdminDashComponent} from './Back-office/admin-dash/admin-dash.component'
 
 import {AgentDashComponent} from './Agent/agent-dash/agent-dash.component';
 import { ClientDashComponent } from './client/client-dash/client-dash.component';
-import {DashboardClientComponent} from "./client/clientsPages/dashboardClient/dashboardClient.component";
-import {ProfileClientComponent} from "./client/clientsPages/profileClient/profileClient.component";
-import {TablesClientComponent} from "./client/clientsPages/tablesClient/tablesClient.component";
-import {IconsClientComponent} from "./client/clientsPages/iconsClient/iconsClient.component";
-import {MapsClientComponent} from "./client/clientsPages/mapsClient/mapsClient.component";
+import {DashboardClientComponent} from './client/clientsPages/dashboardClient/dashboardClient.component';
+import {ProfileClientComponent} from './client/clientsPages/profileClient/profileClient.component';
+import {TablesClientComponent} from './client/clientsPages/tablesClient/tablesClient.component';
+import {IconsClientComponent} from './client/clientsPages/iconsClient/iconsClient.component';
+import {MapsClientComponent} from './client/clientsPages/mapsClient/mapsClient.component';
 
-<<<<<<< HEAD
+
+
+
 const routes: Routes = [
-  /*{
-    path: '',
-    component: AuthLayoutComponent,
-  },*/
-=======
-const routes: Routes =[
-  /*  {
+   {
     path: '',
     component: AuthLayoutComponent,
   },
 
 
->>>>>>> 2103fbdc84f67e9e91feee4e6edc646de566ebc5
   {
     path: 'admin',
     redirectTo: 'admin',
@@ -57,23 +52,14 @@ const routes: Routes =[
       path: '',
       loadChildren: () => import('src/app/Agent/agent-dash/agent-dash.module').then(m => m.AgentDashModule)
     }]},
-<<<<<<< HEAD
-  /*
-=======
-
->>>>>>> 2103fbdc84f67e9e91feee4e6edc646de566ebc5
   {
   path: 'client',
-  redirectTo: 'dashboardClient',
+  redirectTo: 'client',
   pathMatch: 'full',
-<<<<<<< HEAD
+
 },
-=======
-  },
-*/
->>>>>>> 2103fbdc84f67e9e91feee4e6edc646de566ebc5
   {
-    path: '',
+    path: 'client',
     component: ClientDashComponent,
     children: [
       {
@@ -82,7 +68,6 @@ const routes: Routes =[
       }
     ]
   },
-   */
 ];
 
 @NgModule({
