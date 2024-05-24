@@ -8,8 +8,9 @@ import { ClipboardModule } from 'ngx-clipboard';
 
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import {DashboardAgentComponent} from '../pagesAgent/dashboardAgent/dashboardAgent.component';
+
 import {AgentDashRoutes} from './agent-dash.routing';
+import {DashboardAgentComponent} from "../pagesAgent/dashboardAgent/dashboardAgent.component";
 
 
 @NgModule({
