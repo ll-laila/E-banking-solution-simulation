@@ -2,12 +2,22 @@ import { Routes } from '@angular/router';
 import {DashboardAgentComponent} from '../pagesAgent/dashboardAgent/dashboardAgent.component';
 import {ProfileAgentComponent} from '../pagesAgent/profileAgent/profileAgent.component';
 import {AddClientComponent} from '../Agentcomponents/add-client/add-client.component';
+import {ProfileAdminComponent} from "../../Back-office/pages/profileAdmin/profileAdmin.component";
+import {NewAgentComponent} from "../../Back-office/pages/new-agent/new-agent.component";
+import {AddAgentComponent} from "../../Back-office/Admincomponents/add-agent/add-agent.component";
+import {EditAgentComponent} from "../../Back-office/Admincomponents/edit-agent/edit-agent.component";
+import {DetailsAgentComponent} from "../../Back-office/Admincomponents/details-agent/details-agent.component";
+import {DetailsClientComponent} from "../Agentcomponents/details-client/details-client.component";
+import {EditClientComponent} from "../Agentcomponents/edit-client/edit-client.component";
+import {ProfileClientComponent} from "../../client/clientsPages/profileClient/profileClient.component";
 
 
 
 
 export const AgentDashRoutes: Routes = [
   { path: 'agent',      component: DashboardAgentComponent },
-  { path: 'agent-profile',   component: ProfileAgentComponent },
+  { path: 'agent-profile',   component: ProfileClientComponent },
   {path: 'add-client',       component: AddClientComponent},
+  { path: 'edit-agent/:id', component: EditClientComponent },
+  { path: 'details-agent/:id', component: DetailsClientComponent }
 ];
