@@ -9,13 +9,14 @@ import {IClient} from '../models/Client';
 })
 export class ClientService {
 
-  private serverUrl = `http://localhost:9090/agents/` ;
+  private serverUrl = `http://localhost:9092/api/client` ;
+
   constructor(private httpClient: HttpClient) { }
 
 
 
   public createClient(client: IClient): Observable<IClient> {
-    return this.httpClient.post<IClient>(this.serverUrl + 'register', client);
+    return this.httpClient.post<IClient>(this.serverUrl , client);
   }
 
 
