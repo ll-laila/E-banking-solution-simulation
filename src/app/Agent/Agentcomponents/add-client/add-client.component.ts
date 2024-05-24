@@ -27,6 +27,7 @@ export class AddClientComponent implements OnInit {
         })
       )
       .subscribe((data: any) => {
+        this.router.navigate(['/agent']);
         console.log(this.client);
         console.log(data);
         console.log('Client créé avec succès');
