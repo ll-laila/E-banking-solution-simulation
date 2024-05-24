@@ -16,6 +16,7 @@ export class NewAgentComponent implements OnInit {
     this.getAllAgents();
   }
 
+
   getAllAgents(): void {
     this.agentService.getAllAgents().subscribe(
       (agents: IAgent[]) => {
@@ -26,16 +27,28 @@ export class NewAgentComponent implements OnInit {
       }
     );
   }
-
-  filterTable($event: Event) {
-
-  }
-
   addAgent() {
     this.router.navigate(['/add-agent']);
   }
 
-  deleteAgent() {
+  deleteAgent(id: number) {
+    console.log(id);
+    this.agentService.deleteAgent(id).subscribe(
+      () => {
+        console.log('Agent deleted successfully.');
+        this.getAllAgents();
+      },
+      (error) => {
+        console.error('An error occurred while deleting the agent:', error);
+      }
+    );
+  }
 
+  updateAgent(id: number) {
+    this.router.navigate(['/edit-agent', id]);
+  }
+
+  viewAgentDetails(id: number) {
+    this.router.navigate(['/details-agent', id]);
   }
 }

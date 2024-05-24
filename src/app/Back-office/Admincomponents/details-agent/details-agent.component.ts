@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {IAgent} from "../../../models/Agent";
+import {ActivatedRoute} from "@angular/router";
+import {AgentService} from "../../../service/agent.service";
 
 @Component({
   selector: 'app-details-agent',
@@ -6,21 +9,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./details-agent.component.scss']
 })
 export class DetailsAgentComponent implements OnInit {
-  agent: any = {
-    firstName: 'John',
-    lastName: 'Doe',
-    cin: '123456789',
-    birthDate: '1990-01-01',
-    address: '123 Main St, City, Country',
-    email: 'john.doe@example.com',
-    phoneNumber: '+1234567890',
-    commercialRn: 'ABC123',
-    patentNumber: 'XYZ789'
-  };
+  agent: IAgent;
 
-  constructor() { }
+  constructor(private route: ActivatedRoute, private agentService: AgentService) { }
 
   ngOnInit(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.agentService.getAgent(parseInt(id)).subscribe((agent) => {
+      this.agent = agent;
+    });
   }
 
 }
