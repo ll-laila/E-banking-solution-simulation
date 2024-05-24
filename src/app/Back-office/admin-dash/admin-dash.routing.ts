@@ -12,7 +12,7 @@ export const AdminDashRoutes: Routes = [
     { path: 'user-profile',   component: ProfileAdminComponent },
     { path: 'admin',         component: NewAgentComponent },
     { path: 'add-agent', component: AddAgentComponent },
-    { path: 'edit-agent', component: EditAgentComponent },
-    { path: 'details-agent', component: DetailsAgentComponent},
+    { path: 'edit-agent/:id', component: EditAgentComponent },
+    { path: 'details-agent/:id', component: DetailsAgentComponent }
 
 ];

@@ -17,8 +17,11 @@ import {MapsClientComponent} from './client/clientsPages/mapsClient/mapsClient.c
 
 
 
+
 const routes: Routes = [
    {
+
+
     path: '',
     component: AuthLayoutComponent,
   },
@@ -38,7 +41,6 @@ const routes: Routes = [
       }
     ]
   },
-
   {
 
     path: 'agent',
@@ -52,16 +54,20 @@ const routes: Routes = [
       path: '',
       loadChildren: () => import('src/app/Agent/agent-dash/agent-dash.module').then(m => m.AgentDashModule)
     }]},
+
   {
   path: 'client',
   redirectTo: 'client',
   pathMatch: 'full',
 
+
 },
+
+
   {
     path: 'client',
-    component: ClientDashComponent,
-    children: [
+    component : ClientDashComponent,
+    children : [
       {
         path: '',
         loadChildren: () => import('src/app/client/client-dash/client-dash.module').then(m => m.ClientDashModule)
@@ -69,6 +75,7 @@ const routes: Routes = [
     ]
   },
 ];
+
 
 @NgModule({
   imports: [
@@ -79,6 +86,6 @@ const routes: Routes = [
     })
   ],
   exports: [
-  ]
+  ],
 })
-export class AppRoutingModule {}
+  export class AppRoutingModule {}

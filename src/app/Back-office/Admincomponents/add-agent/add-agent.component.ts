@@ -22,13 +22,15 @@ export class AddAgentComponent implements OnInit {
       .pipe(
         catchError(error => {
           console.error('Erreur lors de la création de l\'agent :', error);
-          return throwError(error); // Renvoyer l'erreur pour la traiter en aval si nécessaire
+          return throwError(error);
         })
       )
       .subscribe((data: any) => {
+
         console.log(this.agent);
         console.log(data);
         console.log('Agent créé avec succès');
+        this.router.navigate(['/admin']);
       });
   }
 }
