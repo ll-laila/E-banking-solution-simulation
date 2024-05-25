@@ -25,10 +25,7 @@ export class DashboardAgentComponent implements OnInit {
   addClient() {
     this.router.navigate(['/add-client']);
   }
-<<<<<<< HEAD
-=======
 
->>>>>>> acde4bbbdcebb4aafd26f3509c7cbc5afea308df
 
 
 
