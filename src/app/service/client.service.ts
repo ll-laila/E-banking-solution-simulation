@@ -9,7 +9,7 @@ import {IClient} from '../models/Client';
 })
 export class ClientService {
 
-  private serverUrl = `http://localhost:9092/api/client` ;
+  private serverUrl = `http://localhost:9090/api/client` ;
 
   constructor(private httpClient: HttpClient) { }
 
@@ -31,10 +31,12 @@ export class ClientService {
 
 
 
-  public deleteClient(agentId: number): Observable<HttpResponse<{}>> {
-    const url = `${this.serverUrl}/${agentId}`;
+
+
+  public deleteClient(clientId: number): Observable<HttpResponse<{}>> {
+    const url = `${this.serverUrl}/${clientId}`;
     console.log(url);
-    console.log(agentId);
+    console.log(clientId);
     return this.httpClient.delete<HttpResponse<{}>>(url);
   }
 

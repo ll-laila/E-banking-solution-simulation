@@ -25,17 +25,22 @@ export class DashboardAgentComponent implements OnInit {
   addClient() {
     this.router.navigate(['/add-client']);
   }
+<<<<<<< HEAD
+=======
+
+>>>>>>> acde4bbbdcebb4aafd26f3509c7cbc5afea308df
 
 
 
 
   getAllClients(): void {
     this.clientService.getAllClients().subscribe(
-      (agents: IClient[]) => {
-        this.agents = agents;
+      (clients: IClient[]) => {
+        this.clients = clients;
       },
+
       (error) => {
-        console.error('Une erreur s\'est produite lors de la récupération des agents :', error);
+        console.error('Une erreur s\'est produite lors de la récupération des clients :', error);
       }
     );
   }
@@ -48,17 +53,22 @@ export class DashboardAgentComponent implements OnInit {
         this.getAllClients();
       },
       (error) => {
-        console.error('An error occurred while deleting the agent:', error);
+        console.error('An error occurred while deleting the client:', error);
       }
     );
+    window.location.reload();
+
   }
 
   updateClient(id: number) {
-    this.router.navigate(['/edit-agent', id]);
+    this.router.navigate(['/edit-client', id]);
+
   }
 
   viewClientDetails(id: number) {
-    this.router.navigate(['/details-agent', id]);
+    this.router.navigate(['/details-client', id]);
   }
+
+
 
 }
