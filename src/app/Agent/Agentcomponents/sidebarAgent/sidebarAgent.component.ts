@@ -9,6 +9,7 @@ declare interface RouteInfo {
 }
 export const ROUTES: RouteInfo[] = [
     { path: '/agent', title: 'Clients', icon: 'fas fa-users text-red', class: '' },
+    { path: '/agent-service', title: 'My services', icon: 'fas fa-question-circle text-red', class: '' },
     { path: '/agent-profile', title: 'User profile',  icon: 'ni-single-02 text-yellow', class: '' },
 ];
 

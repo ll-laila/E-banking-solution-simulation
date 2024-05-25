@@ -32,20 +32,20 @@ export class ClientService {
 
 
   public deleteClient(agentId: number): Observable<HttpResponse<{}>> {
-    let url = `${this.serverUrl}/${agentId}`;
+    const url = `${this.serverUrl}/${agentId}`;
     console.log(url);
     console.log(agentId);
     return this.httpClient.delete<HttpResponse<{}>>(url);
   }
 
-  public updateClient(agent : IClient, agentId: number) : Observable<IClient>{
+  public updateClient(agent: IClient, agentId: number): Observable<IClient> {
 
-    let dataUrl: string = `${this.serverUrl}/${agentId}`;
+    const dataUrl = `${this.serverUrl}/${agentId}`;
     return this.httpClient.put<IClient>(dataUrl, agent);
   }
 
-  public getClient(agentId: number): Observable<IClient>{
-    let url: string = `${this.serverUrl}/${agentId}`;
+  public getClient(agentId: number): Observable<IClient> {
+    const url = `${this.serverUrl}/${agentId}`;
     return this.httpClient.get<IClient>(url);
 
   }

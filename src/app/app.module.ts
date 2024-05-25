@@ -15,6 +15,8 @@ import {AgentDashComponent} from './Agent/agent-dash/agent-dash.component';
 import {BrowserModule} from '@angular/platform-browser';
 import {CommonModule} from '@angular/common';
 import {LoginComponent} from './auth-layout/login/login.component';
+import { ServicesAgentComponent } from './Agent/pagesAgent/services-agent/services-agent.component';
+import {ToastrModule} from 'ngx-toastr';
 
 
 @NgModule({
@@ -30,11 +32,13 @@ import {LoginComponent} from './auth-layout/login/login.component';
     LoginComponent,
     BrowserModule,
     CommonModule,
-    AgentDashComponent
+    AgentDashComponent,
+    ToastrModule.forRoot()
   ],
   declarations: [
     AppComponent,
-    AdminDashComponent
+    AdminDashComponent,
+    ServicesAgentComponent
 
   ],
   providers: [],

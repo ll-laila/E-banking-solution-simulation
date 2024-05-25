@@ -9,6 +9,9 @@ import { AddClientComponent } from './add-client/add-client.component';
 import {FormsModule} from '@angular/forms';
 import { EditClientComponent } from './edit-client/edit-client.component';
 import { DetailsClientComponent } from './details-client/details-client.component';
+import { AddServiceComponent } from './add-service/add-service.component';
+import { EditServiceComponent } from './edit-service/edit-service.component';
+import { UpdateServiceComponent } from './update-service/update-service.component';
 
 @NgModule({
     imports: [
@@ -23,7 +26,10 @@ import { DetailsClientComponent } from './details-client/details-client.componen
     SidebarAgentComponent,
     AddClientComponent,
     EditClientComponent,
-    DetailsClientComponent
+    DetailsClientComponent,
+    AddServiceComponent,
+    EditServiceComponent,
+    UpdateServiceComponent
   ],
   exports: [
     FooterAgentComponent,
