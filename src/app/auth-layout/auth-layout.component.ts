@@ -18,7 +18,7 @@ import {LoginComponent} from "./login/login.component";
   styleUrls: ['auth-layout.component.scss']
 })
 export class AuthLayoutComponent implements OnInit, OnDestroy {
-  test: Date = new Date();
+  date: Date = new Date();
   public isCollapsed = true;
 
   constructor(private router: Router) { }

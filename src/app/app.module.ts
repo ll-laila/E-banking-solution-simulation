@@ -15,6 +15,7 @@ import {AgentDashComponent} from './Agent/agent-dash/agent-dash.component';
 import {BrowserModule} from '@angular/platform-browser';
 import {CommonModule} from '@angular/common';
 import {LoginComponent} from './auth-layout/login/login.component';
+import {ChangePasswordComponent} from "./auth-layout/change-password/change-password.component";
 
 
 @NgModule({
@@ -30,7 +31,7 @@ import {LoginComponent} from './auth-layout/login/login.component';
     LoginComponent,
     BrowserModule,
     CommonModule,
-    AgentDashComponent
+    AgentDashComponent,
   ],
   declarations: [
     AppComponent,
