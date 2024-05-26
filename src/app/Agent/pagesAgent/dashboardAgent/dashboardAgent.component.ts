@@ -4,7 +4,7 @@ import Chart from 'chart.js';
 
 import {IClient} from '../../../models/Client';
 import {Router} from '@angular/router';
-import {ClientService} from "../../../service/client.service";
+import {ClientService} from '../../../service/client.service';
 
 
 
@@ -14,9 +14,10 @@ import {ClientService} from "../../../service/client.service";
   styleUrls: ['./dashboardAgent.component.scss']
 })
 export class DashboardAgentComponent implements OnInit {
+  constructor(private router: Router, private clientService: ClientService) { }
 
   clients: IClient[] = [];
-  constructor(private router: Router, private clientService: ClientService) { }
+  agents: IClient[] = [];
 
   ngOnInit(): void {
     this.getAllClients();

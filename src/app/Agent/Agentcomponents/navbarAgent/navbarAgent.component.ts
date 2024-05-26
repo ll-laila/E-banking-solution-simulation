@@ -30,7 +30,7 @@ export class NavbarAgentComponent implements OnInit {
             return this.listTitles[item].title;
         }
     }
-    return 'Dashboard';
+    return '';
   }
 
 }

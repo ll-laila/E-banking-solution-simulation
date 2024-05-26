@@ -13,11 +13,11 @@
 
         <div class="container-fluid">
           <div class="card border-0 shadow px-1">
-            <form (submit)="createSubmit()">
+            <form (ngSubmit)="createSubmit()" #clientForm="ngForm">
               <div class="card-body">
                 <div class="d-flex justify-content-between align-items-center">
                   <h2 class="card-title text-right Montserrat" style="color:#e37431; margin-bottom: 0;">Personal information</h2>
-                  <div type="button" [routerLink]="['/client']">
+                  <div type="button" [routerLink]="['/agent']">
                     <i class="fas fa-sign-out-alt"></i>
                   </div>
                 </div>
@@ -26,17 +26,17 @@
                   <div class="row g-2 mb-4">
                     <div class="form-floating col-md-4">
                       <label for="firstName" class="Montserrat" style="color:#2f3a8a">First Name *</label>
-                      <input type="text" class="form-control" [(ngModel)]="client.firstName" name="firstName" id="firstName" placeholder="First Name" style="border-radius:20px; background-color:#F8F8F8" />
+                      <input type="text" class="form-control" [(ngModel)]="client.firstName" name="firstName" id="firstName" placeholder="First Name" style="border-radius:20px; background-color:#F8F8F8" required/>
 
                     </div>
                     <div class="form-floating col-md-4">
                       <label for="lastName" class="Montserrat" style="color:#2f3a8a">Last Name *</label>
-                      <input type="text" class="form-control" [(ngModel)]="client.lastName" name="lastName" id="lastName" placeholder="Last Name" style="border-radius:20px; background-color:#F8F8F8" />
+                      <input type="text" class="form-control" [(ngModel)]="client.lastName" name="lastName" id="lastName" placeholder="Last Name" style="border-radius:20px; background-color:#F8F8F8" required/>
 
                     </div>
                     <div class="form-floating col-md-4">
                       <label for="dateOfBirth" class="Montserrat" style="color:#2f3a8a">Date of Birth *</label>
-                      <input type="date" class="form-control" [(ngModel)]="client.birthDate" name="dob" id="dateOfBirth" placeholder="Date of Birth" style="border-radius:20px; background-color:#F8F8F8" />
+                      <input type="date" class="form-control" [(ngModel)]="client.birthDate" name="dob" id="dateOfBirth" placeholder="Date of Birth" style="border-radius:20px; background-color:#F8F8F8" required />
                     </div>
                   </div>
                   <div class="row g-2 mb-4 mt-10">
@@ -53,8 +53,8 @@
                   </div>
                   <div class="row g-2 mb-4">
                     <div class="form-floating col-md-6">
-                      <label for="email" class="Montserrat" style="color:#2f3a8a">Email *</label>
-                      <input type="email" class="form-control" [(ngModel)]="client.email" name="email" id="email" placeholder="Email" style="border-radius:20px; background-color:#F8F8F8" required />
+                      <label for="email" class="Montserrat" style="color:#2f3a8a">Email </label>
+                      <input type="email" class="form-control" [(ngModel)]="client.email" name="email" id="email" placeholder="Email" style="border-radius:20px; background-color:#F8F8F8"  />
                     </div>
                   </div>
                   <div class="row g-2 mb-4">

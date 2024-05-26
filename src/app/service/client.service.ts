@@ -31,21 +31,23 @@ export class ClientService {
 
 
 
+
+
   public deleteClient(clientId: number): Observable<HttpResponse<{}>> {
-    let url = `${this.serverUrl}/${clientId}`;
+    const url = `${this.serverUrl}/${clientId}`;
     console.log(url);
     console.log(clientId);
     return this.httpClient.delete<HttpResponse<{}>>(url);
   }
 
-  public updateClient(agent : IClient, agentId: number) : Observable<IClient>{
+  public updateClient(agent: IClient, agentId: number): Observable<IClient> {
 
-    let dataUrl: string = `${this.serverUrl}/${agentId}`;
+    const dataUrl = `${this.serverUrl}/${agentId}`;
     return this.httpClient.put<IClient>(dataUrl, agent);
   }
 
-  public getClient(agentId: number): Observable<IClient>{
-    let url: string = `${this.serverUrl}/${agentId}`;
+  public getClient(agentId: number): Observable<IClient> {
+    const url = `${this.serverUrl}/${agentId}`;
     return this.httpClient.get<IClient>(url);
 
   }

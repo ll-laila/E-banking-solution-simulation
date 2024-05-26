@@ -16,6 +16,8 @@ import {BrowserModule} from '@angular/platform-browser';
 import {CommonModule} from '@angular/common';
 import {LoginComponent} from './auth-layout/login/login.component';
 import {ChangePasswordComponent} from "./auth-layout/change-password/change-password.component";
+import { ServicesAgentComponent } from './Agent/pagesAgent/services-agent/services-agent.component';
+import {ToastrModule} from 'ngx-toastr';
 
 
 @NgModule({
@@ -32,10 +34,13 @@ import {ChangePasswordComponent} from "./auth-layout/change-password/change-pass
     BrowserModule,
     CommonModule,
     AgentDashComponent,
+
+    ToastrModule.forRoot()
   ],
   declarations: [
     AppComponent,
-    AdminDashComponent
+    AdminDashComponent,
+    ServicesAgentComponent
 
   ],
   providers: [],
