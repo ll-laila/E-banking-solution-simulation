@@ -8,16 +8,23 @@ import {ClientService} from "../../services/client.service";
   templateUrl: './dashboardClient.component.html',
   styleUrls: ['./dashboardClient.component.scss']
 })
+
+
 export class DashboardClientComponent implements OnInit {
 
   public phoneNumber: String | undefined;
   public client : Client;
 
-  constructor(private clientService: ClientService) { }
+
+  constructor(private clientService: ClientService) {
+
+  }
 
   ngOnInit() {
     this.getClientByPhone(this.phoneNumber);
   }
+
+
 
   getClientByPhone(phoneNum: String) {
     this.clientService.getClientByPhoneNumber(phoneNum).subscribe(res => {
@@ -37,8 +44,6 @@ export class DashboardClientComponent implements OnInit {
       console.log(error);
     })
   }
-
-
 
 
 
