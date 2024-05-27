@@ -33,15 +33,18 @@ body {
   text-align: center;
   color: $primary-color;
 
+
   .header {
     background: linear-gradient(to right, $secondary-color, $primary-color);
-    padding: 20px;
+    padding: 3px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
 
     .logo {
       width: 70px;
+      padding: 20px;
     }
 
     nav ul {
@@ -52,6 +55,7 @@ body {
 
       li {
         margin-left: 20px;
+        padding: 20px;
 
         a {
           color: $white-color;
