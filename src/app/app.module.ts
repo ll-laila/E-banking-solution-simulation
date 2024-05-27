@@ -15,6 +15,7 @@ import {AgentDashComponent} from './Agent/agent-dash/agent-dash.component';
 import {BrowserModule} from '@angular/platform-browser';
 import {CommonModule} from '@angular/common';
 import {LoginComponent} from './auth-layout/login/login.component';
+import {ChangePasswordComponent} from "./auth-layout/change-password/change-password.component";
 import { ServicesAgentComponent } from './Agent/pagesAgent/services-agent/services-agent.component';
 import {ToastrModule} from 'ngx-toastr';
 import { TrasactionAgentComponent } from './Agent/pagesAgent/trasaction-agent/trasaction-agent.component';
@@ -34,6 +35,7 @@ import { TrasactionAgentComponent } from './Agent/pagesAgent/trasaction-agent/tr
     BrowserModule,
     CommonModule,
     AgentDashComponent,
+
     ToastrModule.forRoot()
   ],
   declarations: [

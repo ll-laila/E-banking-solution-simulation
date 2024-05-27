@@ -6,6 +6,7 @@ import { AuthLayoutRoutes } from './auth-layout.routing';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {LoginComponent} from "./login/login.component";
 import {RegisterComponent} from "./register/register.component";
+import {ChangePasswordComponent} from "./change-password/change-password.component";
 
 
 @NgModule({
@@ -14,10 +15,12 @@ import {RegisterComponent} from "./register/register.component";
     RouterModule.forChild(AuthLayoutRoutes),
     FormsModule,
     LoginComponent,
+
     // NgbModule
   ],
   declarations: [
-    RegisterComponent
+    RegisterComponent,
+    ChangePasswordComponent
   ]
 })
 export class AuthLayoutModule { }

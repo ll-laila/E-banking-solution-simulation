@@ -13,6 +13,8 @@ import {ProfileClientComponent} from './client/clientsPages/profileClient/profil
 import {TablesClientComponent} from './client/clientsPages/tablesClient/tablesClient.component';
 import {IconsClientComponent} from './client/clientsPages/iconsClient/iconsClient.component';
 import {MapsClientComponent} from './client/clientsPages/mapsClient/mapsClient.component';
+import {LoginComponent} from "./auth-layout/login/login.component";
+import {ChangePasswordComponent} from "./auth-layout/change-password/change-password.component";
 
 
 
@@ -73,7 +75,17 @@ const routes: Routes = [
         loadChildren: () => import('src/app/client/client-dash/client-dash.module').then(m => m.ClientDashModule)
       }
     ]
-  },
+  },   {
+
+
+    path: 'login',
+    component: LoginComponent,
+  },  {
+
+
+    path: 'change-password',
+    component: ChangePasswordComponent,
+  }
 ];
 
 
