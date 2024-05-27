@@ -17,6 +17,7 @@ import {CommonModule} from '@angular/common';
 import {LoginComponent} from './auth-layout/login/login.component';
 import { ServicesAgentComponent } from './Agent/pagesAgent/services-agent/services-agent.component';
 import {ToastrModule} from 'ngx-toastr';
+import { TrasactionAgentComponent } from './Agent/pagesAgent/trasaction-agent/trasaction-agent.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import {ToastrModule} from 'ngx-toastr';
   declarations: [
     AppComponent,
     AdminDashComponent,
-    ServicesAgentComponent
+    ServicesAgentComponent,
+    TrasactionAgentComponent
 
   ],
   providers: [],
