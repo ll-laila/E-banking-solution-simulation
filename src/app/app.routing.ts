@@ -57,14 +57,13 @@ const routes: Routes = [
       loadChildren: () => import('src/app/Agent/agent-dash/agent-dash.module').then(m => m.AgentDashModule)
     }]},
 
+
   {
   path: 'client',
   redirectTo: 'client',
   pathMatch: 'full',
 
-
 },
-
 
   {
     path: 'client',
