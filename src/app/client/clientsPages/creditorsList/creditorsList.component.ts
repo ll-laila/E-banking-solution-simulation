@@ -6,10 +6,10 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-icons',
-  templateUrl: './iconsClient.component.html',
-  styleUrls: ['./iconsClient.component.scss']
+  templateUrl: './creditorsList.component.html',
+  styleUrls: ['./creditorsList.component.scss']
 })
-export class IconsClientComponent implements OnInit {
+export class CreditorsListComponent implements OnInit {
 
   public copy: string;
   public agents: Agent[];

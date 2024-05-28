@@ -33,8 +33,8 @@ export class NavbarClientComponent implements OnInit {
       }
     }
 
-    if (titlee.toLowerCase().includes('paiement')) {
-      titlee = ' ';
+    if (titlee.toLowerCase().includes('paiement') || titlee.toLowerCase().includes('validate') || titlee.toLowerCase().includes('confirm') ) {
+      titlee = 'paiement';
     }
 
     return titlee;

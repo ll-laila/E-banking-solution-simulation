@@ -10,9 +10,9 @@ import {ClientDashRoutes} from './client-dash.routing';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {DashboardClientComponent} from "../clientsPages/dashboardClient/dashboardClient.component";
 import {ProfileClientComponent} from "../clientsPages/profileClient/profileClient.component";
-import {TablesClientComponent} from "../clientsPages/tablesClient/tablesClient.component";
-import {IconsClientComponent} from "../clientsPages/iconsClient/iconsClient.component";
-import {MapsClientComponent} from "../clientsPages/mapsClient/mapsClient.component";
+import {HistoryComponent} from "../clientsPages/history/history.component";
+import {CreditorsListComponent} from "../clientsPages/creditorsList/creditorsList.component";
+import {Payment} from "../clientsPages/payment/payment";
 
 
 @NgModule({
@@ -22,14 +22,15 @@ import {MapsClientComponent} from "../clientsPages/mapsClient/mapsClient.compone
     FormsModule,
     HttpClientModule,
     NgbModule,
-    ClipboardModule
+    ClipboardModule,
+    ReactiveFormsModule
   ],
   declarations: [
     DashboardClientComponent,
     ProfileClientComponent,
-    TablesClientComponent,
-    IconsClientComponent,
-    MapsClientComponent
+    HistoryComponent,
+    CreditorsListComponent,
+    Payment
   ]
 })
 

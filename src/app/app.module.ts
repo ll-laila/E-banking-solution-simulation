@@ -1,6 +1,6 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
@@ -17,28 +17,33 @@ import {CommonModule} from '@angular/common';
 import {LoginComponent} from './auth-layout/login/login.component';
 import { ServicesAgentComponent } from './Agent/pagesAgent/services-agent/services-agent.component';
 import {ToastrModule} from 'ngx-toastr';
+import { ValidateComponent } from './client/clientsPages/payment/validate/validate.component';
+import { ConfirmComponent } from './client/clientsPages/payment/confirm/confirm.component';
 
 
 @NgModule({
-  imports: [
-    BrowserAnimationsModule,
-    FormsModule,
-    HttpClientModule,
-    AdminComponentsModule,
-    AgentComponentsModule,
-    NgbModule,
-    RouterModule,
-    AppRoutingModule,
-    LoginComponent,
-    BrowserModule,
-    CommonModule,
-    AgentDashComponent,
-    ToastrModule.forRoot()
-  ],
+    imports: [
+        BrowserAnimationsModule,
+        FormsModule,
+        HttpClientModule,
+        AdminComponentsModule,
+        AgentComponentsModule,
+        NgbModule,
+        RouterModule,
+        AppRoutingModule,
+        LoginComponent,
+        BrowserModule,
+        CommonModule,
+        AgentDashComponent,
+        ToastrModule.forRoot(),
+        ReactiveFormsModule
+    ],
   declarations: [
     AppComponent,
     AdminDashComponent,
-    ServicesAgentComponent
+    ServicesAgentComponent,
+    ValidateComponent,
+    ConfirmComponent
 
   ],
   providers: [],

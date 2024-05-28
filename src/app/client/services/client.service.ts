@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
-const apiUrl = 'http://localhost:9090/api/';
+const apiUrl = 'http://localhost:9090/fim/est3Dgate/';
 
 @Injectable({
   providedIn: 'root'
@@ -15,23 +15,23 @@ export class ClientService {
   }
 
   getAllAgents(): Observable<any> {
-    return this.httpClient.get(apiUrl + "agents/allAgents");
+    return this.httpClient.get(apiUrl + "allCreditors");
   }
 
   getAgentServiceById(agentId : number): Observable<any> {
-    return this.httpClient.get(apiUrl + `service/${agentId}` );
+    return this.httpClient.get(apiUrl + `services/${agentId}` );
   }
 
   getClientById(clientId : number): Observable<any> {
-    return this.httpClient.get(apiUrl + `client/Profile/${clientId}` );
+    return this.httpClient.get(apiUrl + `Profile/${clientId}` );
   }
 
   getPaymentAccountByClientId(clientId : number): Observable<any> {
-    return this.httpClient.get(apiUrl + `client/PaymentAccount/${clientId}` );
+    return this.httpClient.get(apiUrl + `PaymentAccount/${clientId}` );
   }
 
   getClientByPhoneNumber(phoneNumber: String): Observable<any> {
-    return this.httpClient.get(apiUrl + `client/Profile/Phone/${phoneNumber}` );
+    return this.httpClient.get(apiUrl + `Profile/Phone/${phoneNumber}` );
   }
 
 
