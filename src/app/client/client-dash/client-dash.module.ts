@@ -13,6 +13,8 @@ import {ProfileClientComponent} from "../clientsPages/profileClient/profileClien
 import {HistoryComponent} from "../clientsPages/history/history.component";
 import {CreditorsListComponent} from "../clientsPages/creditorsList/creditorsList.component";
 import {Payment} from "../clientsPages/payment/payment";
+import {ConfirmComponent} from "../clientsPages/payment/confirm/confirm.component";
+import {ValidateComponent} from "../clientsPages/payment/validate/validate.component";
 
 
 @NgModule({
@@ -30,7 +32,9 @@ import {Payment} from "../clientsPages/payment/payment";
     ProfileClientComponent,
     HistoryComponent,
     CreditorsListComponent,
-    Payment
+    Payment,
+    ValidateComponent,
+    ConfirmComponent
   ]
 })
 

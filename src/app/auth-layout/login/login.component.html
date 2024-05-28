@@ -1,78 +1,43 @@
-<div class="header py-7 py-lg-8 bg-gradient-danger" >
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <link rel="stylesheet" href="login.component.scss">
+</head>
+<body style="background-image: url('/assets/img/icons/common/BG.png'); background-size: cover; background-position: center;">
+
+<div class="login-container" >
+  <div class="login-box">
+    <img src="../assets/img/icons/common/logo.PNG" alt="Logo" class="logo">
+    <form>
+      <label for="phone">Numéro de Téléphone</label>
+      <input type="text" id="phone" name="phone" placeholder="Entrer numéro de téléphone">
+
+      <label for="password">Mot de passe</label>
+      <input type="password" id="password" name="password" placeholder="Entrer mot de passe">
+
+      <div class="remember-me">
+        <input type="checkbox" id="remember" name="remember">
+        <label for="remember">Se souvenir de moi</label>
+      </div>
+
+      <button type="button" onclick="window.location.href='http://localhost:4200/#/change-password'">CONNEXION</button>
+    </form>
+  </div>
+</div>
+</body>
+<footer class="py-5">
   <div class="container">
-    <div class="header-body text-center mb-7">
-      <div class="row justify-content-center">
-        <div class="col-lg-5 col-md-6">
-          <h1 class="text-white text-width">Welcome!</h1>
-          <p class="text-lead text-light">Discover seamless payments with Jibi.</p>
-          <p class="text-lead text-light">easy & speed & confidence</p>
+    <div class="row align-items-center justify-content-xl-between">
+      <div class="col-xl-6">
+        <div class="copyright text-center text-xl-left text-muted">
+          &copy; {{ test | date: "yyyy" }} <a href="https://www.creative-tim.com?ref=ada-footer-auth-layout" class="font-weight-bold ml-1" target="_blank">The Creative Team</a>
         </div>
       </div>
+
     </div>
   </div>
-  <div class="separator separator-bottom separator-skew zindex-100">
-    <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
-      <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
-    </svg>
-  </div>
-</div>
-<!-- Page content -->
-<div class="container mt--8 pb-5">
-  <div class="row justify-content-center">
-    <div class="col-lg-5 col-md-7">
-      <div class="card bg-secondary shadow border-0">
-        <div class="card-header bg-transparent pb-5">
-          <div class="text-muted text-center mt-2 mb-3"><small>Sign in with</small></div>
-          <div class="btn-wrapper text-center">
-            <a href="javascript:void(0)" class="btn btn-neutral btn-icon">
-              <span class="btn-inner--icon"><img src="../assets/img/icons/common/github.svg"></span>
-              <span class="btn-inner--text">Github</span>
-            </a>
-            <a href="javascript:void(0)" class="btn btn-neutral btn-icon">
-              <span class="btn-inner--icon"><img src="../assets/img/icons/common/google.svg"></span>
-              <span class="btn-inner--text">Google</span>
-            </a>
-          </div>
-        </div>
-        <div class="card-body px-lg-5 py-lg-5">
-          <div class="text-center text-muted mb-4">
-            <small>Or sign in with credentials</small>
-          </div>
-          <form role="form">
-            <div class="form-group mb-3">
-              <div class="input-group input-group-alternative">
-                <div class="input-group-prepend">
-                  <!-- Changer la classe de l'icône pour un numéro de téléphone -->
-                  <span class="input-group-text"><i class="ni ni-mobile-button"></i></span>
-                </div>
-                <input class="form-control" placeholder="Phone number" type="text">
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="input-group input-group-alternative">
-                <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
-                </div>
-                <input class="form-control" placeholder="Password" type="password">
-              </div>
-            </div>
-            <div class="custom-control custom-control-alternative custom-checkbox">
-              <input class="custom-control-input" id=" customCheckLogin" type="checkbox">
-              <label class="custom-control-label" for=" customCheckLogin">
-                <span class="text-muted">Remember me</span>
-              </label>
-            </div>
-            <div class="text-center">
-              <button type="button" class="btn btn-primary my-4">Login</button>
-            </div>
-          </form>
-        </div>
-      </div>
-      <div class="row mt-3">
-        <div class="col-6">
-          <a href="javascript:void(0)" class="text-light"><small>Forgot password?</small></a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+</footer>
+</html>

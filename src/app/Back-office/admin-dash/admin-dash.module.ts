@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule} from '@angular/forms';
 
@@ -22,10 +23,11 @@ import {AdminDashRoutes} from "./admin-dash.routing";
     NgbModule,
     ClipboardModule,
     //NgxPaginationModule
+
   ],
   declarations: [
     ProfileAdminComponent,
-    //NewAgentComponent,
+    NewAgentComponent,
   ]
 })
 

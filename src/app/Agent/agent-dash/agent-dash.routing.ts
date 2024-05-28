@@ -12,19 +12,21 @@ import {EditClientComponent} from '../Agentcomponents/edit-client/edit-client.co
 import {ProfileClientComponent} from '../../client/clientsPages/profileClient/profileClient.component';
 import {ServicesAgentComponent} from '../pagesAgent/services-agent/services-agent.component';
 import {AddServiceComponent} from '../Agentcomponents/add-service/add-service.component';
+import {TrasactionAgentComponent} from '../pagesAgent/trasaction-agent/trasaction-agent.component';
 
 
 
 
 export const AgentDashRoutes: Routes = [
   { path: 'agent',      component: DashboardAgentComponent },
-  { path: 'agent-profile',   component: ProfileClientComponent },
+  { path: 'agent-profile',   component: ProfileAgentComponent },
   {path: 'add-client',       component: AddClientComponent},
   { path: 'edit-agent/:id', component: EditClientComponent },
   { path: 'details-agent/:id', component: DetailsClientComponent },
   {path: 'agent-service', component: ServicesAgentComponent},
   {path: 'add-service', component: AddServiceComponent},
   { path: 'edit-client/:id', component: EditClientComponent },
-  { path: 'details-client/:id', component: DetailsClientComponent }
+  { path: 'details-client/:id', component: DetailsClientComponent },
+  { path: 'agent-transaction', component: TrasactionAgentComponent },
 
 ];
