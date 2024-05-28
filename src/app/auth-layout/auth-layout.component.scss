@@ -7,6 +7,13 @@ $font-family: Arial, sans-serif;
 $border-radius: 8px;
 $box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 
+
+// Variables
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+
 // Mixins
 @mixin flex-center {
   display: flex;
@@ -43,7 +50,7 @@ body {
     width: 100%;
 
     .logo {
-      width: 70px;
+      width: 100px;
       padding: 20px;
     }
 
@@ -52,10 +59,14 @@ body {
       padding: 0;
       margin: 0;
       display: flex;
+      display: inline-block; // Affiche les éléments de la liste sur une seule ligne
+      margin-left: 20px; // Marge à gauche entre les éléments de la liste
 
       li {
         margin-left: 20px;
         padding: 20px;
+        display: inline-block; // Affiche les éléments de la liste sur une seule ligne
+        margin-left: 20px; // Marge à gauche entre les éléments de la liste
 
         a {
           color: $white-color;
@@ -154,6 +165,7 @@ body {
   }
 }
 
+
 // Footer styles
 .footer {
   background: $primary-color;
@@ -162,5 +174,19 @@ body {
 
   .container {
     text-align: center;
+  }
+}
+
+// Media queries for responsiveness
+@media screen and (max-width: $breakpoint-sm) {
+  .login-container {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .login-box {
+    .logo {
+      width: 80px;
+    }
   }
 }

@@ -19,7 +19,7 @@ import {TrasactionAgentComponent} from '../pagesAgent/trasaction-agent/trasactio
 
 export const AgentDashRoutes: Routes = [
   { path: 'agent',      component: DashboardAgentComponent },
-  { path: 'agent-profile',   component: ProfileClientComponent },
+  { path: 'agent-profile',   component: ProfileAgentComponent },
   {path: 'add-client',       component: AddClientComponent},
   { path: 'edit-agent/:id', component: EditClientComponent },
   { path: 'details-agent/:id', component: DetailsClientComponent },

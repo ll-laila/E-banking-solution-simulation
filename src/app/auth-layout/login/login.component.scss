@@ -7,6 +7,12 @@ $font-family: Arial, sans-serif;
 $border-radius: 8px;
 $box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 
+// Variables
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+
 // Mixins
 @mixin flex-center {
   display: flex;
@@ -93,6 +99,8 @@ body {
       }
     }
 
+
+
     button {
       background-color: $primary-color;
       color: $white-color;
@@ -104,6 +112,21 @@ body {
       &:hover {
         background-color: darken($primary-color, 10%);
       }
+    }
+  }
+}
+
+
+// Media queries for responsiveness
+@media screen and (max-width: $breakpoint-sm) {
+  .login-container {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .login-box {
+    .logo {
+      width: 80px;
     }
   }
 }
