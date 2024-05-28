@@ -40,7 +40,7 @@ import { TrasactionAgentComponent } from './Agent/pagesAgent/trasaction-agent/tr
     AppComponent,
     AdminDashComponent,
 
-    ChangePasswordComponent,
+    // ChangePasswordComponent,
     ServicesAgentComponent,
     TrasactionAgentComponent
   ],
