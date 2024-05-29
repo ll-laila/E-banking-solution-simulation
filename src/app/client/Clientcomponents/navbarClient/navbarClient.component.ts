@@ -20,6 +20,9 @@ export class NavbarClientComponent implements OnInit {
   ngOnInit() {
     this.listTitles = ROUTES.filter(listTitle => listTitle);
   }
+  logout() {
+    this.router.navigate(['/login']);
+  }
 
   getTitle() {
     let titlee = this.location.prepareExternalUrl(this.location.path());
