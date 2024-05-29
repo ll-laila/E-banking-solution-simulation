@@ -55,7 +55,7 @@
             <tr>
               <th scope="col">Nom du client</th>
               <th scope="col">Nom du créancier</th>
-              <th scope="col">Nom du service  </th>
+              <th scope="col">Nom du service </th>
               <th scope="col">Montant</th>
               <th scope="col">Date</th>
             </tr>
@@ -64,6 +64,7 @@
             <tr *ngFor="let operation of client.operations" class="align-middle">
               <th scope="row">{{ operation.clientName}}</th>
               <td>{{ operation.creditorName }}</td>
+              <th scope="row">{{operation.serviceName}}</th>
               <td>{{ opertaion.amount }}</td>
               <td>{{ operation.date}}</td>
             </tr>

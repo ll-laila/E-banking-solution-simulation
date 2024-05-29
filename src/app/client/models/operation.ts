@@ -1,6 +1,7 @@
 export interface Operation {
     creditorName: string;
-    amount: number;
     clientName: string;
+    serviceName: string;
+    amount: number;
     date: Date;
   }
