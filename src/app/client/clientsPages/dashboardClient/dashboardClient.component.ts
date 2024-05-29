@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Client } from "../../models/client";
 
 import {ClientService} from "../../services/client.service";
-
+import { Operation } from '../../models/operation';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboardClient.component.html',
@@ -12,8 +12,8 @@ import {ClientService} from "../../services/client.service";
 
 export class DashboardClientComponent implements OnInit {
 
-  public phoneNumber: String | undefined;
-  public client : Client;
+  public phoneNumber: string| undefined;
+  public client : any = {operations: []};
 
 
   constructor(private clientService: ClientService) {
@@ -26,11 +26,11 @@ export class DashboardClientComponent implements OnInit {
 
 
 
-  getClientByPhone(phoneNum: String) {
+  getClientByPhone(phoneNum: string) {
     this.clientService.getClientByPhoneNumber(phoneNum).subscribe(res => {
       console.log(res);
       this.client = res;
-      this.getClientPaymentAccount();
+      this.getClientOperations(phoneNum);
     }, error => {
       console.log(error);
     })
@@ -43,6 +43,22 @@ export class DashboardClientComponent implements OnInit {
     }, error => {
       console.log(error);
     })
+  }
+  
+
+  getClientOperations(phoneNum: string) {
+    this.clientService.getClientOperation(phoneNum).subscribe((res: Operation[]) => {
+      console.log(res);
+      if (Array.isArray(res)) {
+        // Assumer que 'res' est un tableau des opérations et prendre les 5 dernières
+        this.client.operations = res.slice(-5);
+      } else {
+        console.error('La réponse n\'est pas un tableau d\'opérations');
+      }
+      // this.getClientByPhone(phoneNumber);
+    }, error => {
+      console.log(error);
+    });
   }
 
 
