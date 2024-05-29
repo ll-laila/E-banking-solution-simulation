@@ -4,6 +4,7 @@ import {NewAgentComponent} from "../pages/new-agent/new-agent.component";
 import {AddAgentComponent} from "../Admincomponents/add-agent/add-agent.component";
 import {EditAgentComponent} from "../Admincomponents/edit-agent/edit-agent.component";
 import {DetailsAgentComponent} from "../Admincomponents/details-agent/details-agent.component";
+import {LoginComponent} from "../../auth-layout/login/login.component";
 
 
 
@@ -13,6 +14,6 @@ export const AdminDashRoutes: Routes = [
     { path: 'admin',         component: NewAgentComponent },
     { path: 'add-agent', component: AddAgentComponent },
     { path: 'edit-agent/:id', component: EditAgentComponent },
-    { path: 'details-agent/:id', component: DetailsAgentComponent }
+    { path: 'details-agent/:id', component: DetailsAgentComponent },
 
 ];
