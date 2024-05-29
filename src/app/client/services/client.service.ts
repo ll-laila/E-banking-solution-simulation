@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { Operation } from '../models/operation';
 
 const apiUrl = 'http://localhost:9090/fim/est3Dgate/';
 
@@ -10,6 +11,10 @@ const apiUrl = 'http://localhost:9090/fim/est3Dgate/';
   providedIn: 'root'
 })
 export class ClientService {
+  getClientOperation(phoneNumber: string): Observable<Operation[]> {
+    return this.httpClient.get<Operation[]>(apiUrl+`client/operations/${phoneNumber}`);
+  }
+  
 
   constructor(private httpClient: HttpClient) {
   }
