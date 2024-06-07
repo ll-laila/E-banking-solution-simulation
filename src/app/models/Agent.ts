@@ -5,9 +5,9 @@ export interface IAgent {
   address  : string;
   email : string;
   confirmEmail : string;
-  identityNumber : string;
+  cin : string;
   phoneNumber : string;
-  immNumber : string;
+  commercialRn : string;
   patentNumber : string;
   birthDate : Date;
 }
