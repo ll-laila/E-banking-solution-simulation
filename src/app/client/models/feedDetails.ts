@@ -1,6 +1,5 @@
 
 export interface FeedDetails {
-  idClient? : number;
-  bankAccountNumber : string;
+  idClient : number;
   amount : number;
 }
