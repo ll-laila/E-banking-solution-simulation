@@ -21,6 +21,7 @@ export class AddAgentComponent implements OnInit {
     this.agentService.createAgent(this.agent)
       .pipe(
         catchError(error => {
+          console.log(this.agent);
           console.error('Erreur lors de la création de l\'agent :', error);
           return throwError(error);
         })

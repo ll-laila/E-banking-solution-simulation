@@ -11,19 +11,19 @@
 <div class="login-container" >
   <div class="login-box">
     <img src="../assets/img/icons/common/logo.PNG" alt="Logo" class="logo">
-    <form>
+    <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
       <label for="phone">Numéro de Téléphone</label>
-      <input type="text" id="phone" name="phone" placeholder="Entrer numéro de téléphone">
+      <input type="text" id="phone" ngModel name="phoneNumber" placeholder="Entrer numéro de téléphone">
 
       <label for="password">Mot de passe</label>
-      <input type="password" id="password" name="password" placeholder="Entrer mot de passe">
+      <input type="password" id="password" ngModel name="password" placeholder="Entrer mot de passe">
 
       <div class="remember-me">
         <input type="checkbox" id="remember" name="remember">
         <label for="remember">Se souvenir de moi</label>
       </div>
 
-      <button type="button" onclick="window.location.href='http://localhost:4200/#/change-password'">CONNEXION</button>
+      <button type="submit">CONNEXION</button>
     </form>
   </div>
 </div>

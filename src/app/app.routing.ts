@@ -19,12 +19,9 @@ import {ChangePasswordComponent} from "./auth-layout/change-password/change-pass
 
 const routes: Routes = [
    {
-
-
     path: '',
     component: AuthLayoutComponent,
   },
-
 
   {
     path: 'admin',

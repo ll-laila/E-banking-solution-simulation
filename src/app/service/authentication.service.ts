@@ -8,7 +8,6 @@ export class AuthenticationService {
 
   PATH_OF_API = 'http://localhost:8080/api/v1/auth/authenticate';
 
-
   requestHeader = new HttpHeaders({ 'No-Auth': 'True' });
   constructor(
     private httpclient: HttpClient,
