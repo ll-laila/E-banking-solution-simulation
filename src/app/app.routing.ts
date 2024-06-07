@@ -10,17 +10,11 @@ import {AgentDashComponent} from './Agent/agent-dash/agent-dash.component';
 import { ClientDashComponent } from './client/client-dash/client-dash.component';
 import {DashboardClientComponent} from './client/clientsPages/dashboardClient/dashboardClient.component';
 import {ProfileClientComponent} from './client/clientsPages/profileClient/profileClient.component';
-<<<<<<< HEAD
 import {HistoryComponent} from './client/clientsPages/history/history.component';
 import {CreditorsListComponent} from './client/clientsPages/creditorsList/creditorsList.component';
 import {Payment} from './client/clientsPages/payment/payment';
-=======
-import {TablesClientComponent} from './client/clientsPages/tablesClient/tablesClient.component';
-import {IconsClientComponent} from './client/clientsPages/iconsClient/iconsClient.component';
-import {MapsClientComponent} from './client/clientsPages/mapsClient/mapsClient.component';
 import {LoginComponent} from "./auth-layout/login/login.component";
 import {ChangePasswordComponent} from "./auth-layout/change-password/change-password.component";
->>>>>>> 6e7f6c96958cdeb142585f145a1032cb9a85b1ae
 
 
 
