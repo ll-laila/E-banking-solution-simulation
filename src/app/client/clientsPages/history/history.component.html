@@ -22,11 +22,11 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let operation of client.operations" class="align-middle">
-              <th scope="row">{{ operation.clientName}}</th>
-              <td>{{ operation.creditorName }}</td>
-              <th scope="row">{{operation.serviceName}}</th>
-              <td>{{ opertaion.amount }}</td>
+            <tr *ngFor="let operation of operations" class="align-middle">
+              <th scope="row">{{ operation.creditorName}}</th>
+              <td>{{ operation.clientName }}</td>
+              <th scope="row">{{operation.serviceName }}</th>
+              <td>{{ operation.amount }}</td>
               <td>{{ operation.date}}</td>
             </tr>
             </tbody>

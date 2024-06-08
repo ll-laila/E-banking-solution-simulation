@@ -7,8 +7,6 @@ import {catchError, Observable, throwError} from 'rxjs';
 import {FeedDetails} from "../models/feedDetails";
 import {PaymentDetails} from "../models/payment";
 
-const apiUrl = 'http://localhost:9090/fim/est3Dgate/';
-
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +15,7 @@ const apiUrl = 'http://localhost:9090/fim/est3Dgate/';
 
 export class PaymentService {
 
-  private serverUrl: string = `http://localhost:9090/fim/est3Dgate`;
+  private serverUrl: string = `http://localhost:9090/cmi/service`;
   private authorization = this.cookieService.get('Authorization');
 
 

@@ -8,8 +8,16 @@ import { Operation } from '../../models/operation';
   styleUrls: ['./profileClient.component.scss']
 })
 export class ProfileClientComponent implements OnInit {
+
   public phoneNumber: String | undefined;
-  public client : any = {operations: []};
+  public client : Client = {
+    id : -1,
+    firstName: "",
+    lastName: "",
+    email: "",
+    phoneNumber: "",
+    paymentAccount: null
+  };
 
   constructor(private clientService: ClientService) { }
 
@@ -26,6 +34,7 @@ export class ProfileClientComponent implements OnInit {
       console.log(error);
     })
   }
+
   getClientPaymentAccount() {
     this.clientService.getPaymentAccountByClientId(this.client.id).subscribe(res => {
       console.log(res);
@@ -35,18 +44,7 @@ export class ProfileClientComponent implements OnInit {
     })
   }
 
-  getClientOperations(phoneNumber: string) {
-    this.clientService.getClientOperation(phoneNumber).subscribe((res: Operation[]) => {
-      console.log(res);
-      if (Array.isArray(res)) {
-        this.client.operations = res; // Affecter toutes les opérations
-      } else {
-        console.error('La réponse n\'est pas un tableau d\'opérations');
-      }
-    }, error => {
-      console.log(error);
-    });
-  }
-  
+
+
 
 }
