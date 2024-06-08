@@ -18,19 +18,16 @@ export class AddAgentComponent implements OnInit {
   }
 
   createSubmit() {
+    console.log('Submitting agent:', this.agent);  // Log agent details
     this.agentService.createAgent(this.agent)
       .pipe(
         catchError(error => {
-          console.log(this.agent);
           console.error('Erreur lors de la création de l\'agent :', error);
           return throwError(error);
         })
       )
       .subscribe((data: any) => {
-
-        console.log(this.agent);
-        console.log(data);
-        console.log('Agent créé avec succès');
+        console.log('Agent créé avec succès', data);
         this.router.navigate(['/admin']);
       });
   }

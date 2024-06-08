@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpResponse} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {Observable} from "rxjs";
 import {IAgent} from "../models/Agent";
 import { CookieService } from 'ngx-cookie-service';
@@ -20,15 +20,17 @@ export class AgentService {
     const headers = {
       'Authorization': `${this.authorization}`
     };
+    console.log(this.authorization);
     return this.httpClient.get<IAgent[]>(dataUrl, {headers} );
   }
 
-
   public createAgent(agent : IAgent) : Observable<IAgent>{
     let dataUrl: string = `${this.serverUrl}/register`;
-
+    const headers = {
+      'Authorization': `${this.authorization}`
+    };
     console.log(this.authorization);
-    return this.httpClient.post<IAgent>(dataUrl, agent);
+    return this.httpClient.post<IAgent>(dataUrl, agent,{headers});
   }
 
 
@@ -43,7 +45,12 @@ export class AgentService {
   public updateAgent(agent : IAgent, id: number) : Observable<IAgent>{
 
     let dataUrl: string = `${this.serverUrl}/update/${id}`;
-    return this.httpClient.put<IAgent>(dataUrl, agent);
+    const headers = {
+      'Authorization': `${this.authorization}`
+    };
+    console.log(id);
+    console.log(dataUrl);
+    return this.httpClient.put<IAgent>(dataUrl, agent,{headers});
   }
 
   public getAgent(id: number): Observable<IAgent>{
