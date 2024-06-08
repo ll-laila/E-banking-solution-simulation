@@ -11,23 +11,23 @@
               <img alt="Image placeholder" src="assets/img/user.jpg">
             </span>
             <div class="media-body ml-2 d-none d-lg-block">
-              <span class="mb-0 text-sm font-weight-bold">Client</span>
+              <span class="mb-0 text-sm font-weight-bold">Alimenter</span>
             </div>
           </div>
         </a>
         <div class="dropdown-menu-arrow dropdown-menu-right" ngbDropdownMenu>
-          <div class=" dropdown-header noti-title">
-            <h6 class="text-overflow m-0">Welcome!</h6>
-          </div>
-          <a routerLinkActive="active" [routerLink]="['/user-profile']" class="dropdown-item">
-            <i class="ni ni-single-02"></i>
-            <span>My profile</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#!" class="dropdown-item" (click)="logout()">
-            <i class="ni ni-user-run"></i>
-            <span>Logout</span>
-          </a>
+          <form [formGroup]="paymentForm">
+            <div class="dropdown-header noti-title">
+              <h6 class="text-overflow m-0">Montant </h6>
+            </div>
+            <div>
+              <span><input type="number" class="form-control form-control-alternative" formControlName="montant"></span>
+            </div>
+            <div class="dropdown-divider"></div>
+            <div class="dropdown-item">
+              <span><button class="btn btn-sm btn-primary" type="button" (click)="submitForm()">Confirmer</button></span>
+            </div>
+          </form>
         </div>
       </li>
     </ul>

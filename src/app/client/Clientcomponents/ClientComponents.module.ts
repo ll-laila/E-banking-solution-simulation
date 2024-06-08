@@ -5,13 +5,15 @@ import { NavbarClientComponent } from './navbarClient/navbarClient.component';
 import { FooterClientComponent } from './footerClient/footerClient.component';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule,
-    NgbModule
-  ],
+    imports: [
+        CommonModule,
+        RouterModule,
+        NgbModule,
+        ReactiveFormsModule
+    ],
   declarations: [
     FooterClientComponent,
     NavbarClientComponent,

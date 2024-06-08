@@ -1,13 +1,12 @@
 import {PaymentAccount} from "./PaymentAccount";
 
 export interface Client {
-  id? : number;
+  id : number;
   firstName : string;
   lastName : string;
-  address : string;
   cin : string;
   email : string;
+  address : string;
   phoneNumber : string;
-  password : string;
-  paymentAccount: PaymentAccount[];
+  paymentAccount: PaymentAccount;
 }
