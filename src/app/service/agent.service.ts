@@ -27,6 +27,7 @@ export class AgentService {
     return this.httpClient.get<IAgent[]>(dataUrl, {headers}).pipe(catchError(this.handleError));
   }
 
+
   // GET Single Agent
   public getAgent(id: number): Observable<IAgent>{
     const headers = {
