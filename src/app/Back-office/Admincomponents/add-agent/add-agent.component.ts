@@ -17,21 +17,18 @@ export class AddAgentComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  createSubmit() {
-    this.agentService.createAgent(this.agent)
-      .pipe(
-        catchError(error => {
-          console.log(this.agent);
-          console.error('Erreur lors de la création de l\'agent :', error);
-          return throwError(error);
-        })
-      )
-      .subscribe((data: any) => {
+  createSubmit(){
+    this.agentService.createAgent(this.agent).subscribe((data: any)=>{
+      console.log(data)
+      console.log(this.agent);
+      console.log('Agent créé avec succès');
+      this.router.navigate(['/admin']).then();
 
-        console.log(this.agent);
-        console.log(data);
-        console.log('Agent créé avec succès');
-        this.router.navigate(['/admin']);
-      });
+    }, (error) => {
+      console.log(this.agent);
+      console.error('Erreur lors de la création de l\'agent :', error);
+      return throwError(error);
+
+    });
   }
 }
