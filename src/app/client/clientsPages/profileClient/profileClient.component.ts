@@ -44,8 +44,8 @@ export class ProfileClientComponent implements OnInit {
     })
   }
 
-<<<<<<< HEAD
-  getClientOperations(phoneNumber: string) {
+
+ /* getClientOperations(phoneNumber: string) {
     this.clientService.getClientOperation(phoneNumber).subscribe((res: Operation[]) => {
       console.log(res);
       if (Array.isArray(res)) {
@@ -56,10 +56,8 @@ export class ProfileClientComponent implements OnInit {
     }, error => {
       console.log(error);
     });
-  }
-=======
+  }*/
 
->>>>>>> 2ac14168bffd5bebc48393a3b3acfe51ca31201e
 
 
 }
