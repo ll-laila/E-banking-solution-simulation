@@ -3,6 +3,8 @@ import { Client } from "../../models/client";
 
 import {ClientService} from "../../services/client.service";
 import { Operation } from '../../models/operation';
+import {Agent} from "../../models/agent";
+import {PaymentAccount} from "../../models/paymentAccount";
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboardClient.component.html',
@@ -13,7 +15,18 @@ import { Operation } from '../../models/operation';
 export class DashboardClientComponent implements OnInit {
 
   public phoneNumber: string| undefined;
-  public client : any = {operations: []};
+  public client : Client = {
+    id : -1,
+    firstName: "",
+    lastName: "",
+    cin : "",
+    email: "",
+    address: "",
+    phoneNumber: "",
+    paymentAccount: null
+  };
+
+  public operations: Operation[];
 
 
   constructor(private clientService: ClientService) {
@@ -22,21 +35,21 @@ export class DashboardClientComponent implements OnInit {
 
   ngOnInit() {
     this.getClientByPhone(this.phoneNumber);
+    this.getClientOperations(this.phoneNumber);
   }
-
 
 
   getClientByPhone(phoneNum: string) {
     this.clientService.getClientByPhoneNumber(phoneNum).subscribe(res => {
       console.log(res);
       this.client = res;
-      this.getClientOperations(phoneNum);
+      this.getClientPaymentAccount();
     }, error => {
       console.log(error);
     })
   }
 
-  getClientPaymentAccount() {
+  public getClientPaymentAccount() {
     this.clientService.getPaymentAccountByClientId(this.client.id).subscribe(res => {
       console.log(res);
       this.client.paymentAccount = res;
@@ -44,22 +57,17 @@ export class DashboardClientComponent implements OnInit {
       console.log(error);
     })
   }
-  
 
-  getClientOperations(phoneNum: string) {
-    this.clientService.getClientOperation(phoneNum).subscribe((res: Operation[]) => {
+
+  public getClientOperations(phoneNum: string) {
+    this.clientService.getClientOperation(phoneNum).subscribe(res => {
       console.log(res);
-      if (Array.isArray(res)) {
-        // Assumer que 'res' est un tableau des opérations et prendre les 5 dernières
-        this.client.operations = res.slice(-5);
-      } else {
-        console.error('La réponse n\'est pas un tableau d\'opérations');
-      }
-      // this.getClientByPhone(phoneNumber);
+      this.operations = res;
     }, error => {
       console.log(error);
-    });
+    })
   }
+
 
 
 
