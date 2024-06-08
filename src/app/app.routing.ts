@@ -16,6 +16,7 @@ import {CreditorsListComponent} from './client/clientsPages/creditorsList/credit
 import {Payment} from './client/clientsPages/payment/payment';
 import {LoginComponent} from "./auth-layout/login/login.component";
 import {ChangePasswordComponent} from "./auth-layout/change-password/change-password.component";
+import {ClientProDashComponent} from "./Client-Pro/clientPro-dash/clientPro-dash.component";
 
 
 
@@ -82,7 +83,19 @@ const routes: Routes = [
 
     path: 'change-password',
     component: ChangePasswordComponent,
-  }
+  }, {
+
+
+    path: 'client-pro',
+    component: ClientProDashComponent,
+    children : [
+      {
+        path: '',
+        loadChildren: () => import('src/app/Client-pro/clientPro-dash/clientPro-dash.module').then(m => m.ClientProDashModule)
+      }
+    ]
+  },
+
 ];
 
 

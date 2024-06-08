@@ -10,4 +10,6 @@ export interface IAgent {
   commercialRn : string;
   patentNumber : string;
   birthDate : Date;
+  isFirstLogin : boolean;
+  newPassword : string;
 }

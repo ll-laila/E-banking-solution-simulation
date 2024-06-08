@@ -37,11 +37,24 @@ export class LoginComponent implements OnInit {
         const expires = `expires=${expirationDate.toUTCString()}`;
         document.cookie = `Authorization=${encodeURIComponent('Bearer ' + response.access_token)}; ${expires}; path=/`;
         console.log(decodedToken.role);
+        console.log(decodedToken.isFirstLogin);
 
         if (decodedToken.role === 'ADMIN') {
           this.router.navigate(['/admin']);
-        } else {
-          this.router.navigate(['/login']);
+        } else if(decodedToken.role=='AGENT'){
+          if(decodedToken.isFirstLogin === true){
+            this.router.navigate(['/change-password']);
+          }else {
+            this.router.navigate(['/agent']);
+          }
+        }else if(decodedToken.role=='CLIENT'){
+          if(decodedToken.isFirstLogin === true){
+            this.router.navigate(['/change-password']);
+          }else {
+            this.router.navigate(['/client']);
+          }
+        }else {
+          this.router.navigate(['/login'])
         }
       },
       error: (error) => {

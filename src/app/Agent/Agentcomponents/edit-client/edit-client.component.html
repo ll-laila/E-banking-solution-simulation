@@ -28,7 +28,6 @@
                     <div class="form-floating col-md-4">
                       <label for="lastName" class="Montserrat" style="color:#2f3a8a">Nom *</label>
                       <input type="text" class="form-control" [(ngModel)]="client.lastName" name="lastName" [value]="client.lastName" id="lastName" placeholder="Last Name" style="border-radius:20px; background-color:#F8F8F8" />
-
                     </div>
                     <div class="form-floating col-md-4">
                       <label for="dateOfBirth" class="Montserrat" style="color:#2f3a8a">Date de naissance *</label>
@@ -36,23 +35,15 @@
                     </div>
                   </div>
                   <div class="row g-2 mb-4 mt-10">
-                    <div class="form-floating col-md-6">
-                      <label for="identityPiece" class="Montserrat" style="color:#2f3a8a">Pièce d'identité *</label>
-                      <select class="form-select  form-control" id="identityPiece" style="border-radius:20px; background-color:#F8F8F8" required>
-                        <option value="Cin">Cin</option>
-                        <option value="Passport">Passport</option>
+                    <div class="form-group">
+                      <label for="product" class="Montserrat">Sélectionner le type de compte</label>
+                      <select class="form-control" id="product" name="product">
+                        <option value="hssab1">Hssab 1 - Plafond : 200 DH</option>
+                        <option value="hssab1">Hssab 2 - Plafond : 5000 DH</option>
+                        <option value="hssab1">Hssab 3 - Plafond : 20000 DH</option>
                       </select>
                     </div>
-                    <div class="form-floating col-md-6">
-                      <label for="identityNumber" class="Montserrat" style="color:#2f3a8a">N° pièce d'identité *</label>
-                      <input type="text" class="form-control" [(ngModel)]="client.cin" name="identityNumber" [value]="client.cin" id="identityNumber" placeholder="N° pièce d'identité" style="border-radius:20px; background-color:#F8F8F8" required />
-                    </div>
-                  </div>
-                  <div class="row g-2 mb-4">
-                    <div class="form-floating col-md-6">
-                      <label for="address" class="Montserrat" style="color:#2f3a8a">Adresse *</label>
-                      <input type="text" class="form-control" [(ngModel)]="client.address" name="address" [value]="client.address" id="address" placeholder="Address" style="border-radius:20px; background-color:#F8F8F8" required />
-                    </div>
+
 
                     <div class="form-floating col-md-6">
                       <label for="email" class="Montserrat" style="color:#2f3a8a">Email *</label>
