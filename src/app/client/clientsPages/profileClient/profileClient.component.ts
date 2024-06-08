@@ -47,6 +47,6 @@ export class ProfileClientComponent implements OnInit {
       console.log(error);
     });
   }
-  
+
 
 }
