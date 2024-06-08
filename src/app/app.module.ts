@@ -18,6 +18,9 @@ import { ChangePasswordComponent } from './auth-layout/change-password/change-pa
 import { ServicesAgentComponent } from './Agent/pagesAgent/services-agent/services-agent.component';
 import { ToastrModule } from 'ngx-toastr';
 import { TrasactionAgentComponent } from './Agent/pagesAgent/trasaction-agent/trasaction-agent.component';
+import {ClientProDashComponent} from "./Client-Pro/clientPro-dash/clientPro-dash.component";
+import {ClientProDashRoutes} from "./Client-Pro/clientPro-dash/clientPro-dash.routing";
+import {ClientProDashModule} from "./Client-Pro/clientPro-dash/clientPro-dash.module";
 
 @NgModule({
   imports: [
@@ -28,13 +31,16 @@ import { TrasactionAgentComponent } from './Agent/pagesAgent/trasaction-agent/tr
     AgentComponentsModule,
     NgbModule,
     RouterModule,
+
     AgentDashComponent,
+    ClientProDashComponent,
     LoginComponent,
     AppRoutingModule,
     BrowserModule,
     CommonModule,
     ReactiveFormsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    ClientProDashModule
   ],
   declarations: [
     AppComponent,
@@ -42,7 +48,9 @@ import { TrasactionAgentComponent } from './Agent/pagesAgent/trasaction-agent/tr
 
     // ChangePasswordComponent,
     ServicesAgentComponent,
-    TrasactionAgentComponent
+    TrasactionAgentComponent,
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]
