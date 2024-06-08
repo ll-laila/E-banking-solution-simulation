@@ -19,14 +19,14 @@ export class AddServiceComponent implements OnInit {
     this.agentServices.createService(this.service)
         .pipe(
             catchError(error => {
-              console.error('Erreur lors de la création du client :', error);
+              console.error('Erreur lors de la création du service:', error);
               return throwError(error); // Renvoyer l'erreur pour la traiter en aval si nécessaire
             })
         )
         .subscribe((data: any) => {
           console.log(this.service);
           console.log(data);
-          console.log('Client créé avec succès');
+          console.log('service créé avec succès');
         });
   }
 
