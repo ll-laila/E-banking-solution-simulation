@@ -48,7 +48,7 @@ export class AgentService {
     };
     console.log(this.authorization);
     let dataUrl: string = `${this.serverUrl}/api/v1/admin/register`;
-    return this.httpClient.post<IAgent>(dataUrl, agent, {headers}).pipe(catchError(this.handleError));;
+    return this.httpClient.post<IAgent>(dataUrl, agent, {headers}).pipe(catchError(this.handleError));
   }
 
   // Update a agent
@@ -56,9 +56,8 @@ export class AgentService {
     const headers = {
       'Authorization': `${this.authorization}`
     };
-    console.log(this.authorization);
     let dataUrl: string = `${this.serverUrl}/api/v1/admin/update/${id}`;
-    return this.httpClient.put<IAgent>(dataUrl, agent, {headers}).pipe(catchError(this.handleError));;
+    return this.httpClient.put<IAgent>(dataUrl, agent, {headers}).pipe(catchError(this.handleError));
   }
 
 
@@ -68,7 +67,7 @@ export class AgentService {
       'Authorization': `${this.authorization}`
     };
     let dataUrl: string = `${this.serverUrl}/api/v1/admin/delete/${id}`;
-    return this.httpClient.delete<{}>(dataUrl, {headers}).pipe(catchError(this.handleError));;
+    return this.httpClient.delete<{}>(dataUrl, {headers}).pipe(catchError(this.handleError));
   }
 
 

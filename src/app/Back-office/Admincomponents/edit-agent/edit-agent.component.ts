@@ -35,6 +35,7 @@ export class EditAgentComponent implements OnInit {
 
   public update(){
     if(this.id){
+
       this.agentService.updateAgent(this.agent, parseInt(this.id)).subscribe((data)=>{
         this.router.navigate([`/admin`]).then();
       }, (error) => {
