@@ -20,23 +20,27 @@ export class NavbarClientComponent implements OnInit {
   public focus;
   public listTitles: any[];
   public location: Location;
-  public feedDetails: FeedDetails;
-    public client: Client = {
-        id: -1,
+
+  public feedDetails: FeedDetails = {
+    idClient: -1,
+    amount: 0
+  };
+
+  public client: Client = {
+        id: 1,
         firstName: "",
         lastName: "",
-        cin: "",
         email: "",
-        address: "",
         phoneNumber: "",
         paymentAccount: null
-    };
+  };
 
 
   constructor(location: Location, private element: ElementRef, private router: Router,
               private fb: FormBuilder,private clientService: ClientService,
               private paymentService: PaymentService) {
     this.location = location;
+
     this.paymentForm = this.fb.group({
       montant: ['', [Validators.required, Validators.min(0)]]
     });
@@ -68,18 +72,19 @@ export class NavbarClientComponent implements OnInit {
   }
 
     submitForm() {
-    if (this.paymentForm.valid) {
-      const montant = this.paymentForm.get('montant')?.value;
-      this.feedDetails.idClient = this.client.id;
-        this.feedDetails.amount = montant;
+      if (this.paymentForm.valid) {
+        const montant = this.paymentForm.get('montant')?.value;
+        this.feedDetails.idClient = this.client.id;
+          this.feedDetails.amount = montant;
+        console.log(this.feedDetails);
+
        this.paymentService.feedPaymentAccount(this.feedDetails).subscribe(response => {
       }, error => {
         console.error('alimentation echoué:', error);
       });
 
-
-    } else {
-      console.log('form non valider');
+      } else {
+        console.log('form non valider');
     }
   }
 

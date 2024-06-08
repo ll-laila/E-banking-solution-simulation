@@ -8,8 +8,16 @@ import { Operation } from '../../models/operation';
   styleUrls: ['./profileClient.component.scss']
 })
 export class ProfileClientComponent implements OnInit {
+
   public phoneNumber: String | undefined;
-  public client : any = {operations: []};
+  public client : Client = {
+    id : -1,
+    firstName: "",
+    lastName: "",
+    email: "",
+    phoneNumber: "",
+    paymentAccount: null
+  };
 
   constructor(private clientService: ClientService) { }
 
@@ -26,6 +34,7 @@ export class ProfileClientComponent implements OnInit {
       console.log(error);
     })
   }
+
   getClientPaymentAccount() {
     this.clientService.getPaymentAccountByClientId(this.client.id).subscribe(res => {
       console.log(res);
@@ -35,6 +44,7 @@ export class ProfileClientComponent implements OnInit {
     })
   }
 
+<<<<<<< HEAD
   getClientOperations(phoneNumber: string) {
     this.clientService.getClientOperation(phoneNumber).subscribe((res: Operation[]) => {
       console.log(res);
@@ -47,6 +57,9 @@ export class ProfileClientComponent implements OnInit {
       console.log(error);
     });
   }
+=======
+
+>>>>>>> 2ac14168bffd5bebc48393a3b3acfe51ca31201e
 
 
 }
