@@ -19,5 +19,5 @@ export class ProfileClientComponent implements OnInit {
       console.log('Client retrieved :', this.client);
     }
   }
-
+  
 }
