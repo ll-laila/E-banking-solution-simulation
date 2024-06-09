@@ -1,12 +1,12 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { ROUTES } from '../sidebarClient/sidebarClient.component';
-import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {FeedDetails} from "../../models/feedDetails";
-import {ClientService} from "../../services/client.service";
 import {PaymentService} from "../../services/payment.service";
 import {Client} from "../../models/client";
+import {SharedClientService} from "../../services/shared-client.service";
 
 @Component({
   selector: 'app-navbar-client',
@@ -15,32 +15,25 @@ import {Client} from "../../models/client";
 })
 export class NavbarClientComponent implements OnInit {
 
-  public phoneNumber?: string;
+  public client: Client;
   public paymentForm: FormGroup;
   public focus;
   public listTitles: any[];
   public location: Location;
 
   public feedDetails: FeedDetails = {
-    idClient: -1,
+    idClient : -1,
     amount: 0
   };
 
-  public client: Client = {
-        id: 1,
-        firstName: "",
-        lastName: "",
-        email: "",
-        phoneNumber: "",
-        paymentAccount: null
-  };
-
-
-  constructor(location: Location, private element: ElementRef, private router: Router,
-              private fb: FormBuilder,private clientService: ClientService,
-              private paymentService: PaymentService) {
+  constructor(location: Location,
+              private element: ElementRef,
+              private router: Router,
+              private fb: FormBuilder,
+              private paymentService: PaymentService,
+              private sharedClientService: SharedClientService
+  ) {
     this.location = location;
-
     this.paymentForm = this.fb.group({
       montant: ['', [Validators.required, Validators.min(0)]]
     });
@@ -48,67 +41,24 @@ export class NavbarClientComponent implements OnInit {
 
   ngOnInit() {
     this.listTitles = ROUTES.filter(listTitle => listTitle);
-    this.getClientByPhone(this.phoneNumber);
   }
 
-
-  getClientByPhone(phoneNum: string) {
-    this.clientService.getClientByPhoneNumber(phoneNum).subscribe(res => {
-      console.log(res);
-      this.client = res;
-      this.getClientPaymentAccount();
-    }, error => {
-      console.log(error);
-    });
-  }
-
-  getClientPaymentAccount() {
-    this.clientService.getPaymentAccountByClientId(this.client.id).subscribe(res => {
-      console.log(res);
-      this.client.paymentAccount = res;
-    }, error => {
-      console.log(error);
-    });
-  }
-
-    submitForm() {
+  submitForm() {
       if (this.paymentForm.valid) {
-        const montant = this.paymentForm.get('montant')?.value;
+        this.client = this.sharedClientService.getClient();
         this.feedDetails.idClient = this.client.id;
-          this.feedDetails.amount = montant;
+        this.feedDetails.amount = this.paymentForm.get('montant')?.value;
         console.log(this.feedDetails);
 
        this.paymentService.feedPaymentAccount(this.feedDetails).subscribe(response => {
-      }, error => {
-        console.error('alimentation echoué:', error);
-      });
+        }, error => {
+          console.error('alimentation echoué:', error);
+        });
 
       } else {
         console.log('form non valider');
     }
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

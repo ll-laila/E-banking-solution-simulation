@@ -19,6 +19,8 @@ import {jwtDecode} from "jwt-decode";
   styleUrls: ['login.component.scss']
 })
 export class LoginComponent implements OnInit {
+
+  public phoneNumber: string;
   test: Date = new Date();
   constructor(
     private router: Router,
@@ -28,6 +30,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   login(loginForm: NgForm) {
+    const phoneNumber = loginForm.value.phoneNumber;
     this.userService.login(loginForm.value).subscribe({
       next: (response: any) => {
         const decodedToken = jwtDecode<MyToken>(response.access_token);
@@ -40,18 +43,18 @@ export class LoginComponent implements OnInit {
         console.log(decodedToken.isFirstLogin);
 
         if (decodedToken.role === 'ADMIN') {
-          this.router.navigate(['/admin']);
+          this.router.navigate(['/admin'], { queryParams: { phoneNumber: phoneNumber } });
         } else if(decodedToken.role=='AGENT'){
           if(decodedToken.isFirstLogin === true){
             this.router.navigate(['/change-password']);
           }else {
-            this.router.navigate(['/agent']);
+            this.router.navigate(['/agent'], { queryParams: { phoneNumber: phoneNumber } });
           }
         }else if(decodedToken.role=='CLIENT'){
           if(decodedToken.isFirstLogin === true){
             this.router.navigate(['/change-password']);
           }else {
-            this.router.navigate(['/client']);
+            this.router.navigate(['/client'], { queryParams: { phoneNumber: phoneNumber } });
           }
         }else {
           this.router.navigate(['/login'])

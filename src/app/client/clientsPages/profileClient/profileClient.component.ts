@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ClientService } from '../../services/client.service';
 import { Client } from '../../models/client';
-import { Operation } from '../../models/operation';
+import {SharedClientService} from "../../services/shared-client.service";
+
 @Component({
   selector: 'app-user-profile',
   templateUrl: './profileClient.component.html',
@@ -9,42 +9,15 @@ import { Operation } from '../../models/operation';
 })
 export class ProfileClientComponent implements OnInit {
 
-  public phoneNumber: String | undefined;
-  public client : Client = {
-    id : -1,
-    firstName: "",
-    lastName: "",
-    email: "",
-    phoneNumber: "",
-    paymentAccount: null
-  };
+  public client: Client;
 
-  constructor(private clientService: ClientService) { }
+  constructor(private sharedClientService: SharedClientService) { }
 
   ngOnInit() {
-    this.getClientByPhone(this.phoneNumber);
+    this.client = this.sharedClientService.getClient();
+    if (this.client) {
+      console.log('Client retrieved :', this.client);
+    }
   }
-
-  getClientByPhone(phoneNum: String) {
-    this.clientService.getClientByPhoneNumber(phoneNum).subscribe(res => {
-      console.log(res);
-      this.client = res;
-      this.getClientPaymentAccount();
-    }, error => {
-      console.log(error);
-    })
-  }
-
-  getClientPaymentAccount() {
-    this.clientService.getPaymentAccountByClientId(this.client.id).subscribe(res => {
-      console.log(res);
-      this.client.paymentAccount = res;
-    }, error => {
-      console.log(error);
-    })
-  }
-
-
-
 
 }

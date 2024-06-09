@@ -14,6 +14,7 @@
           <table class="table align-items-center table-dark table-flush text-center">
             <thead class="thead-dark">
             <tr>
+              <th scope="col">Référence</th>
               <th scope="col">Nom du client</th>
               <th scope="col">Nom du créancier</th>
               <th scope="col">Nom du service </th>
@@ -23,6 +24,7 @@
             </thead>
             <tbody>
             <tr *ngFor="let operation of operations" class="align-middle">
+              <th scope="row">{{ operation.ref}}</th>
               <th scope="row">{{ operation.creditorName}}</th>
               <td>{{ operation.clientName }}</td>
               <th scope="row">{{operation.serviceName }}</th>
