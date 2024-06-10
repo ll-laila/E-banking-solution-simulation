@@ -6,7 +6,7 @@ import {IClient} from '../models/Client';
 import {  Subject, catchError, throwError } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 
-import {Operation} from "../client/models/operation";
+import {Operation} from '../client/models/operation';
 
 import {IPaymentAccount} from '../models/paymentAccount';
 import { IClientRegistrationRequest} from '../models/ClientRegistrationRequest';
@@ -18,7 +18,7 @@ import {IAgent} from '../models/Agent';
 })
 export class ClientService {
 
-  private serverUrl = `http://localhost:9090/api/client`;
+  private serverUrl = `http://localhost:8080/api/client`;
   private authorization = this.cookieService.get('Authorization');
 
   constructor(private httpClient: HttpClient, private cookieService: CookieService) {
@@ -33,9 +33,9 @@ export class ClientService {
       .pipe(catchError(this.handleError));
   }
 
-  public getAllClients(): Observable<IClient[]> {
+  public getAllClientsByAgentId(idagent : number): Observable<IClient[]> {
 
-    const dataUrl = `${this.serverUrl}/api/v1/admin/list`;
+    const dataUrl = `${this.serverUrl}/api/v1/client/listByAgent/${idagent}`;
     console.log(this.authorization);
 
     const headers = {

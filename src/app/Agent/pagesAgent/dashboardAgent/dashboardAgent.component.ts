@@ -29,7 +29,8 @@ export class DashboardAgentComponent implements OnInit {
   agent: IAgent ;
 
   ngOnInit(): void {
-    this.getAllClients();
+      this.agent = this.sharedAgentService.getAgent();
+    this.getAllClients(this.agent.id);
     this.sharedAgentService.setAgent(this.agent);
     this.route.queryParams.subscribe(params => {
       this.phoneNumber = params['phoneNumber'];
@@ -57,8 +58,8 @@ export class DashboardAgentComponent implements OnInit {
   }
 
 
-  getAllClients(): void {
-    this.clientService.getAllClients().subscribe(
+  getAllClients(idAgent: number): void {
+    this.clientService.getAllClientsByAgentId(idAgent).subscribe(
       (clients: IClient[]) => {
         this.clients = clients;
       },
@@ -74,7 +75,7 @@ export class DashboardAgentComponent implements OnInit {
     this.clientService.deleteClient(id).subscribe(
       () => {
         console.log('Client deleted successfully.');
-        this.getAllClients();
+        this.getAllClients(this.agent.id);
       },
       (error) => {
         console.error('An error occurred while deleting the client:', error);
