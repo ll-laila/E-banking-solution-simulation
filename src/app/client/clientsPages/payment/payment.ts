@@ -6,8 +6,10 @@ import { ServiceAgent } from "../../models/serviceAgent";
 import { Router } from '@angular/router';
 import {Client} from "../../models/client";
 import {PaymentDetails} from "../../models/payment";
-import {ClientService} from "../../services/client.service";
 import {PaymentService} from "../../services/payment.service";
+import {SharedClientService} from "../../services/shared-client.service";
+import {SharedAgentServiceService} from "../../services/shared-agent-service.service";
+import {SharedAgentService} from "../../services/shared-agent.service";
 
 
 @Component({
@@ -20,60 +22,31 @@ export class Payment implements OnInit {
   currentStep = 1;
   public paymentForm1: FormGroup;
 
-  public phoneNumber: string| undefined;
   public client: Client;
   public agent: Agent;
   public service: ServiceAgent;
   public donationAmount: number;
   public refOp: string;
 
- /* public client : Client = {
-    id : 1,
-    firstName: "laila",
-    lastName: "timasli",
-    email: "laila@gmail.com",
-    phoneNumber: "06252624222",
-    paymentAccount: null
-  };
-  */
+  constructor(private route: ActivatedRoute,
+              private fb: FormBuilder,
+              private router: Router,
+              private paymentService: PaymentService,
+              private sharedClientService: SharedClientService,
+              private sharedAgentServiceService: SharedAgentServiceService,
+              private sharedAgentService: SharedAgentService,
+   ) {
 
-  constructor(private route: ActivatedRoute, private fb: FormBuilder,
-              private router: Router,private clientService: ClientService, private paymentService: PaymentService) {
     this.paymentForm1 = this.fb.group({
       donationAmount: [0 , [Validators.required, Validators.min(1)]]
     });
   }
 
+
   ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-      this.agent = {
-        id: +params['agentId'],
-        firstName: params['agentFirstName'],
-        lastName: params['agentLastName'],
-        email: '',
-        phoneNumber: '',
-        image: params['agentImage'],
-        services: [],
-      };
-
-      this.service = {
-        id: +params['serviceId'],
-        name: params['serviceName'],
-        type: params['serviceType']
-      };
-    });
-
-    this.getClientByPhone(this.phoneNumber);
-
-  }
-
-  getClientByPhone(phoneNum: string) {
-    this.clientService.getClientByPhoneNumber(phoneNum).subscribe(res => {
-      console.log(res);
-      this.client = res;
-    }, error => {
-      console.log(error);
-    });
+    this.client = this.sharedClientService.getClient();
+    this.agent = this.sharedAgentService.getAgent();
+    this.service = this.sharedAgentServiceService.getServiceAgent();
   }
 
 
@@ -106,14 +79,15 @@ export class Payment implements OnInit {
 
     console.log(paymentDetails);
 
-     this.paymentService.PayService(paymentDetails).subscribe(
-         response => {
-           this.router.navigate(['/client/accueil'], { queryParams: { message: 'le paiement est bien réussite' } });
-         },
-         error => {
-           this.router.navigate(['/client/accueil'], { queryParams: { message: 'Erreur lors du paiement'} });
-         }
-     );
+    this.paymentService.PayService(paymentDetails).subscribe(
+      response => {
+        this.router.navigate(['/client/agents'],  {queryParams: { status: response.status, responseMessage:  response.message}});
+      },
+      error => {
+        this.router.navigate(['/client/agents'], {queryParams: {  status: 0, responseMessage:  "Paiement échoué"}});
+      }
+    );
+
   }
 
   annuler() {

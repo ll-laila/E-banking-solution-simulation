@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ClientService } from "../../services/client.service";
 import { Agent } from "../../models/agent";
 import { ServiceAgent } from "../../models/serviceAgent";
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {SharedAgentService} from "../../services/shared-agent.service";
+import {SharedAgentServiceService} from "../../services/shared-agent-service.service";
 
 @Component({
   selector: 'app-icons',
@@ -13,6 +15,9 @@ export class CreditorsListComponent implements OnInit {
 
   public copy: string;
   public agents: Agent[];
+  public responseMessage: string;
+  public currentMsg: number;
+
 
   /*public agents: Agent[] = [
   {
@@ -30,12 +35,31 @@ export class CreditorsListComponent implements OnInit {
   ]*/
 
 
-  constructor(private clientService: ClientService, private router: Router) { }
+  constructor(private clientService: ClientService,
+              private router: Router,
+              private route: ActivatedRoute,
+              private sharedAgentService: SharedAgentService,
+              private sharedAgentServiceService: SharedAgentServiceService
+  ) { }
 
   ngOnInit() {
     this.copy = "";
     this.getAllAgents();
+    this.route.queryParams.subscribe(params => {
+      if(params['responseMessage'] != null){
+        switch (+params['status']) {
+          case 1:
+            this.currentMsg = 1;
+            break;
+          case 0:
+            this.currentMsg = 0;
+            break;
+        }
+        this.responseMessage = params['responseMessage'];
+      }
+    });
   }
+
 
   getAllAgents() {
     this.clientService.getAllAgents().subscribe(res => {
@@ -58,15 +82,9 @@ export class CreditorsListComponent implements OnInit {
   }
 
   redirectToPayment(agent: Agent, service: ServiceAgent) {
-    this.router.navigate(['/client/paiement'],
-        { queryParams: {agentId: agent.id,
-            agentFirstName: agent.firstName,
-            agentLastName: agent.lastName,
-            agentImage: agent.image,
-            serviceId: service.id ,
-            serviceName: service.name,
-            serviceType: service.type
-        } });
+    this.sharedAgentService.setAgent(agent);
+    this.sharedAgentServiceService.setServiceAgent(service);
+    this.router.navigate(['/client/paiement']);
   }
 
 }

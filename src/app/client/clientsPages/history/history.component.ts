@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ClientService } from '../../services/client.service';
 import { Operation } from '../../models/operation';
+import {SharedClientService} from "../../services/shared-client.service";
+import {Client} from "../../models/client";
 
 @Component({
   selector: 'app-tables',
@@ -9,13 +11,14 @@ import { Operation } from '../../models/operation';
 })
 export class HistoryComponent implements OnInit {
 
-  public phoneNumber: string| undefined;
+  public client: Client;
   public operations: Operation[];
 
-  constructor(private clientService: ClientService) {}
+  constructor(private clientService: ClientService,private sharedClientService: SharedClientService) {}
 
   ngOnInit() {
-    this.getClientOperations(this.phoneNumber);
+    this.client = this.sharedClientService.getClient();
+    this.getClientOperations(this.client.phoneNumber);
   }
 
   public getClientOperations(phoneNum: string) {
