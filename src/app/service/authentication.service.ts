@@ -46,21 +46,21 @@ export class AuthenticationService {
     return isAdmin;
   }
 
-  public isAgent(): boolean {
+  /*public isAgent(): boolean {
     const role = this.getRole();
     console.log('isAgent role:', role);
     const isAgent = role === 'AGENT';
     console.log('isAgent:', isAgent);
     return isAgent;
-  }
+  }*/
 
-  public isClient(): boolean {
+ /* public isClient(): boolean {
     const role = this.getRole();
     console.log('isClient role:', role);
     const isClient = role === 'CLIENT';
     console.log('isClient:', isClient);
     return isClient;
-  }
+  }*/
 
 
 

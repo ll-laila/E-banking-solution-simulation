@@ -20,8 +20,8 @@ export class ClientDashComponent implements OnInit {
   constructor(private authService: AuthenticationService) { }
 
   ngOnInit(): void {
-    this.isClient = this.authService.isClient();
-    console.log('isClient:', this.isClient);
+   /* this.isClient = this.authService.isClient();
+    console.log('isClient:', this.isClient);*/
   }
 
 }

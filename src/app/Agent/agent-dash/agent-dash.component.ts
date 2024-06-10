@@ -15,13 +15,13 @@ import {AuthenticationService} from "../../service/authentication.service";
 })
 export class AgentDashComponent implements OnInit {
 
-  isAgent: boolean = false;
+  //isAgent: boolean = false;
 
   constructor(private authService: AuthenticationService) { }
 
   ngOnInit(): void {
-    this.isAgent = this.authService.isAgent();
-    console.log('isAgent:', this.isAgent);
+   /* this.isAgent = this.authService.isAgent();
+    console.log('isAgent:', this.isAgent);*/
   }
 
 }
