@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {IAgent} from "../../../models/Agent";
 import {ActivatedRoute} from "@angular/router";
 import {AgentService} from "../../../service/agent.service";
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-details-agent',
@@ -11,7 +12,7 @@ import {AgentService} from "../../../service/agent.service";
 export class DetailsAgentComponent implements OnInit {
   agent: IAgent;
 
-  constructor(private route: ActivatedRoute, private agentService: AgentService) { }
+  constructor(private route: ActivatedRoute, private agentService: AgentService,private datePipe: DatePipe) { }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
@@ -20,4 +21,7 @@ export class DetailsAgentComponent implements OnInit {
     });
   }
 
+  formatDate(date: string | Date) {
+    return this.datePipe.transform(date, 'dd-MM-yyyy');
+  }
 }

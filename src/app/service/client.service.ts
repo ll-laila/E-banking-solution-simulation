@@ -78,6 +78,11 @@ export class ClientService {
     }
     return throwError(errorMessage);
   }
+
+
+  getAgentById(id: string): Observable<any> {
+    return this.httpClient.get<any>(`${this.serverUrl}/${id}`);
+  }
 }
 
 

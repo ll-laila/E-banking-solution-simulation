@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -13,8 +14,6 @@ import {ProfileClientComponent} from "../clientsPages/profileClient/profileClien
 import {HistoryComponent} from "../clientsPages/history/history.component";
 import {CreditorsListComponent} from "../clientsPages/creditorsList/creditorsList.component";
 import {Payment} from "../clientsPages/payment/payment";
-import {ConfirmComponent} from "../clientsPages/payment/confirm/confirm.component";
-import {ValidateComponent} from "../clientsPages/payment/validate/validate.component";
 
 
 @NgModule({
@@ -32,9 +31,7 @@ import {ValidateComponent} from "../clientsPages/payment/validate/validate.compo
     ProfileClientComponent,
     HistoryComponent,
     CreditorsListComponent,
-    Payment,
-    ValidateComponent,
-    ConfirmComponent
+    Payment
   ]
 })
 

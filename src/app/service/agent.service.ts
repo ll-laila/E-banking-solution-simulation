@@ -1,7 +1,9 @@
+
 // import { CookieService } from './cookie.service';
+
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, Subject, catchError, throwError } from 'rxjs';
+import { Observable, catchError, throwError } from 'rxjs';
 import { IAgent } from '../models/Agent';
 import { CookieService } from 'ngx-cookie-service';
 
@@ -16,7 +18,7 @@ export class AgentService {
 
   constructor(private httpClient: HttpClient, private cookieService: CookieService) {}
 
-  // GET All Agents
+
   public getAllAgents(): Observable<IAgent[]> {
     const dataUrl = `${this.serverUrl}/api/v1/admin/list`;
     console.log(this.authorization);
@@ -28,8 +30,12 @@ export class AgentService {
   }
 
 
+
   // GET Single Agent
+
+
   public getAgent(id: number): Observable<IAgent> {
+
     const headers = {
       'Authorization': `${this.authorization}`
     };
@@ -38,7 +44,17 @@ export class AgentService {
 
   }
 
-  // Create a agent
+  public getAgentByPhoneNumber(phoneNumber: String): Observable<IAgent> {
+    let dataUrl: string = `${this.serverUrl}/agentByPhone/${phoneNumber}`;
+    console.log(this.authorization);
+    const headers = {
+      'Authorization': `${this.authorization}`
+    };
+    return this.httpClient.get<IAgent>(dataUrl, {headers}).pipe(catchError(this.handleError));
+  }
+
+
+
   public createAgent(agent: IAgent): Observable<IAgent> {
     const headers = {
       'Authorization': `${this.authorization}`
@@ -56,8 +72,6 @@ export class AgentService {
     return this.httpClient.put<IAgent>(dataUrl, agent, {headers}).pipe(catchError(this.handleError));
   }
 
-
-  // Delete a agent
   public deleteAgent(id: number): Observable<{}> {
     const headers = {
       'Authorization': `${this.authorization}`
@@ -66,17 +80,13 @@ export class AgentService {
     return this.httpClient.delete<{}>(dataUrl, {headers}).pipe(catchError(this.handleError));
   }
 
-
-
-  // Error Handling
   public handleError(error: HttpErrorResponse) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
-      // client error
       errorMessage = `Error : ${error.error.message}`;
     } else {
-      // server error
       errorMessage = `Status : ${error.status} \n Message: ${error.message}`;
+
     }
     return throwError(errorMessage);
   }

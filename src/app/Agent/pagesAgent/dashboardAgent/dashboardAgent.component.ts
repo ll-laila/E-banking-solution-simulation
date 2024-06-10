@@ -3,8 +3,12 @@ import Chart from 'chart.js';
 
 
 import {IClient} from '../../../models/Client';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {ClientService} from '../../../service/client.service';
+import {SharedClientService} from '../../../client/services/shared-client.service';
+import {SharedAgentService} from '../../../service/shared-agent.service';
+import {IAgent} from '../../../models/Agent';
+import {AgentService} from '../../../service/agent.service';
 
 
 
@@ -14,20 +18,43 @@ import {ClientService} from '../../../service/client.service';
   styleUrls: ['./dashboardAgent.component.scss']
 })
 export class DashboardAgentComponent implements OnInit {
-  constructor(private router: Router, private clientService: ClientService) { }
+  constructor(private router: Router, private clientService: ClientService, private agentService: AgentService,
+  private sharedAgentService: SharedAgentService, private route: ActivatedRoute
+
+  ) { }
 
   clients: IClient[] = [];
   agents: IClient[] = [];
+ phoneNumber: string;
+  agent: IAgent ;
 
   ngOnInit(): void {
     this.getAllClients();
+    this.sharedAgentService.setAgent(this.agent);
+    this.route.queryParams.subscribe(params => {
+      this.phoneNumber = params['phoneNumber'];
+      if (this.phoneNumber) {
+        this.getAgentByPhone(this.phoneNumber);
+      }
+    });
+
   }
+
+
+  getAgentByPhone(phoneNum: string) {
+    this.agentService.getAgentByPhoneNumber(phoneNum).subscribe(res => {
+      console.log(res);
+      this.agent = res;
+      this.sharedAgentService.setAgent(this.agent);
+    }, error => {
+      console.log(error);
+    });
+  }
+
+
   addClient() {
     this.router.navigate(['/add-client']);
   }
-
-
-
 
 
   getAllClients(): void {

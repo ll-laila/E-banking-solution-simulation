@@ -44,10 +44,6 @@ export class NewAgentComponent implements OnInit {
     );
   }
 
-  updateAgent(id: number) {
-    this.router.navigate(['/edit-agent', id]);
-  }
-
   viewAgentDetails(id: number) {
     this.router.navigate(['/details-agent', id]);
   }
