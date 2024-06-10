@@ -81,6 +81,14 @@
                           <label for="patentNumber" class="Montserrat" style="color:#a4bacc">N° de patente *</label>
                           <input type="text" class="form-control" [(ngModel)]="agent.patentNumber" name="patentNumber" id="patentNumber" placeholder="Patent Number" style="border-radius:20px; background-color:#f1f3f6" required />
                         </div>
+
+                        <div class="row g-2 mb-4">
+                          <div class="form-floating col-md-12">
+                            <label for="image" class="Montserrat" style="color:#a4bacc">Image *</label>
+                            <input type="text" class="form-control" id="image" [(ngModel)]="agent.image" name="image" placeholder="image" style="border-radius:20px; background-color:#f1f3f6" required />
+                          </div>
+                        </div>
+
                       </div>
                     </div>
                     <!--<h2 class="card-title text-left MontserratM" style="color:#ffdf35">Pièces jointes</h2>
