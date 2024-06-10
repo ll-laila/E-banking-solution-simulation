@@ -6,7 +6,6 @@ import { ServiceAgent } from "../../models/serviceAgent";
 import { Router } from '@angular/router';
 import {Client} from "../../models/client";
 import {PaymentDetails} from "../../models/payment";
-import {ClientService} from "../../services/client.service";
 import {PaymentService} from "../../services/payment.service";
 import {SharedClientService} from "../../services/shared-client.service";
 import {SharedAgentServiceService} from "../../services/shared-agent-service.service";
@@ -28,7 +27,6 @@ export class Payment implements OnInit {
   public service: ServiceAgent;
   public donationAmount: number;
   public refOp: string;
-
 
   constructor(private route: ActivatedRoute,
               private fb: FormBuilder,
@@ -81,14 +79,15 @@ export class Payment implements OnInit {
 
     console.log(paymentDetails);
 
-     this.paymentService.PayService(paymentDetails).subscribe(
-         response => {
-           this.router.navigate(['/client/accueil'], { queryParams: { message: 'le paiement est bien réussite' } });
-         },
-         error => {
-           this.router.navigate(['/client/accueil'], { queryParams: { message: 'Erreur lors du paiement'} });
-         }
-     );
+    this.paymentService.PayService(paymentDetails).subscribe(
+      response => {
+        this.router.navigate(['/client/agents'],  {queryParams: { status: response.status, responseMessage:  response.message}});
+      },
+      error => {
+        this.router.navigate(['/client/agents'], {queryParams: {  status: 0, responseMessage:  "Paiement échoué"}});
+      }
+    );
+
   }
 
   annuler() {

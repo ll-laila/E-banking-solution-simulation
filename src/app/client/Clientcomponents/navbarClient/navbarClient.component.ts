@@ -7,6 +7,7 @@ import {FeedDetails} from "../../models/feedDetails";
 import {PaymentService} from "../../services/payment.service";
 import {Client} from "../../models/client";
 import {SharedClientService} from "../../services/shared-client.service";
+import {FeedResponse} from "../../models/feedResponse";
 
 @Component({
   selector: 'app-navbar-client',
@@ -26,6 +27,9 @@ export class NavbarClientComponent implements OnInit {
     amount: 0
   };
 
+  public responseMessage: string;
+  public currentStep: number;
+
   constructor(location: Location,
               private element: ElementRef,
               private router: Router,
@@ -44,22 +48,23 @@ export class NavbarClientComponent implements OnInit {
   }
 
   submitForm() {
-      if (this.paymentForm.valid) {
-        this.client = this.sharedClientService.getClient();
-        this.feedDetails.idClient = this.client.id;
-        this.feedDetails.amount = this.paymentForm.get('montant')?.value;
-        console.log(this.feedDetails);
+    if (this.paymentForm.valid) {
+      this.client = this.sharedClientService.getClient();
+      this.feedDetails.idClient = this.client.id;
+      this.feedDetails.amount = this.paymentForm.get('montant')?.value;
+      console.log(this.feedDetails);
 
-       this.paymentService.feedPaymentAccount(this.feedDetails).subscribe(response => {
-        }, error => {
-          console.error('alimentation echoué:', error);
-        });
+      this.paymentService.feedPaymentAccount(this.feedDetails).subscribe((response: FeedResponse) => {
+        this.responseMessage = response.message;
+        this.currentStep = 2;
+      }, error => {
+        console.error('Alimentation échouée:', error);
+      });
 
-      } else {
-        console.log('form non valider');
+    } else {
+      console.log('Formulaire non valide');
     }
   }
-
 
 
   logout() {
