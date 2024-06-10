@@ -27,7 +27,7 @@ export class ServicesAgentComponent implements OnInit {
 
 
 
-  getAllClients(): void {
+  getAllServicesByAgent(): void {
     this.agentservices.getAllServices().subscribe(
         (services: IAgentServices[]) => {
           this.services = services;
@@ -38,12 +38,12 @@ export class ServicesAgentComponent implements OnInit {
     );
   }
 
-  deleteClient(id: number) {
+  deleteService(id: number) {
     console.log(id);
     this.agentservices.deleteService(id).subscribe(
         () => {
           console.log('Client deleted successfully.');
-          this.getAllClients();
+          this.getAllServicesByAgent();
         },
         (error) => {
           console.error('An error occurred while deleting the agent:', error);
@@ -51,12 +51,8 @@ export class ServicesAgentComponent implements OnInit {
     );
   }
 
-  updateClient(id: number) {
+  updateService(id: number) {
     this.router.navigate(['/edit-agent', id]);
-  }
-
-  viewClientDetails(id: number) {
-    this.router.navigate(['/details-agent', id]);
   }
 
 }
