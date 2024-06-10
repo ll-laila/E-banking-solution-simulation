@@ -5,21 +5,22 @@ import {FormControl, FormGroup, NgForm, Validators} from "@angular/forms";
 
 import {MyToken} from "../../models/MyToken";
 import {jwtDecode} from "jwt-decode";
-import {UserPasswordService} from "../../service/UserPassword.service";
+import {AgentChangePasswordService} from "../../service/AgentChangePassword.service";
+import {ClientChangePasswordService} from "../../service/client-change-password.service";
 
 @Component({
   selector: 'app-change-password',
-  templateUrl: './change-password.component.html',
-  styleUrls: ['./change-password.component.scss']
+  templateUrl: './Agentchange-password.component.html',
+  styleUrls: ['./Agentchange-password.component.scss']
 })
-export class ChangePasswordComponent implements OnInit {
+export class AgentchangePasswordComponent implements OnInit {
   test: Date = new Date();
   loading = false;
   submitted = false;
 
   constructor(
     private router: Router,
-    private userService: UserPasswordService,
+    private userService: ClientChangePasswordService,
     private cookieService: CookieService,
     private route: ActivatedRoute
   ) {}

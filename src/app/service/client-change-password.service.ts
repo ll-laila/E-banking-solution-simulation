@@ -1,12 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
 import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserPasswordService {
+export class ClientChangePasswordService {
   constructor(
     private httpclient: HttpClient,
     private cookieService : CookieService
@@ -15,7 +14,7 @@ export class UserPasswordService {
 
 
   public changePswFirstTime(changePswData: any) {
-    let dataUrl: string = `http://localhost:8080/api/v1/client/changePassword`;
+    let dataUrl: string = `http://localhost:8080/client/infos/changePassword`;
 
     const headers = {
       'Authorization': `${this.authorization}`
@@ -24,3 +23,4 @@ export class UserPasswordService {
   }
 
 }
+

@@ -9,7 +9,6 @@ import {AuthenticationService} from '../../service/authentication.service';
 
 
 @Component({
-  // tslint:disable-next-line:component-selector
   selector: 'login',
   templateUrl: 'login.component.html',
   standalone: true,
@@ -23,12 +22,15 @@ export class LoginComponent implements OnInit {
 
   public phoneNumber: string;
   test: Date = new Date();
+
   constructor(
     private router: Router,
     private userService: AuthenticationService
-  ) {}
+  ) {
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   login(loginForm: NgForm) {
     const phoneNumber = loginForm.value.phoneNumber;
@@ -37,25 +39,24 @@ export class LoginComponent implements OnInit {
         const decodedToken = jwtDecode<MyToken>(response.access_token);
 
         const expirationDate = new Date();
-        expirationDate.setTime(expirationDate.getTime() +  24 * 60 * 60 * 1000);
+        expirationDate.setTime(expirationDate.getTime() + 24 * 60 * 60 * 1000);
         const expires = `expires=${expirationDate.toUTCString()}`;
         document.cookie = `Authorization=${encodeURIComponent('Bearer ' + response.access_token)}; ${expires}; path=/`;
         console.log(decodedToken.role);
         console.log(decodedToken.isFirstLogin);
-
         if (decodedToken.role === 'ADMIN') {
-          this.router.navigate(['/admin'], { queryParams: { phoneNumber: phoneNumber } });
+          this.router.navigate(['/admin'], {queryParams: {phoneNumber: phoneNumber}});
         } else if (decodedToken.role == 'AGENT') {
           if (decodedToken.isFirstLogin === true) {
-            this.router.navigate(['/change-password']);
+            this.router.navigate(['/agent-change-password']);
           } else {
-            this.router.navigate(['/agent'], { queryParams: { phoneNumber: phoneNumber } });
+            this.router.navigate(['/agent'], {queryParams: {phoneNumber: phoneNumber}});
           }
         } else if (decodedToken.role == 'CLIENT') {
           if (decodedToken.isFirstLogin === true) {
-            this.router.navigate(['/change-password']);
+            this.router.navigate(['/client-change-password']);
           } else {
-            this.router.navigate(['/client'], { queryParams: { phoneNumber: phoneNumber } });
+            this.router.navigate(['/client'], {queryParams: {phoneNumber: phoneNumber}});
           }
         } else {
           this.router.navigate(['/login']);
@@ -66,4 +67,5 @@ export class LoginComponent implements OnInit {
       }
     });
   }
+
 }
