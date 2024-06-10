@@ -32,4 +32,8 @@ export class SidebarAgentComponent implements OnInit {
             this.isCollapsed = true;
         });
     }
+
+  logout() {
+    this.router.navigate(['/login']);
+  }
 }
