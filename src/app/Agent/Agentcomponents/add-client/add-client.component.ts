@@ -5,6 +5,7 @@ import {catchError, throwError} from 'rxjs';
 import {IClient} from '../../../models/Client';
 import {ClientService} from '../../../service/client.service';
 import {ToastrService} from 'ngx-toastr';
+import {IClientRegistrationRequest} from '../../../models/ClientRegistrationRequest';
 
 @Component({
   selector: 'app-add-client',
@@ -13,14 +14,16 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class AddClientComponent implements OnInit {
 
-  public client: IClient = {} as IClient;
+ clientRegistrationRequest: IClientRegistrationRequest = {} as IClientRegistrationRequest;
   constructor(private clientService: ClientService, private router: Router , private toastr: ToastrService) {}
 
   ngOnInit(): void {
   }
 
-  /*createSubmit() {
-      this.clientService.createClient(this.client)
+
+
+  createSubmit() {
+      this.clientService.createClient(this. clientRegistrationRequest)
           .subscribe((data: any) => {
                   this.toastr.success('Client created successfully', 'Success');
                   this.router.navigate([`/agent`]).then();
@@ -32,5 +35,5 @@ export class AddClientComponent implements OnInit {
                 }, 300); // Délai de 3 secondes avant la redirection
               });
   }
-*/
+
 }

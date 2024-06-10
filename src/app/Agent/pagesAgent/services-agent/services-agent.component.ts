@@ -29,7 +29,6 @@ export class ServicesAgentComponent implements OnInit {
   }
 
 
-
   getAllServicesByAgent(idAgent: number): void {
     this.agentservices.getAllAgentServices(idAgent).subscribe(
       (services: IAgentServices[]) => {
@@ -52,9 +51,11 @@ export class ServicesAgentComponent implements OnInit {
       },
       (error) => {
         console.error('An error occurred while deleting the agent:', error);
-      }
-    );
+      })
   }
+
+
+
 
   updateService(id: number) {
     this.router.navigate(['/edit-agent'],{ queryParams: { id: id } });

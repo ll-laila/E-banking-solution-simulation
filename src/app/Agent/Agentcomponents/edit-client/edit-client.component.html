@@ -8,7 +8,7 @@
       <div class="table-responsive">
         <div class="container-fluid">
           <div class="card border-0 shadow px-1">
-            <form (submit)="update()">
+            <form >
               <div class="card-body">
                 <div class="d-flex justify-content-between align-items-center">
                   <h2 class="card-title text-right Montserrat" style="color:#e37431; margin-bottom: 0;">Informations personnelles</h2>
@@ -28,10 +28,6 @@
                     <div class="form-floating col-md-4">
                       <label for="lastName" class="Montserrat" style="color:#2f3a8a">Nom *</label>
                       <input type="text" class="form-control" [(ngModel)]="client.lastName" name="lastName" [value]="client.lastName" id="lastName" placeholder="Last Name" style="border-radius:20px; background-color:#F8F8F8" />
-                    </div>
-                    <div class="form-floating col-md-4">
-                      <label for="dateOfBirth" class="Montserrat" style="color:#2f3a8a">Date de naissance *</label>
-                      <input type="date" class="form-control" [(ngModel)]="client.birthDate" name="birthDate" [value]="client.birthDate" id="dateOfBirth" placeholder="Date of Birth" style="border-radius:20px; background-color:#F8F8F8" />
                     </div>
                   </div>
                   <div class="row g-2 mb-4 mt-10">

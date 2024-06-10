@@ -5,27 +5,32 @@ import {IClient} from '../models/Client';
 
 import {  Subject, catchError, throwError } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
+
+import {Operation} from "../client/models/operation";
+
 import {IPaymentAccount} from '../models/paymentAccount';
 import { IClientRegistrationRequest} from '../models/ClientRegistrationRequest';
 import {IAgent} from '../models/Agent';
 import {IAgentServices} from "../models/AgentServices";
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClientService {
 
-  private serverUrl = `http://localhost:9090/api/client` ;
+  private serverUrl = `http://localhost:9090/api/client`;
   private authorization = this.cookieService.get('Authorization');
 
-  constructor(private httpClient: HttpClient, private cookieService: CookieService) { }
+  constructor(private httpClient: HttpClient, private cookieService: CookieService) {
+  }
 
   public createClient(clientRegisterRequest: IClientRegistrationRequest): Observable<IClientRegistrationRequest> {
     const headers = {
       'Authorization': `${this.authorization}`
     };
     const dataUrl = `${this.serverUrl}/api/v1/admin/register`;
-    return this.httpClient.post<IClientRegistrationRequest>(dataUrl, clientRegisterRequest, { headers })
+    return this.httpClient.post<IClientRegistrationRequest>(dataUrl, clientRegisterRequest, {headers})
       .pipe(catchError(this.handleError));
   }
 
@@ -47,19 +52,12 @@ export class ClientService {
     const headers = {
       'Authorization': `${this.authorization}`
     };
-    const dataUrl = `${this.serverUrl}/api/v1/agent/delete/${id}`;
+    const dataUrl = `${this.serverUrl}/api/v1/client/delete/${id}`;
     return this.httpClient.delete<{}>(dataUrl, {headers}).pipe(catchError(this.handleError));
 
   }
 
-  public updateClient(client: IClient, id: number): Observable<IClient> {
-    const headers = {
-      'Authorization': `${this.authorization}`
-    };
-    const dataUrl = `${this.serverUrl}/api/v1/agent/update/${id}`;
-    return this.httpClient.put<IClient>(dataUrl, client, {headers}).pipe(catchError(this.handleError));
 
-  }
 
   public getClient(id: number): Observable<IClient> {
     const headers = {
@@ -85,6 +83,12 @@ export class ClientService {
   getAgentById(id: string): Observable<any> {
     return this.httpClient.get<any>(`${this.serverUrl}/${id}`);
   }
+
+  getAgentOperation(id: number): Observable<Operation[]> {
+    let dataUrl: string = `${this.serverUrl}/operations/${id}`;
+    const headers = {
+      'Authorization': `${this.authorization}`
+    };
+    return this.httpClient.get<Operation[]>(dataUrl, {headers}).pipe(catchError(this.handleError));
+  }
 }
-
-
