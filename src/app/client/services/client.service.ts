@@ -3,7 +3,7 @@ import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {catchError, Observable, throwError} from 'rxjs';
 import { Operation } from '../models/operation';
 import { CookieService } from 'ngx-cookie-service';
-import {IAgent} from "../../models/Agent";
+
 
 
 @Injectable({
@@ -11,7 +11,7 @@ import {IAgent} from "../../models/Agent";
 })
 export class ClientService {
 
-  private serverUrl: string = `http://localhost:9090/client/infos`;
+  private serverUrl: string = `http://localhost:8080/client/infos`;
   private authorization = this.cookieService.get('Authorization');
 
   constructor(private httpClient: HttpClient, private cookieService: CookieService) { }
