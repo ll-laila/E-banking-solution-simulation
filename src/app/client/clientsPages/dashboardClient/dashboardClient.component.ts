@@ -51,6 +51,7 @@ export class DashboardClientComponent implements OnInit {
          this.getClientOperations(this.phoneNumber);
        }
      });
+
   }
 
   getClientByPhone(phoneNum: string) {
