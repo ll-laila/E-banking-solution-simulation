@@ -5,6 +5,7 @@ import { Operation } from '../../models/operation';
 import {ActivatedRoute} from "@angular/router";
 import {SharedClientService} from "../../services/shared-client.service";
 import {PaymentAccount} from "../../models/paymentAccount";
+import {SharedInfosService} from "../../../service/shared-infos.service";
 
 @Component({
   selector: 'app-dashboard',
@@ -26,19 +27,14 @@ export class DashboardClientComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private clientService: ClientService,
-    private sharedClientService: SharedClientService
+    private sharedClientService: SharedClientService,
+    private sharedInfosService: SharedInfosService
+
   ) { }
 
   ngOnInit() {
-   this.route.queryParams.subscribe(params => {
-     this.sharedClientService.setClient(this.client);
-       this.phoneNumber = params['phoneNumber'];
-       if (this.phoneNumber) {
-         this.getClientByPhone(this.phoneNumber);
-         this.getClientOperations(this.phoneNumber);
-       }
-     });
-
+    this.getClientByPhone(this.sharedInfosService.getPhoneNumber());
+    this.getClientOperations(this.sharedInfosService.getPhoneNumber());
   }
 
   getClientByPhone(phoneNum: string) {

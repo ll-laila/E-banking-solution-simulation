@@ -7,7 +7,7 @@ import jwt_decode from 'jwt-decode';
   providedIn: 'root'
 })
 export class AuthenticationService {
-  PATH_OF_API = 'http://localhost:8080/api/v1/auth/authenticate';
+  PATH_OF_API = 'http://localhost:9090/api/v1/auth/authenticate';
 
   constructor(
     private httpclient: HttpClient,

@@ -20,21 +20,6 @@ export class CreditorsListComponent implements OnInit {
   public currentMsg: number;
 
 
-  /*public agents: Agent[] = [
-  {
-    id: 1,
-    firstName: "Inwi",
-    lastName: "",
-    email: "INWI@gmail.com",
-    phoneNumber: "0534551234",
-    image: "https://images.teamtailor-cdn.com/images/s3/teamtailor-production/gallery_picture-v6/image_uploads/9ed77d49-3b8e-4fbc-9639-2ec71db044d8/original.png",
-    services: [
-      { id: 1, name: "paiement Internet", type: "facture internet" },
-      { id: 2, name: "paiement Carte SIM", type: "facture carte SIM" },
-    ],
-  }
-  ]*/
-
 
   constructor(private clientService: ClientService,
               private paymentService: PaymentService,
