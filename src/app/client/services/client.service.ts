@@ -71,8 +71,6 @@ export class ClientService {
     return this.httpClient.get<Operation[]>(dataUrl, { headers }).pipe(catchError(this.handleError));
   }
 
-
-
   //Error Handling
   public handleError(error: HttpErrorResponse){
     let errorMessage: string = '';
