@@ -17,7 +17,6 @@ export class AgentservicesService {
   constructor(private httpClient: HttpClient, private cookieService: CookieService) {}
 
 
-
   public createService(client: IAgentServices, id: number): Observable<IAgentServices> {
        const headers = {
          'Authorization': `${this.authorization}`
@@ -26,9 +25,14 @@ export class AgentservicesService {
   return this.httpClient.post<IAgentServices>(dataUrl, client, {headers}).pipe(catchError(this.handleError));
   }
 
-    public getAllServices(): Observable<IAgentServices[]> {
-        return this.httpClient.get<IAgentServices[]>(this.serverUrl);
 
+    public getAllAgentServices(idAgent: any): Observable<IAgentServices[]> {
+      const headers = {
+        'Authorization': `${this.authorization}`
+      };
+      const dataUrl = `${this.serverUrl}/api/v1/client/serviceByAgent/${idAgent}`;
+
+        return this.httpClient.get<IAgentServices[]>(this.serverUrl);
     }
 
     public deleteService(serviceId: number): Observable<HttpResponse<{}>> {
@@ -47,13 +51,17 @@ export class AgentservicesService {
         const dataUrl = `${this.serverUrl}/api/v1/client/service/update/${serviceId}`;
         return this.httpClient.put<IAgentServices>(dataUrl, service, {headers}).pipe(catchError(this.handleError));
     }
-    public getService(agentId: number): Observable<IAgentServices> {
+
+
+    public getService(serviceId: number): Observable<IAgentServices> {
         const headers = {
             'Authorization': `${this.authorization}`
         };
-        const dataUrl = `${this.serverUrl}/api/v1/client/serviceByAgent/${agentId}`;
+        const dataUrl = `${this.serverUrl}/api/v1/client/serviceByAgent/${serviceId}`;
         return this.httpClient.get<IAgentServices>(dataUrl, {headers}).pipe(catchError(this.handleError));
     }
+
+
     public handleError(error: HttpErrorResponse) {
         let errorMessage = '';
         if (error.error instanceof ErrorEvent) {
