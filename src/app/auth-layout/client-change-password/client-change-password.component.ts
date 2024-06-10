@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {CookieService} from "ngx-cookie-service";
 import {FormControl, FormGroup, NgForm, Validators} from "@angular/forms";
-
 import {ClientChangePasswordService} from "../../service/client-change-password.service";
 
 @Component({

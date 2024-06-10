@@ -15,6 +15,7 @@ import {PaymentAccount} from "../../models/paymentAccount";
 export class DashboardClientComponent implements OnInit {
 
   public phoneNumber: string| undefined;
+
   public client : Client;
 
   public paymentAccount: PaymentAccount;

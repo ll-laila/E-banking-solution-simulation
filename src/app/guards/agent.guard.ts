@@ -10,12 +10,13 @@ export class AgentGuard implements CanActivate {
 
   constructor(private authService: AuthenticationService , private router: Router) {}
 
+  // @ts-ignore
   canActivate(): boolean {
-    if (this.authService.isAgent()) {
+    /*if (this.authService.isAgent()) {
       return true;
     } else {
       this.router.navigate(['/login']); // Redirigez vers la page de connexion si l'utilisateur n'est pas un agent
       return false;
-    }
+    }*/
   }
 }

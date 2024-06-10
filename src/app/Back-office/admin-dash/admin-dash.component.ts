@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthenticationService} from "../../service/authentication.service";
 
 @Component({
   selector: 'app-admin-layout',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-dash.component.scss']
 })
 export class AdminDashComponent implements OnInit {
+  isAdmin: boolean = false;
 
-  constructor() { }
+  constructor(private authService: AuthenticationService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.isAdmin = this.authService.isAdmin();
+    console.log('isAdmin:', this.isAdmin);
   }
+
 
 }
