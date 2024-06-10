@@ -39,7 +39,7 @@ export class ChangePasswordComponent implements OnInit {
     this.userService.changePswFirstTime(changePswForm.value).subscribe(
       (response: any) => {
         console.log('Response from API:', response);
-
+        this.router.navigate(['/agent']);
         try {
           console.log("hi");
           const decodedToken = jwtDecode<MyToken>(response.access_token);
