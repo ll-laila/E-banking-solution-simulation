@@ -14,14 +14,7 @@ import {SharedClientService} from "../../services/shared-client.service";
 export class DashboardClientComponent implements OnInit {
 
   public phoneNumber: string| undefined;
-  public client : Client = {
-    id : -1,
-    firstName: "",
-    lastName: "",
-    email: "",
-    phoneNumber: "",
-    paymentAccount: null
-  };
+  public client : Client ;
 
   public operations: Operation[];
 
