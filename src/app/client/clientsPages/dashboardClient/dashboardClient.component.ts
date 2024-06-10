@@ -15,32 +15,11 @@ import {PaymentAccount} from "../../models/paymentAccount";
 export class DashboardClientComponent implements OnInit {
 
   public phoneNumber: string| undefined;
-  public client : Client = {
-    id : -1,
-    firstName: "",
-    lastName: "",
-    email: "",
-    phoneNumber: "",
-    paymentAccount: null
-  };
+  public client : Client;
 
   public paymentAccount: PaymentAccount;
 
   public operations: Operation[];
-
-
-  /* public client : Client = {
-   id : 1,
-   firstName: "laila",
-   lastName: "timasli",
-   email: "laila@gmail.com",
-   phoneNumber: "06252624222",
-   paymentAccount: {
-     balance: 1200,
-     type:"200"
-   }
- };*/
-
 
 
   constructor(
@@ -50,14 +29,15 @@ export class DashboardClientComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.sharedClientService.setClient(this.client);
    this.route.queryParams.subscribe(params => {
+     this.sharedClientService.setClient(this.client);
        this.phoneNumber = params['phoneNumber'];
        if (this.phoneNumber) {
          this.getClientByPhone(this.phoneNumber);
          this.getClientOperations(this.phoneNumber);
        }
      });
+
   }
 
   getClientByPhone(phoneNum: string) {
