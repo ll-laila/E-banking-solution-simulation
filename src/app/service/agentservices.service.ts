@@ -11,7 +11,9 @@ import {CookieService} from 'ngx-cookie-service';
 })
 export class AgentservicesService {
 
-  private serverUrl = `http://localhost:9090` ;
+
+  private serverUrl = `http://localhost:8080/api/v1/client` ;
+
   private authorization = this.cookieService.get('Authorization');
 
   constructor(private httpClient: HttpClient, private cookieService: CookieService) {}
@@ -21,7 +23,7 @@ export class AgentservicesService {
        const headers = {
          'Authorization': `${this.authorization}`
        };
-  const dataUrl = `${this.serverUrl}/api/v1/client/services/${id}`;
+  const dataUrl = `${this.serverUrl}/services/${id}`;
   return this.httpClient.post<IAgentServices>(dataUrl, client, {headers}).pipe(catchError(this.handleError));
   }
 
@@ -30,7 +32,7 @@ export class AgentservicesService {
       const headers = {
         'Authorization': `${this.authorization}`
       };
-      const dataUrl = `${this.serverUrl}/api/v1/client/serviceByAgent/${idAgent}`;
+      const dataUrl = `${this.serverUrl}/serviceByAgent/${idAgent}`;
 
         return this.httpClient.get<IAgentServices[]>(this.serverUrl);
     }
@@ -39,7 +41,7 @@ export class AgentservicesService {
         const headers = {
             'Authorization': `${this.authorization}`
         };
-        const dataUrl = `${this.serverUrl}/api/v1/client/service/delete/${serviceId}`;
+        const dataUrl = `${this.serverUrl}/service/delete/${serviceId}`;
         return this.httpClient.delete<HttpResponse<{}>>(dataUrl, {headers}).pipe(catchError(this.handleError));
     }
 
@@ -48,7 +50,7 @@ export class AgentservicesService {
         const headers = {
             'Authorization': `${this.authorization}`
         };
-        const dataUrl = `${this.serverUrl}/api/v1/client/service/update/${serviceId}`;
+        const dataUrl = `${this.serverUrl}/service/update/${serviceId}`;
         return this.httpClient.put<IAgentServices>(dataUrl, service, {headers}).pipe(catchError(this.handleError));
     }
 
@@ -57,7 +59,7 @@ export class AgentservicesService {
         const headers = {
             'Authorization': `${this.authorization}`
         };
-        const dataUrl = `${this.serverUrl}/api/v1/client/serviceByAgent/${serviceId}`;
+        const dataUrl = `${this.serverUrl}/serviceByAgent/${serviceId}`;
         return this.httpClient.get<IAgentServices>(dataUrl, {headers}).pipe(catchError(this.handleError));
     }
 

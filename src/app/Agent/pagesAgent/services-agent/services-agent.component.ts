@@ -4,8 +4,8 @@ import {ClientService} from '../../../service/client.service';
 import {IClient} from '../../../models/Client';
 import {AgentservicesService} from '../../../service/agentservices.service';
 import {IAgentServices} from '../../../models/AgentServices';
-import {IAgent} from "../../../models/Agent";
-import {SharedAgentService} from "../../../service/shared-agent.service";
+import {IAgent} from '../../../models/Agent';
+import {SharedAgentService} from '../../../service/shared-agent.service';
 
 @Component({
   selector: 'app-services-agent',
@@ -14,7 +14,7 @@ import {SharedAgentService} from "../../../service/shared-agent.service";
 })
 export class ServicesAgentComponent implements OnInit {
 
-  constructor(private router: Router, private agentservices: AgentservicesService,private sharedAgentService: SharedAgentService) { }
+  constructor(private router: Router, private agentservices: AgentservicesService, private sharedAgentService: SharedAgentService) { }
 
   services: IAgentServices[] = [];
   agent: IAgent ;
@@ -22,6 +22,7 @@ export class ServicesAgentComponent implements OnInit {
 
   ngOnInit(): void {
     this.agent = this.sharedAgentService.getAgent();
+    this.getAllServicesByAgent(this.agent.id);
   }
 
   addService() {
@@ -51,14 +52,14 @@ export class ServicesAgentComponent implements OnInit {
       },
       (error) => {
         console.error('An error occurred while deleting the agent:', error);
-      })
+      });
   }
 
 
 
 
   updateService(id: number) {
-    this.router.navigate(['/edit-agent'],{ queryParams: { id: id } });
+    this.router.navigate(['/edit-agent'], { queryParams: { id: id } });
   }
 
 }
