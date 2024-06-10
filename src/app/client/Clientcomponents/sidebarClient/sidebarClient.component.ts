@@ -12,6 +12,7 @@ export const ROUTES: RouteInfo[] = [
     { path: 'agents', title: 'Agents',  icon:'fas fa-users text-red', class: '' },
     { path: 'historique', title: 'Historique',  icon:'fas fa-chart-bar text-blue', class: '' },
     { path: 'mon-compte', title: 'Mon compte',  icon:'ni-single-02 text-yellow', class: '' },
+    { path:'', title:'Logout', icon:'fas fa-sign-out-alt text-danger', class:''},
 ];
 
 @Component({

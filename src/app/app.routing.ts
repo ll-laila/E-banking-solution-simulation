@@ -8,15 +8,10 @@ import {AdminDashComponent} from './Back-office/admin-dash/admin-dash.component'
 
 import {AgentDashComponent} from './Agent/agent-dash/agent-dash.component';
 import { ClientDashComponent } from './client/client-dash/client-dash.component';
-
-import {DashboardClientComponent} from './client/clientsPages/dashboardClient/dashboardClient.component';
-import {ProfileClientComponent} from './client/clientsPages/profileClient/profileClient.component';
-import {HistoryComponent} from './client/clientsPages/history/history.component';
-import {CreditorsListComponent} from './client/clientsPages/creditorsList/creditorsList.component';
-import {Payment} from './client/clientsPages/payment/payment';
 import {LoginComponent} from "./auth-layout/login/login.component";
-import {ChangePasswordComponent} from "./auth-layout/change-password/change-password.component";
+import {AgentchangePasswordComponent} from "./auth-layout/Agentchange-password/Agentchange-password.component";
 import {ClientProDashComponent} from "./Client-Pro/clientPro-dash/clientPro-dash.component";
+import {ClientChangePasswordComponent} from "./auth-layout/client-change-password/client-change-password.component";
 
 
 
@@ -56,7 +51,6 @@ const routes: Routes = [
       loadChildren: () => import('src/app/Agent/agent-dash/agent-dash.module').then(m => m.AgentDashModule)
     }]},
 
-
   {
   path: 'client',
   redirectTo: 'client',
@@ -78,12 +72,16 @@ const routes: Routes = [
 
     path: 'login',
     component: LoginComponent,
-  },  {
-
-
-    path: 'change-password',
-    component: ChangePasswordComponent,
-  }, {
+  },
+  {
+    path: 'agent-change-password',
+    component: AgentchangePasswordComponent,
+  },
+  {
+    path: 'client-change-password',
+    component: ClientChangePasswordComponent,
+  }
+  , {
 
 
     path: 'client-pro',
