@@ -48,13 +48,16 @@ export class DashboardClientComponent implements OnInit {
 
   ngOnInit() {
     this.sharedClientService.setClient(this.client);
-    this.route.queryParams.subscribe(params => {
+    this.phoneNumber = "0600000000";
+    this.getClientByPhone(this.phoneNumber);
+    this.getClientOperations(this.phoneNumber);
+   /* this.route.queryParams.subscribe(params => {
        this.phoneNumber = params['phoneNumber'];
        if (this.phoneNumber) {
          this.getClientByPhone(this.phoneNumber);
          this.getClientOperations(this.phoneNumber);
        }
-     });
+     });*/
   }
 
   getClientByPhone(phoneNum: string) {
