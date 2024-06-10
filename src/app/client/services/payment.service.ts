@@ -6,8 +6,8 @@ import { map } from 'rxjs/operators';
 import {catchError, Observable, throwError} from 'rxjs';
 import {FeedDetails} from "../models/feedDetails";
 import {PaymentDetails} from "../models/payment";
-
-const apiUrl = 'http://localhost:9090/fim/est3Dgate/';
+import {FeedResponse} from "../models/feedResponse";
+import {PaymentResponse} from "../models/paymentResponse";
 
 
 @Injectable({
@@ -17,31 +17,31 @@ const apiUrl = 'http://localhost:9090/fim/est3Dgate/';
 
 export class PaymentService {
 
-  private serverUrl: string = `http://localhost:9090/fim/est3Dgate`;
+  private serverUrl: string = `http://localhost:9090/cmi/service`;
   private authorization = this.cookieService.get('Authorization');
 
 
   constructor(private httpClient: HttpClient, private cookieService: CookieService) { }
 
 
-  public feedPaymentAccount(feedDetails : FeedDetails): Observable<any> {
+  public feedPaymentAccount(feedDetails : FeedDetails): Observable<FeedResponse> {
 
     const headers = {
       'Authorization': `${this.authorization}`
     };
     let dataUrl: string = `${this.serverUrl}/feedAccount`;
-    return this.httpClient.put<FeedDetails>(dataUrl, feedDetails, {headers}).pipe(catchError(this.handleError));
+    return this.httpClient.put<FeedResponse>(dataUrl, feedDetails, {headers}).pipe(catchError(this.handleError));
 
   }
 
 
-  public PayService(paymentDetails : PaymentDetails): Observable<any> {
+  public PayService(paymentDetails : PaymentDetails): Observable<PaymentResponse> {
 
     const headers = {
       'Authorization': `${this.authorization}`
     };
     let dataUrl: string = `${this.serverUrl}/payService`;
-    return this.httpClient.put<PaymentDetails>(dataUrl, paymentDetails, {headers}).pipe(catchError(this.handleError));
+    return this.httpClient.put<PaymentResponse>(dataUrl, paymentDetails, {headers}).pipe(catchError(this.handleError));
 
   }
 

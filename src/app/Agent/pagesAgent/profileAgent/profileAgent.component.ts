@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {ActivatedRoute} from "@angular/router";
+import {AgentService} from "../../../service/agent.service";
+import {ClientService} from "../../../service/client.service";
 
 @Component({
   selector: 'app-user-profile',
@@ -13,9 +16,26 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 })
 export class ProfileAgentComponent implements OnInit {
 
-  constructor() { }
+  agent: any = {
+    phone: '',
+    email: '',
+    firstName: '',
+    lastName: '',
+    address: ''
+  };
 
-  ngOnInit() {
+  constructor(private route: ActivatedRoute, private clientService: ClientService) { }
+
+  ngOnInit(): void {
+    const agentId = this.route.snapshot.paramMap.get('id');
+    this.getAgentDetails(agentId);
+  }
+
+
+  getAgentDetails(id: string): void {
+    this.clientService.getAgentById(id).subscribe(data => {
+      this.agent = data;
+    });
   }
 
 }

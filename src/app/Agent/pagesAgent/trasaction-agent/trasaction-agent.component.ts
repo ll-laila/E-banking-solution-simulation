@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {ClientService} from "../../../client/services/client.service";
+import {Operation} from "../../../client/models/operation";
 
 @Component({
   selector: 'app-trasaction-agent',
@@ -7,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TrasactionAgentComponent implements OnInit {
 
-  constructor() { }
+  public phoneNumber: string| undefined;
+  public operations: Operation[];
 
-  ngOnInit(): void {
+  constructor(private clientService: ClientService) {}
+
+  ngOnInit() {
+    this.getClientOperations(this.phoneNumber);
   }
+
+  public getClientOperations(phoneNum: string) {
+    this.clientService.getClientOperation(phoneNum).subscribe(res => {
+      console.log(res);
+      this.operations = res;
+    }, error => {
+      console.log(error);
+    });
+  }
+
 
 }

@@ -10,7 +10,7 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class ClientService {
 
-  private serverUrl: string = `http://localhost:9090/fim/est3Dgate`;
+  private serverUrl: string = `http://localhost:9090/client/infos`;
   private authorization = this.cookieService.get('Authorization');
 
   constructor(private httpClient: HttpClient, private cookieService: CookieService) { }
@@ -32,6 +32,7 @@ export class ClientService {
     return this.httpClient.get(dataUrl, { headers }).pipe(catchError(this.handleError));
   }
 
+
   public getClientById(clientId : number): Observable<any> {
     let dataUrl: string = `${this.serverUrl}/Profile/${clientId}`;
     const headers = {
@@ -40,6 +41,7 @@ export class ClientService {
     return this.httpClient.get(dataUrl, { headers }).pipe(catchError(this.handleError));
   }
 
+
   public getPaymentAccountByClientId(clientId : number): Observable<any> {
     let dataUrl: string = `${this.serverUrl}/PaymentAccount/${clientId}`;
     const headers = {
@@ -47,6 +49,8 @@ export class ClientService {
     };
     return this.httpClient.get(dataUrl, { headers }).pipe(catchError(this.handleError));
   }
+
+
 
   getClientByPhoneNumber(phoneNumber: String): Observable<any> {
     let dataUrl: string = `${this.serverUrl}/Profile/Phone/${phoneNumber}`;

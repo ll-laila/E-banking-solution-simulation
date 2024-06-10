@@ -7,16 +7,17 @@
       <li class="nav-item" ngbDropdown placement="bottom-right">
         <a class="nav-link pr-0" role="button" ngbDropdownToggle>
           <div class="media align-items-center">
-            <span class="avatar avatar-sm rounded-circle">
-              <img alt="Image placeholder" src="assets/img/user.jpg">
-            </span>
+              <i class="fas fa-exchange-alt text-red" ></i>
             <div class="media-body ml-2 d-none d-lg-block">
               <span class="mb-0 text-sm font-weight-bold">Alimenter</span>
             </div>
           </div>
         </a>
         <div class="dropdown-menu-arrow dropdown-menu-right" ngbDropdownMenu>
-          <form [formGroup]="paymentForm">
+          <div class="dropdown-header noti-title"  *ngIf="currentStep === 2">
+            <h6 class="text-overflow m-2">{{responseMessage}} </h6>
+          </div>
+          <form [formGroup]="paymentForm"  *ngIf="!responseMessage">
             <div class="dropdown-header noti-title">
               <h6 class="text-overflow m-0">Montant </h6>
             </div>
