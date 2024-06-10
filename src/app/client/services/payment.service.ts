@@ -17,7 +17,7 @@ import {PaymentResponse} from "../models/paymentResponse";
 
 export class PaymentService {
 
-  private serverUrl: string = `http://localhost:8080/cmi/service`;
+  private serverUrl: string = `http://localhost:9090/cmi/service`;
   private authorization = this.cookieService.get('Authorization');
 
 

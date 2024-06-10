@@ -8,6 +8,7 @@ import { DatePipe } from '@angular/common';
 
 import {AuthenticationService} from '../../service/authentication.service';
 import jwtDecode from "jwt-decode";
+import {SharedInfosService} from "../../service/shared-infos.service";
 
 
 
@@ -28,7 +29,9 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private userService: AuthenticationService
+    private userService: AuthenticationService,
+    private sharedInfosService: SharedInfosService
+
   ) {
   }
 
@@ -36,7 +39,7 @@ export class LoginComponent implements OnInit {
   }
 
   login(loginForm: NgForm) {
-    const phoneNumber = loginForm.value.phoneNumber;
+     this.phoneNumber = loginForm.value.phoneNumber;
     this.userService.login(loginForm.value).subscribe({
       next: (response: any) => {
         const decodedToken = jwtDecode<MyToken>(response.access_token);
@@ -48,18 +51,21 @@ export class LoginComponent implements OnInit {
         console.log(decodedToken.role);
         console.log(decodedToken.isFirstLogin);
         if (decodedToken.role === 'ADMIN') {
-          this.router.navigate(['/admin'], {queryParams: {phoneNumber: phoneNumber}});
+          this.router.navigate(['/admin']);
         } else if (decodedToken.role == 'AGENT') {
           if (decodedToken.isFirstLogin === true) {
             this.router.navigate(['/agent-change-password']);
           } else {
-            this.router.navigate(['/agent'], {queryParams: {phoneNumber: phoneNumber}});
+            this.sharedInfosService.setPhoneNumber(this.phoneNumber);
+            this.router.navigate(['/agent']);
           }
         } else if (decodedToken.role == 'CLIENT') {
           if (decodedToken.isFirstLogin === true) {
             this.router.navigate(['/client-change-password']);
           } else {
-            this.router.navigate(['/client'], {queryParams: {phoneNumber: phoneNumber}});
+            this.sharedInfosService.setPhoneNumber(this.phoneNumber);
+            this.router.navigate(['/client']);
+
           }
         } else {
           this.router.navigate(['/login']);
