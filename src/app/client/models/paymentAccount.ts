@@ -1,6 +1,6 @@
 
 export interface PaymentAccount {
-  id? : number;
+  id : number;
   balance : number;
   type : string;
 }

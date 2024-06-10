@@ -4,6 +4,7 @@ import { ClientService } from "../../services/client.service";
 import { Operation } from '../../models/operation';
 import {ActivatedRoute} from "@angular/router";
 import {SharedClientService} from "../../services/shared-client.service";
+import {PaymentAccount} from "../../models/paymentAccount";
 
 @Component({
   selector: 'app-dashboard',
@@ -22,6 +23,8 @@ export class DashboardClientComponent implements OnInit {
     phoneNumber: "",
     paymentAccount: null
   };
+
+  public paymentAccount: PaymentAccount;
 
   public operations: Operation[];
 
