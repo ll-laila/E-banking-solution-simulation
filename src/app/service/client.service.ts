@@ -5,14 +5,10 @@ import {IClient} from '../models/Client';
 
 import { catchError, throwError } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
-import {Operation} from '../client/models/operation';
-
 import {IPaymentAccount} from '../models/paymentAccount';
 import { IClientRegistrationRequest} from '../models/ClientRegistrationRequest';
+import {Operation} from '../client/models/operation';
 
-
-import {Operation} from "../client/models/operation";
-import { IClientRegistrationRequest} from '../models/ClientRegistrationRequest';
 
 
 
@@ -22,8 +18,6 @@ import { IClientRegistrationRequest} from '../models/ClientRegistrationRequest';
 export class ClientService {
 
   private serverUrl = `http://localhost:8080/api/v1/client`;
-
-  private serverUrl = `http://localhost:8080/api/client`;
 
   private authorization = this.cookieService.get('Authorization');
 
