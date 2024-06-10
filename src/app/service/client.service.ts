@@ -45,19 +45,12 @@ export class ClientService {
     const headers = {
       'Authorization': `${this.authorization}`
     };
-    const dataUrl = `${this.serverUrl}/api/v1/agent/delete/${id}`;
+    const dataUrl = `${this.serverUrl}/api/v1/client/delete/${id}`;
     return this.httpClient.delete<{}>(dataUrl, {headers}).pipe(catchError(this.handleError));
 
   }
 
-  public updateClient(client: IClient, id: number): Observable<IClient> {
-    const headers = {
-      'Authorization': `${this.authorization}`
-    };
-    const dataUrl = `${this.serverUrl}/api/v1/agent/update/${id}`;
-    return this.httpClient.put<IClient>(dataUrl, client, {headers}).pipe(catchError(this.handleError));
 
-  }
 
   public getClient(id: number): Observable<IClient> {
     const headers = {

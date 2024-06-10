@@ -72,6 +72,8 @@ export class AgentService {
     return this.httpClient.put<IAgent>(dataUrl, agent, {headers}).pipe(catchError(this.handleError));
   }
 
+
+
   public deleteAgent(id: number): Observable<{}> {
     const headers = {
       'Authorization': `${this.authorization}`
