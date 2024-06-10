@@ -31,15 +31,7 @@ export class DashboardClientProComponent implements OnInit {
 
 
   getAllClients(): void {
-    this.clientService.getAllClients().subscribe(
-      (clients: IClient[]) => {
-        this.clients = clients;
-      },
 
-      (error) => {
-        console.error('Une erreur s\'est produite lors de la récupération des clients :', error);
-      }
-    );
   }
 
   deleteClient(id: number) {

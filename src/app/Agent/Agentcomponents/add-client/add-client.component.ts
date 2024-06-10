@@ -19,7 +19,7 @@ export class AddClientComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  createSubmit() {
+  /*createSubmit() {
       this.clientService.createClient(this.client)
           .subscribe((data: any) => {
                   this.toastr.success('Client created successfully', 'Success');
@@ -32,5 +32,5 @@ export class AddClientComponent implements OnInit {
                 }, 300); // Délai de 3 secondes avant la redirection
               });
   }
-
+*/
 }
