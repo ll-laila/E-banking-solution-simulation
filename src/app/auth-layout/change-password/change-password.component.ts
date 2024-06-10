@@ -4,7 +4,7 @@ import {CookieService} from "ngx-cookie-service";
 import {FormControl, FormGroup, NgForm, Validators} from "@angular/forms";
 
 import {MyToken} from "../../models/MyToken";
-import {jwtDecode} from "jwt-decode";
+import jwtDecode from "jwt-decode";
 import {UserPasswordService} from "../../service/UserPassword.service";
 
 @Component({
