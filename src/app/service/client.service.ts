@@ -11,6 +11,7 @@ import {Operation} from "../client/models/operation";
 import {IPaymentAccount} from '../models/paymentAccount';
 import { IClientRegistrationRequest} from '../models/ClientRegistrationRequest';
 import {IAgent} from '../models/Agent';
+import {IAgentServices} from "../models/AgentServices";
 
 
 @Injectable({
@@ -33,9 +34,9 @@ export class ClientService {
       .pipe(catchError(this.handleError));
   }
 
-  public getAllClients(): Observable<IClient[]> {
+  public getAllAgentClients(idAgent: number): Observable<IClient[]> {
 
-    const dataUrl = `${this.serverUrl}/api/v1/admin/list`;
+    const dataUrl = `${this.serverUrl}/listByAgent`;
     console.log(this.authorization);
 
     const headers = {
@@ -43,6 +44,7 @@ export class ClientService {
     };
     return this.httpClient.get<IClient[]>(dataUrl, {headers}).pipe(catchError(this.handleError));
   }
+
 
 
   public deleteClient(id: number): Observable<{}> {

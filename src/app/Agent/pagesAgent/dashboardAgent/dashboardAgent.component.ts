@@ -24,12 +24,11 @@ export class DashboardAgentComponent implements OnInit {
   ) { }
 
   clients: IClient[] = [];
-  agents: IClient[] = [];
- phoneNumber: string;
+  phoneNumber: string;
   agent: IAgent ;
 
   ngOnInit(): void {
-    this.getAllClients();
+    this.getAllClientByAgentId(this.agent.id);
     this.sharedAgentService.setAgent(this.agent);
     this.route.queryParams.subscribe(params => {
       this.phoneNumber = params['phoneNumber'];
@@ -57,24 +56,21 @@ export class DashboardAgentComponent implements OnInit {
   }
 
 
-  getAllClients(): void {
-    this.clientService.getAllClients().subscribe(
-      (clients: IClient[]) => {
-        this.clients = clients;
-      },
-
-      (error) => {
-        console.error('Une erreur s\'est produite lors de la récupération des clients :', error);
-      }
-    );
+  getAllClientByAgentId(idAgent : number): void {
+    this.clientService.getAllAgentClients(idAgent).subscribe(res => {
+      this.clients = res;
+    }, error => {
+      console.log(error);
+    });
   }
+
 
   deleteClient(id: number) {
     console.log(id);
     this.clientService.deleteClient(id).subscribe(
       () => {
         console.log('Client deleted successfully.');
-        this.getAllClients();
+        this.getAllClientByAgentId(this.agent.id);
       },
       (error) => {
         console.error('An error occurred while deleting the client:', error);
@@ -82,15 +78,6 @@ export class DashboardAgentComponent implements OnInit {
     );
     window.location.reload();
 
-  }
-
-  updateClient(id: number) {
-    this.router.navigate(['/edit-client', id]);
-
-  }
-
-  viewClientDetails(id: number) {
-    this.router.navigate(['/details-client', id]);
   }
 
 
