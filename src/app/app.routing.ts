@@ -10,7 +10,6 @@ import {AgentDashComponent} from './Agent/agent-dash/agent-dash.component';
 import { ClientDashComponent } from './client/client-dash/client-dash.component';
 import {LoginComponent} from "./auth-layout/login/login.component";
 import {AgentchangePasswordComponent} from "./auth-layout/Agentchange-password/Agentchange-password.component";
-import {ClientProDashComponent} from "./Client-Pro/clientPro-dash/clientPro-dash.component";
 import {ClientChangePasswordComponent} from "./auth-layout/client-change-password/client-change-password.component";
 
 
@@ -81,18 +80,7 @@ const routes: Routes = [
     path: 'client-change-password',
     component: ClientChangePasswordComponent,
   }
-  , {
-
-
-    path: 'client-pro',
-    component: ClientProDashComponent,
-    children : [
-      {
-        path: '',
-        loadChildren: () => import('src/app/Client-pro/clientPro-dash/clientPro-dash.module').then(m => m.ClientProDashModule)
-      }
-    ]
-  },
+  ,
 
 ];
 

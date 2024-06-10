@@ -38,16 +38,6 @@ export class EditClientComponent implements OnInit {
 
 
 
-  public update() {
-    if (this.id) {
-        // tslint:disable-next-line:radix
-      this.clientService.updateClient(this.client, parseInt(this.id)).subscribe((data) => {
-        this.router.navigate([`/agent`]).then();
-      }, (error) => {
-        this.router.navigate(['/agent']).then();
-      });
-    }
 
-  }
 
 }
