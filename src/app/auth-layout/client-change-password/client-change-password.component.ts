@@ -3,9 +3,6 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {CookieService} from "ngx-cookie-service";
 import {FormControl, FormGroup, NgForm, Validators} from "@angular/forms";
 
-import {MyToken} from "../../models/MyToken";
-import {jwtDecode} from "jwt-decode";
-import {AgentChangePasswordService} from "../../service/AgentChangePassword.service";
 import {ClientChangePasswordService} from "../../service/client-change-password.service";
 
 @Component({

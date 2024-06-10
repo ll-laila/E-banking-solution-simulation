@@ -4,9 +4,8 @@ import {CookieService} from "ngx-cookie-service";
 import {FormControl, FormGroup, NgForm, Validators} from "@angular/forms";
 
 import {MyToken} from "../../models/MyToken";
-import {jwtDecode} from "jwt-decode";
+import jwtDecode from "jwt-decode";
 import {AgentChangePasswordService} from "../../service/AgentChangePassword.service";
-import {ClientChangePasswordService} from "../../service/client-change-password.service";
 
 @Component({
   selector: 'app-change-password',
@@ -20,7 +19,7 @@ export class AgentchangePasswordComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private userService: ClientChangePasswordService,
+    private userService: AgentChangePasswordService,
     private cookieService: CookieService,
     private route: ActivatedRoute
   ) {}

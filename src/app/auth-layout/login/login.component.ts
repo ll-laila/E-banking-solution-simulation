@@ -3,9 +3,12 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MyToken } from 'src/app/models/MyToken';
 
+
 import { DatePipe } from '@angular/common';
-import {jwtDecode} from 'jwt-decode';
+
 import {AuthenticationService} from '../../service/authentication.service';
+import jwtDecode from "jwt-decode";
+
 
 
 @Component({

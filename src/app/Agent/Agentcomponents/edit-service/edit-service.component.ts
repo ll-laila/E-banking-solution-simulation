@@ -20,9 +20,10 @@ export class EditServiceComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.activatedRoute.paramMap.subscribe((param) => {
-      this.id = param.get('id');
+    this.activatedRoute.queryParams.subscribe(params => {
+      this.id = params['id'];
     });
+
     if (this.id) {
       this.loading = true;
       // tslint:disable-next-line:radix
