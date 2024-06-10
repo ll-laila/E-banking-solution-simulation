@@ -1,14 +1,17 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpErrorResponse, HttpResponse} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {IClient} from '../models/Client';
 
-import {  Subject, catchError, throwError } from 'rxjs';
+import { catchError, throwError } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
-
 import {Operation} from '../client/models/operation';
 
 import {IPaymentAccount} from '../models/paymentAccount';
+import { IClientRegistrationRequest} from '../models/ClientRegistrationRequest';
+
+
+import {Operation} from "../client/models/operation";
 import { IClientRegistrationRequest} from '../models/ClientRegistrationRequest';
 
 
@@ -19,6 +22,9 @@ import { IClientRegistrationRequest} from '../models/ClientRegistrationRequest';
 export class ClientService {
 
   private serverUrl = `http://localhost:8080/api/v1/client`;
+
+  private serverUrl = `http://localhost:8080/api/client`;
+
   private authorization = this.cookieService.get('Authorization');
 
   constructor(private httpClient: HttpClient, private cookieService: CookieService) {
