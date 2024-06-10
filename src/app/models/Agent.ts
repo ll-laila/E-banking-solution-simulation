@@ -12,4 +12,5 @@ export interface IAgent {
   birthDate : Date;
   isFirstLogin : boolean;
   newPassword : string;
+  image: string
 }
