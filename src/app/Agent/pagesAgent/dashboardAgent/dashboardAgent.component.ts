@@ -31,6 +31,7 @@ export class DashboardAgentComponent implements OnInit {
         this.getAllClients(this.agent.id);
         this.getAllClientByAgentId(this.agent.id);
         this.sharedAgentService.setAgent(this.agent);
+
         this.route.queryParams.subscribe(params => {
             this.phoneNumber = params['phoneNumber'];
             if (this.phoneNumber) {

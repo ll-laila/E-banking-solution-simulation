@@ -13,7 +13,7 @@
         <div class="card-body">
           <div class="row icon-examples">
             <div *ngFor="let agent of agents" class="col-lg-4 col-md-4 col-sm-6">
-              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{ copy === agent.firstName ? 'Copied':'Copy to clipboard' }}" class="btn-icon-clipboard" ngxClipboard [cbContent]="agent.firstName" (cbOnSuccess)="copy = agent.firstName">
+              <button type="button" placement="top-center" triggers="hover focus click" ngbTooltip="{{ copy === agent.firstName ? 'Copied':'' }}" class="btn-icon-clipboard" ngxClipboard [cbContent]="agent.firstName" (cbOnSuccess)="copy = agent.firstName">
                 <div class="image-container" style="height: 130px;">
                   <img [src]="agent.image" alt="{{ agent.firstName }}" class="rounded-image" />
                   <ul>

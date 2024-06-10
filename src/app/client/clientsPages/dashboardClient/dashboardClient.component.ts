@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Client } from "../../models/client";
 import { ClientService } from "../../services/client.service";
 import { Operation } from '../../models/operation';
-import {ActivatedRoute} from "@angular/router";
-import {SharedClientService} from "../../services/shared-client.service";
-import {PaymentAccount} from "../../models/paymentAccount";
-import {SharedInfosService} from "../../../service/shared-infos.service";
+import { ActivatedRoute } from "@angular/router";
+import { SharedClientService } from "../../services/shared-client.service";
+import { PaymentAccount } from "../../models/paymentAccount";
+import { SharedInfosService } from "../../../service/shared-infos.service";
 
 @Component({
   selector: 'app-dashboard',
@@ -15,26 +15,22 @@ import {SharedInfosService} from "../../../service/shared-infos.service";
 
 export class DashboardClientComponent implements OnInit {
 
-  public phoneNumber: string| undefined;
+  public phoneNumber: string | undefined;
 
-  public client : Client;
-
-  public paymentAccount: PaymentAccount;
+  public client: Client;
 
   public operations: Operation[];
-
 
   constructor(
     private route: ActivatedRoute,
     private clientService: ClientService,
     private sharedClientService: SharedClientService,
     private sharedInfosService: SharedInfosService
-
   ) { }
 
   ngOnInit() {
-    this.getClientByPhone(this.sharedInfosService.getPhoneNumber());
-    this.getClientOperations(this.sharedInfosService.getPhoneNumber());
+      this.getClientByPhone( this.sharedInfosService.getPhoneNumber());
+      this.getClientOperations( this.sharedInfosService.getPhoneNumber());
   }
 
   getClientByPhone(phoneNum: string) {
