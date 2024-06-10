@@ -8,6 +8,7 @@ import {Operation} from "../../../client/models/operation";
   styleUrls: ['./trasaction-agent.component.scss']
 })
 export class TrasactionAgentComponent implements OnInit {
+  private serverUrl: string = `http://localhost:9090/api/v1/agent`;
 
   public phoneNumber: string| undefined;
   public operations: Operation[];
