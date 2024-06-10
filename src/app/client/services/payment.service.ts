@@ -24,6 +24,15 @@ export class PaymentService {
   constructor(private httpClient: HttpClient, private cookieService: CookieService) { }
 
 
+  public getAllAgents(): Observable<any> {
+    let dataUrl: string = `${this.serverUrl}/allCreditors`;
+    const headers = {
+      'Authorization': `${this.authorization}`
+    };
+    return this.httpClient.get(dataUrl, { headers }).pipe(catchError(this.handleError));
+  }
+
+
   public feedPaymentAccount(feedDetails : FeedDetails): Observable<FeedResponse> {
 
     const headers = {

@@ -11,22 +11,23 @@ import {AgentservicesService} from '../../../service/agentservices.service';
 })
 export class AddServiceComponent implements OnInit {
   public service: IAgentServices = {} as IAgentServices;
+  private agentId: number;
   constructor(private agentServices: AgentservicesService, private router: Router) {}
 
   ngOnInit(): void {
   }
   createService() {
-    this.agentServices.createService(this.service)
+    this.agentServices.createService(this.service, this.agentId)
         .pipe(
             catchError(error => {
-              console.error('Erreur lors de la création du client :', error);
+              console.error('Erreur lors de la création du service:', error);
               return throwError(error); // Renvoyer l'erreur pour la traiter en aval si nécessaire
             })
         )
         .subscribe((data: any) => {
           console.log(this.service);
           console.log(data);
-          console.log('Client créé avec succès');
+          console.log('service créé avec succès');
         });
   }
 

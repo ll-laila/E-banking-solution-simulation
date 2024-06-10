@@ -5,6 +5,7 @@ import { ServiceAgent } from "../../models/serviceAgent";
 import {ActivatedRoute, Router} from '@angular/router';
 import {SharedAgentService} from "../../services/shared-agent.service";
 import {SharedAgentServiceService} from "../../services/shared-agent-service.service";
+import {PaymentService} from "../../services/payment.service";
 
 @Component({
   selector: 'app-icons',
@@ -36,6 +37,7 @@ export class CreditorsListComponent implements OnInit {
 
 
   constructor(private clientService: ClientService,
+              private paymentService: PaymentService,
               private router: Router,
               private route: ActivatedRoute,
               private sharedAgentService: SharedAgentService,
@@ -62,7 +64,7 @@ export class CreditorsListComponent implements OnInit {
 
 
   getAllAgents() {
-    this.clientService.getAllAgents().subscribe(res => {
+    this.paymentService.getAllAgents().subscribe(res => {
       console.log(res);
       this.agents = res;
       this.getAgentsServices();

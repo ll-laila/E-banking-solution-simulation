@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {CookieService} from "ngx-cookie-service";
-import {AuthenticationService} from "../../service/authentication.service";
 import {FormControl, FormGroup, NgForm, Validators} from "@angular/forms";
-import {jwtDecode} from "jwt-decode";
+
 import {MyToken} from "../../models/MyToken";
+import {jwtDecode} from "jwt-decode";
+import {UserPasswordService} from "../../service/UserPassword.service";
 
 @Component({
   selector: 'app-change-password',
@@ -18,12 +19,12 @@ export class ChangePasswordComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private userService: AuthenticationService,
+    private userService: UserPasswordService,
     private cookieService: CookieService,
     private route: ActivatedRoute
   ) {}
 
-  ngOnInit(){
+  ngOnInit() {
     const token = this.cookieService.get('token');
     this.route.queryParams.subscribe(params => {
       const token = params['token'];
@@ -34,30 +35,37 @@ export class ChangePasswordComponent implements OnInit {
     password: new FormControl('', Validators.required)
   });
 
-  onSubmit(changePswForm : NgForm) {
-
+  onSubmit(changePswForm: NgForm) {
     this.userService.changePswFirstTime(changePswForm.value).subscribe(
-      (response :any) => {
-        const decodedToken = jwtDecode<MyToken>(response.access_token);
+      (response: any) => {
+        console.log('Response from API:', response);
+        this.router.navigate(['/agent']);
+        try {
+          console.log("hi");
+          const decodedToken = jwtDecode<MyToken>(response.access_token);
+          console.log('Decoded token:', decodedToken);
 
-        const expirationDate = new Date();
-        expirationDate.setTime(expirationDate.getTime() +  24 * 60 * 60 * 1000);
-        const expires = `expires=${expirationDate.toUTCString()}`;
-        document.cookie = `Authorization=${encodeURIComponent('Bearer ' + response.access_token)}; ${expires}; path=/`;
-        console.log(decodedToken.isFirstLogin);
+          const expirationDate = new Date();
+          expirationDate.setTime(expirationDate.getTime() + 24 * 60 * 60 * 1000);
+          const expires = `expires=${expirationDate.toUTCString()}`;
+          document.cookie = `Authorization=${encodeURIComponent('Bearer ' + response.access_token)}; ${expires}; path=/`;
 
-        if (decodedToken.isFirstLogin === false) {
-          this.router.navigate(['/login']);
-        } else {
-          this.router.navigate(['/change-password']);
+          if (decodedToken.isFirstLogin === false) {
+            console.log('Redirecting to /agent');
+            this.router.navigate(['/agent']);
+          } else {
+            console.log('Redirecting to /change-password');
+            this.router.navigate(['/change-password']);
+          }
+        } catch (error) {
+          console.error('Error decoding token:', error);
         }
       },
       (error) => {
-        console.log(error);
+        console.log('Error during change password request:', error);
       }
     );
   }
 
   get f() { return this.changePasswordForm.controls; }
-
 }

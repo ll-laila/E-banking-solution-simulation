@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MyToken } from 'src/app/models/MyToken';
-import { AuthenticationService } from "../../service/authentication.service";
 
-import { DatePipe } from "@angular/common";
-import {jwtDecode} from "jwt-decode";
+import { DatePipe } from '@angular/common';
+import {jwtDecode} from 'jwt-decode';
+import {AuthenticationService} from '../../service/authentication.service';
 
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'login',
   templateUrl: 'login.component.html',
   standalone: true,
@@ -44,20 +45,20 @@ export class LoginComponent implements OnInit {
 
         if (decodedToken.role === 'ADMIN') {
           this.router.navigate(['/admin'], { queryParams: { phoneNumber: phoneNumber } });
-        } else if(decodedToken.role=='AGENT'){
-          if(decodedToken.isFirstLogin === true){
+        } else if (decodedToken.role == 'AGENT') {
+          if (decodedToken.isFirstLogin === true) {
             this.router.navigate(['/change-password']);
-          }else {
+          } else {
             this.router.navigate(['/agent'], { queryParams: { phoneNumber: phoneNumber } });
           }
-        }else if(decodedToken.role=='CLIENT'){
-          if(decodedToken.isFirstLogin === true){
+        } else if (decodedToken.role == 'CLIENT') {
+          if (decodedToken.isFirstLogin === true) {
             this.router.navigate(['/change-password']);
-          }else {
+          } else {
             this.router.navigate(['/client'], { queryParams: { phoneNumber: phoneNumber } });
           }
-        }else {
-          this.router.navigate(['/login'])
+        } else {
+          this.router.navigate(['/login']);
         }
       },
       error: (error) => {

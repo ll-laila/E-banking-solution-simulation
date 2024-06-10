@@ -30,4 +30,8 @@ export class SidebarAdminComponent implements OnInit {
       this.isCollapsed = true;
    });
   }
+
+  logout() {
+    this.router.navigate(['/login']);
+  }
 }
