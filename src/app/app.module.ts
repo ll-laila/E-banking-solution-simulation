@@ -16,9 +16,7 @@ import { LoginComponent } from './auth-layout/login/login.component';
 import { ServicesAgentComponent } from './Agent/pagesAgent/services-agent/services-agent.component';
 import { ToastrModule } from 'ngx-toastr';
 import { TrasactionAgentComponent } from './Agent/pagesAgent/trasaction-agent/trasaction-agent.component';
-import {ClientProDashComponent} from "./Client-Pro/clientPro-dash/clientPro-dash.component";
-import {ClientProDashRoutes} from "./Client-Pro/clientPro-dash/clientPro-dash.routing";
-import {ClientProDashModule} from "./Client-Pro/clientPro-dash/clientPro-dash.module";
+
 
 @NgModule({
   imports: [
@@ -31,14 +29,13 @@ import {ClientProDashModule} from "./Client-Pro/clientPro-dash/clientPro-dash.mo
     RouterModule,
 
     AgentDashComponent,
-    ClientProDashComponent,
     LoginComponent,
     AppRoutingModule,
     BrowserModule,
     CommonModule,
     ReactiveFormsModule,
     ToastrModule.forRoot(),
-    ClientProDashModule
+
   ],
   declarations: [
     AppComponent,

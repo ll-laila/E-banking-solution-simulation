@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpResponse} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {catchError, Observable, throwError} from 'rxjs';
 import {IAgentServices} from '../models/AgentServices';
+import {CookieService} from 'ngx-cookie-service';
+
 
 
 @Injectable({
@@ -9,46 +11,58 @@ import {IAgentServices} from '../models/AgentServices';
 })
 export class AgentservicesService {
 
-    private serverUrl = `http://localhost:9092/api/client` ;
+  private serverUrl = `http://localhost:8080` ;
+  private authorization = this.cookieService.get('Authorization');
 
-    constructor(private httpClient: HttpClient) { }
-
-
-
-    public createService(client: IAgentServices): Observable<IAgentServices> {
-        return this.httpClient.post<IAgentServices>(this.serverUrl , client);
-    }
+  constructor(private httpClient: HttpClient, private cookieService: CookieService) {}
 
 
 
-
-
-
+  public createService(client: IAgentServices, id: number): Observable<IAgentServices> {
+       const headers = {
+         'Authorization': `${this.authorization}`
+       };
+  const dataUrl = `${this.serverUrl}/api/v1/client/services/${id}`;
+  return this.httpClient.post<IAgentServices>(dataUrl, client, {headers}).pipe(catchError(this.handleError));
+  }
 
     public getAllServices(): Observable<IAgentServices[]> {
         return this.httpClient.get<IAgentServices[]>(this.serverUrl);
 
     }
 
-
-
-
-    public deleteService(servicetId: number): Observable<HttpResponse<{}>> {
-        const url = `${this.serverUrl}/${servicetId}`;
-        console.log(url);
-        console.log(servicetId);
-        return this.httpClient.delete<HttpResponse<{}>>(url);
+    public deleteService(serviceId: number): Observable<HttpResponse<{}>> {
+        const headers = {
+            'Authorization': `${this.authorization}`
+        };
+        const dataUrl = `${this.serverUrl}/api/v1/client/service/delete/${serviceId}`;
+        return this.httpClient.delete<HttpResponse<{}>>(dataUrl, {headers}).pipe(catchError(this.handleError));
     }
 
     public updateService(service: IAgentServices, serviceId: number): Observable<IAgentServices> {
 
-        const dataUrl = `${this.serverUrl}/${serviceId}`;
-        return this.httpClient.put<IAgentServices>(dataUrl, service);
+        const headers = {
+            'Authorization': `${this.authorization}`
+        };
+        const dataUrl = `${this.serverUrl}/api/v1/client/service/update/${serviceId}`;
+        return this.httpClient.put<IAgentServices>(dataUrl, service, {headers}).pipe(catchError(this.handleError));
     }
-
-    public getService(serviceId: number): Observable<IAgentServices> {
-        const url = `${this.serverUrl}/${serviceId}`;
-        return this.httpClient.get<IAgentServices>(url);
-
+    public getService(agentId: number): Observable<IAgentServices> {
+        const headers = {
+            'Authorization': `${this.authorization}`
+        };
+        const dataUrl = `${this.serverUrl}/api/v1/client/serviceByAgent/${agentId}`;
+        return this.httpClient.get<IAgentServices>(dataUrl, {headers}).pipe(catchError(this.handleError));
+    }
+    public handleError(error: HttpErrorResponse) {
+        let errorMessage = '';
+        if (error.error instanceof ErrorEvent) {
+            // client error
+            errorMessage = `Error : ${error.error.message}`;
+        } else {
+            // server error
+            errorMessage = `Status : ${error.status} \n Message: ${error.message}`;
+        }
+        return throwError(errorMessage);
     }
 }

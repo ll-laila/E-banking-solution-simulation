@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {ClientService} from "../../../client/services/client.service";
 import {Operation} from "../../../client/models/operation";
+import {ClientService} from "../../../service/client.service";
+import {SharedAgentService} from "../../../service/shared-agent.service";
+import {IAgent} from "../../../models/Agent";
 
 @Component({
   selector: 'app-trasaction-agent',
@@ -9,17 +11,19 @@ import {Operation} from "../../../client/models/operation";
 })
 export class TrasactionAgentComponent implements OnInit {
 
-  public phoneNumber: string| undefined;
+  public agent: IAgent;
   public operations: Operation[];
 
-  constructor(private clientService: ClientService) {}
+  constructor(private clientService: ClientService,private sharedAgentService:SharedAgentService) {}
 
   ngOnInit() {
-    this.getClientOperations(this.phoneNumber);
+    this.agent = this.sharedAgentService.getAgent();
+    this.getAgentOperations(this.agent.id);
   }
 
-  public getClientOperations(phoneNum: string) {
-    this.clientService.getClientOperation(phoneNum).subscribe(res => {
+
+  public getAgentOperations(idAgent: number) {
+    this.clientService.getAgentOperation(idAgent).subscribe(res => {
       console.log(res);
       this.operations = res;
     }, error => {
