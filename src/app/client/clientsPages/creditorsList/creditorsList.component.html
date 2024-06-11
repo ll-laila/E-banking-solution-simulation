@@ -1,10 +1,15 @@
 <div class="header pb- pt-5 pt-md-8" style="background: linear-gradient(to right, #ffc107, #2c4481);"></div>
 <!-- Page content -->
+<!-- Table -->
+<div>
+  <div class="alert alert-warning custom" role="alert" *ngIf="responseMessage">
+    {{responseMessage}}
+  </div>
+
+</div>
 <div class="container-fluid mt--3">
-  <!-- Table -->
   <div class="row">
     <div class="col">
-
       <div class="card shadow">
         <div class="card-header bg-transparent">
           <h3 class="mb-0">Liste des créanciers

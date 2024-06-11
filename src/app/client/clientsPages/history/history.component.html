@@ -26,10 +26,10 @@
             <tr *ngFor="let operation of operations" class="align-middle">
               <th scope="row">{{ operation.ref}}</th>
               <th scope="row">{{ operation.creditorName}}</th>
-              <td>{{ operation.clientName }}</td>
+              <td scope="row">{{ operation.clientName }}</td>
               <th scope="row">{{operation.serviceName }}</th>
-              <td>{{ operation.amount }}</td>
-              <td>{{ operation.date}}</td>
+              <td scope="row">{{ operation.amount }}</td>
+              <td scope="row">{{ operation.doItAt}}</td>
             </tr>
             </tbody>
           </table>

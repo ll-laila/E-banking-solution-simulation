@@ -27,7 +27,7 @@
                 <div class="col">
                   <h5 class="card-title text-uppercase text-muted mb-0">Solde</h5>
 
-                  <p class="h4"><b>000</b></p>
+                  <p class="h4"><b>{{client.paymentAccount.balance}}</b></p>
 
                 </div>
                 <div class="col-auto">
@@ -64,13 +64,13 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let operation of operations" class="align-middle">
+            <tr *ngFor="let operation of operations.slice(0, 5)" class="align-middle">
               <th scope="row">{{ operation.ref}}</th>
               <th scope="row">{{ operation.creditorName}}</th>
               <td scope="row">{{ operation.clientName }}</td>
               <th scope="row">{{operation.serviceName }}</th>
               <td scope="row">{{ operation.amount }}</td>
-              <td scope="row">{{ operation.date}}</td>
+              <td scope="row">{{ operation.doItAt}}</td>
             </tr>
             </tbody>
           </table>

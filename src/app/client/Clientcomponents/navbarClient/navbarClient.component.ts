@@ -57,6 +57,8 @@ export class NavbarClientComponent implements OnInit {
       this.paymentService.feedPaymentAccount(this.feedDetails).subscribe((response: FeedResponse) => {
         this.responseMessage = response.message;
         this.currentStep = 2;
+        this.router.navigate(['/client']);
+
       }, error => {
         console.error('Alimentation échouée:', error);
       });
@@ -83,8 +85,12 @@ export class NavbarClientComponent implements OnInit {
       }
     }
 
-    if (titlee.toLowerCase().includes('paiement') || titlee.toLowerCase().includes('validate') || titlee.toLowerCase().includes('confirm') ) {
+    if (titlee.toLowerCase().includes('paiement') ) {
       titlee = 'paiement';
+    }
+
+    if (titlee.toLowerCase().includes('agents') ) {
+      titlee = 'agents';
     }
 
     return titlee;
