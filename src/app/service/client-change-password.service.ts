@@ -14,7 +14,7 @@ export class ClientChangePasswordService {
 
 
   public changePswFirstTime(changePswData: any) {
-    let dataUrl: string = `http://localhost:8080/client/infos/changePassword`;
+    let dataUrl: string = `http://localhost:9090/client/infos/changePassword`;
 
     const headers = {
       'Authorization': `${this.authorization}`

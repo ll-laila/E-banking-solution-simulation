@@ -8,6 +8,7 @@ import {ClientService} from '../../../service/client.service';
 import {SharedAgentService} from '../../../service/shared-agent.service';
 import {IAgent} from '../../../models/Agent';
 import {AgentService} from '../../../service/agent.service';
+import {SharedInfosService} from "../../../service/shared-infos.service";
 
 
 
@@ -18,7 +19,7 @@ import {AgentService} from '../../../service/agent.service';
 })
 export class DashboardAgentComponent implements OnInit {
     constructor(private router: Router, private clientService: ClientService, private agentService: AgentService,
-                private sharedAgentService: SharedAgentService, private route: ActivatedRoute
+                private sharedAgentService: SharedAgentService, private route: ActivatedRoute,    private sharedInfosService: SharedInfosService
     ) {
     }
 
@@ -27,18 +28,9 @@ export class DashboardAgentComponent implements OnInit {
     agent: IAgent;
 
     ngOnInit(): void {
-        this.agent = this.sharedAgentService.getAgent();
+        this.getAgentByPhone(this.sharedInfosService.getPhoneNumber());
         this.getAllClients(this.agent.id);
         this.getAllClientByAgentId(this.agent.id);
-        this.sharedAgentService.setAgent(this.agent);
-
-        this.route.queryParams.subscribe(params => {
-            this.phoneNumber = params['phoneNumber'];
-            if (this.phoneNumber) {
-                this.getAgentByPhone(this.phoneNumber);
-            }
-        });
-
     }
 
 

@@ -4,6 +4,7 @@ import {ActivatedRoute} from "@angular/router";
 import {AgentService} from "../../../service/agent.service";
 import {IAgent} from "../../../models/Agent";
 import {SharedAgentService} from "../../../service/shared-agent.service";
+import {SharedInfosService} from "../../../service/shared-infos.service";
 
 @Component({
   selector: 'app-user-profile',
@@ -20,13 +21,24 @@ export class ProfileAgentComponent implements OnInit {
   phoneNumber: string;
   agent: IAgent ;
 
-  constructor(private sharedAgentService: SharedAgentService) { }
+  constructor(private sharedAgentService: SharedAgentService ,  private sharedInfosService: SharedInfosService,
+              private agentService: AgentService) { }
 
 
   ngOnInit(): void {
-   this.agent = this.sharedAgentService.getAgent();
+    this.getAgentByPhone( this.sharedInfosService.getPhoneNumber());
   }
 
+
+  getAgentByPhone(phoneNum: string) {
+    this.agentService.getAgentByPhoneNumber(phoneNum).subscribe(res => {
+      console.log(res);
+      this.agent = res;
+      this.sharedAgentService.setAgent(this.agent);
+    }, error => {
+      console.log(error);
+    });
+  }
 
 
 
